@@ -1,0 +1,216 @@
+{
+  "_about": "Question-writing guide, read by the AI generator (index.ts). Edit the rules or add examples here, then redeploy. Keep examples original, correct and in the style you want; the AI copies their style, never their content. \"unverified_examples\" are never sent to the AI.",
+  "rules": [
+    "Correct first. Each question rests on one statement in the slides that makes exactly one option right. Every wrong option must be clearly wrong for this case. If you are not certain, skip the question.",
+    "Write a case-study stem: a short clinical or experimental case (3-5 sentences) with the findings and numbers a student needs, then one precise question. The stem must never hand over the answer: do not name the answer, diagnosis or mechanism, do not say what the patient made or took if that is the answer, do not state the rule or formula the student has to use, and do not repeat the slide's own wording. A \"normal\" or negative finding in the stem must not rule out several wrong options at once (for example \"all other hormones are normal\"): after drafting, check that each wrong option still needs its own reasoning to reject. If one sentence removes two or more options, cut it or rewrite it. Test: if the stem could only describe one bullet on one slide, rewrite it so the student has to infer that bullet from the findings. The student works it out from the case.",
+    "Test application, not recall: the student must interpret the case and take one step of reasoning beyond the wording of the slide. A calculation needs a reasoning step, not just plugging numbers into a rule or multiplying a remembered figure. No definitions, trivia, or tiny and practice-dependent details such as storage temperatures, shelf life, time windows or cut-offs that differ between hospitals. Aim for an end-of-module exam: a student who revised well gets it right about two times in three, and one who only memorised the headings is caught by the near-miss options.",
+    "Exactly 5 options, the same kind of thing, in one sentence template and about the same length. Length must not point at the answer: the right option is sometimes the longest, sometimes the shortest and most often in the middle, never longer or more specific by habit. Write the wrong options first, then fit the right one to them.",
+    "Wrong options are near-misses that are true in some other context. Each must be something a half-prepared student could genuinely pick: never absurd, impossible, overlapping or synonyms of each other. In \"which gland, organ or structure\" questions keep every option in the same plausible region or system (all organs in the neck, all endocrine glands, all enzymes of one pathway), never padded with parts of the body that location alone rules out.",
+    "Avoid: all/none of the above, \"which is NOT\", absolute words only on wrong options, grammar that fits only one option. Put numbers in order, with units.",
+    "Spread questions across the whole material and vary what is asked (mechanism, consequence, next step, how two similar things differ). List the distinct topics on the slides first and cover each major one once before going deeper into any; if you are asked for fewer questions than there are topics, choose the most examinable. Never test the same fact or concept twice, even in different words or from a different angle.",
+    "Explanations must be accurate: for each wrong option say what it actually is or does and why it does not fit this case, and never justify it with a statement that is itself inaccurate."
+  ],
+  "examples": [
+    {
+      "topic": "Cardiac electrophysiology (experiment)",
+      "stem": "A researcher records the transmembrane potential of an isolated ventricular myocyte. After adding a drug that blocks one class of voltage-gated ion channel, the sustained flat part of the action potential becomes shorter and contractile force falls, while the initial upstroke is unchanged. Which current's block best explains both findings?",
+      "options": [
+        "Inward sodium current through voltage-gated channels",
+        "Outward potassium current through delayed rectifier channels",
+        "Inward calcium current through L-type channels",
+        "Outward potassium current through transient outward channels",
+        "Inward potassium current through inward rectifier channels"
+      ],
+      "answer": 2,
+      "teaching_point": "Calcium entry through L-type channels sustains the plateau and triggers contraction, so blocking it shortens the plateau and weakens force.",
+      "why": [
+        "Sodium block would slow or reduce the upstroke, which was unchanged.",
+        "Blocking this outward current would delay repolarisation and lengthen the action potential.",
+        "Calcium entry holds the plateau and drives excitation-contraction coupling, so blocking it shortens the plateau and lowers force.",
+        "Blocking this current would slow early repolarisation, not shorten the plateau or affect force.",
+        "This current sets the resting potential in phase 4 and does not control the plateau."
+      ],
+      "note": "Mechanism question. The stem describes findings without naming the channel. All options share one template (direction, ion, channel) and are within about 15% of each other in length. The correct option is not the longest."
+    },
+    {
+      "topic": "Autonomic pharmacology (clinical)",
+      "stem": "A 66-year-old man starts a new medication for an overactive bladder. Two weeks later he complains of a dry mouth, blurred near vision and difficulty passing urine, and examination shows dilated pupils. Which receptor population is most probably blocked by the drug?",
+      "options": [
+        "Nicotinic receptors at the skeletal neuromuscular junction",
+        "Alpha-1 adrenergic receptors at postganglionic sympathetic effectors",
+        "Muscarinic receptors at postganglionic parasympathetic effectors",
+        "Beta-2 adrenergic receptors at postganglionic sympathetic effectors",
+        "Alpha-2 adrenergic receptors at presynaptic sympathetic terminals"
+      ],
+      "answer": 2,
+      "teaching_point": "Dry mouth, cycloplegia, mydriasis and urinary retention are the effects of blocking muscarinic receptors on parasympathetic target organs.",
+      "why": [
+        "Blocking nicotinic receptors at the neuromuscular junction causes weakness, not these autonomic effects.",
+        "Alpha-1 block would cause miosis and hypotension, the opposite pupil change.",
+        "Parasympathetic effectors use muscarinic receptors; blocking them dries secretions, dilates the pupil, paralyses accommodation and relaxes the detrusor so urine is retained.",
+        "Beta-2 block would cause bronchoconstriction and does not dilate the pupil.",
+        "Presynaptic alpha-2 block would increase noradrenaline release rather than cause these anticholinergic effects."
+      ],
+      "note": "Clinical vignette. The drug class is never named in the stem. Every option is a real receptor population at a real site, so a student must reason from the findings. Lengths are all within about 10% of one another."
+    },
+    {
+      "topic": "Metabolism (clinical)",
+      "stem": "A 6-month-old boy presents with severe hypoglycaemia after a short fast, a markedly enlarged liver, lactic acidosis and a raised uric acid. A liver biopsy shows hepatocytes swollen with glycogen of normal structure. Which enzyme step is deficient?",
+      "options": [
+        "Glycogen phosphorylase, the first step of glycogen breakdown",
+        "Glucose-6-phosphatase, the last step releasing free glucose",
+        "Debranching enzyme, the step removing alpha-1,6 branch points",
+        "Phosphofructokinase-1, the committed step of glycolysis",
+        "Branching enzyme, the step forming alpha-1,6 branch points"
+      ],
+      "answer": 1,
+      "teaching_point": "Glucose-6-phosphatase is the final step of both glycogenolysis and gluconeogenesis; its deficiency traps glucose-6-phosphate, so fasting hypoglycaemia occurs with normally structured glycogen.",
+      "why": [
+        "Phosphorylase deficiency also causes hypoglycaemia and a large liver but does not produce this lactic acidosis and hyperuricaemia.",
+        "Without this enzyme neither glycogen breakdown nor gluconeogenesis can release free glucose, and the trapped substrate drives lactate and urate up.",
+        "Debranching deficiency leaves abnormally short-branched glycogen, not normal structure.",
+        "This enzyme is in glycolysis and its deficiency causes muscle problems, not fasting hypoglycaemia with hepatomegaly.",
+        "Branching deficiency produces abnormally long unbranched glycogen and progressive liver failure."
+      ],
+      "note": "Two-step reasoning: recognise the picture, then name the enzyme. Each wrong option is a real enzyme from the same pathway, and the biopsy detail separates the glycogen storage disorders. All options use the template enzyme, comma, role."
+    },
+    {
+      "topic": "Neurophysiology (action potential peak)",
+      "stem": "At the peak (+35 mV) of a neuronal action potential, the rapid depolarisation abruptly halts and repolarisation begins. Which coordinated gating events in voltage-gated ion channels occur simultaneously at this voltage to terminate the rising phase?",
+      "options": [
+        "Closure of delayed-rectifier potassium channels and opening of background sodium leak channels",
+        "Inactivation of voltage-gated sodium channels and opening of delayed-rectifier potassium channels",
+        "Activation of voltage-gated sodium channels and inactivation of delayed-rectifier potassium channels",
+        "De-inactivation of voltage-gated sodium channels and activation of voltage-gated calcium channels",
+        "Complete blockade of resting potassium leak channels and activation of sodium-potassium ATPase"
+      ],
+      "answer": 1,
+      "teaching_point": "The action potential peak ends when voltage-gated sodium channels inactivate and delayed-rectifier potassium channels open.",
+      "why": [
+        "Closing the potassium channels would keep the cell depolarised, the opposite of what ends the rising phase.",
+        "At +35 mV the sodium channels' inactivation gates close, stopping sodium entry, while delayed-rectifier potassium channels open fully so potassium efflux starts repolarisation.",
+        "Sodium channels are activated during the upstroke; at the peak they are inactivating, not activating.",
+        "De-inactivation of sodium channels happens later, during repolarisation, and calcium channels do not end the neuronal upstroke.",
+        "The resting potassium leak is not blocked, and the sodium-potassium pump is too slow to end the spike; it restores the gradients afterwards."
+      ],
+      "note": "Mechanism question about one precise moment (the peak). Every option is a two-part \"event and event\" statement of similar length, and the wrong ones are real channel behaviours from other phases."
+    },
+    {
+      "topic": "Neurophysiology (resting potential value)",
+      "stem": "During an intracellular recording from an isolated mammalian spinal alpha motor neuron in standard physiological solution, a microelectrode penetrates the plasma membrane. Prior to electrical stimulation, a stable negative potential is established across the resting membrane. Which measured intracellular voltage relative to the extracellular fluid is typical for this healthy resting neuron?",
+      "options": [
+        "-120 mV",
+        "-80 mV",
+        "-30 mV",
+        "0 mV",
+        "+35 mV"
+      ],
+      "answer": 1,
+      "teaching_point": "The resting membrane potential of spinal motor neurons is about -70 to -90 mV, averaging -80 mV.",
+      "why": [
+        "This is more negative than the potassium equilibrium potential, which a resting neuron cannot exceed.",
+        "Resting neurons sit between -70 and -90 mV, close to the potassium equilibrium potential, because the membrane is mostly permeable to potassium.",
+        "This is a severely depolarised, non-functional state, not the normal resting level.",
+        "No electrical gradient at all would mean the neuron is not maintaining a resting potential.",
+        "+35 mV is the overshoot peak of an action potential."
+      ],
+      "note": "Numeric options in order with units (shown ascending). One fact, tested with a realistic recording setup in the stem. The wrong values are meaningful: a depolarised cell, an action potential peak, an impossible value."
+    },
+    {
+      "topic": "Neurophysiology (resting potential, mechanism)",
+      "stem": "An electrophysiology researcher investigates the factors establishing the baseline electrical polarity of resting spinal motor neurons. Selective pharmacological blockade of which transport mechanism will produce the most immediate and profound collapse of the resting membrane potential toward 0 mV?",
+      "options": [
+        "Primary active sodium-potassium ATPase exchangers",
+        "Plasma membrane chloride-bicarbonate cotransporters",
+        "Voltage-dependent L-type calcium channels",
+        "Non-gated potassium background leak channels",
+        "Voltage-gated rapid-inactivating sodium channels"
+      ],
+      "answer": 3,
+      "teaching_point": "The resting potential depends mainly on potassium efflux through non-gated leak channels; the sodium-potassium pump maintains the gradients over a longer time.",
+      "why": [
+        "The pump contributes only a few millivolts directly; blocking it collapses the potential slowly, as the gradients run down over time.",
+        "These cotransporters regulate pH and chloride, not the resting potential.",
+        "L-type calcium channels are voltage-dependent and mostly closed at rest.",
+        "The resting potential is set mainly by the high resting permeability to potassium through non-gated leak channels; blocking them removes potassium efflux and collapses the potential at once.",
+        "Voltage-gated sodium channels are closed at rest and open only on depolarisation."
+      ],
+      "note": "Built around a common misconception: the sodium-potassium pump is the tempting wrong answer. All options are real membrane mechanisms with the same short noun-phrase shape and similar length."
+    },
+    {
+      "topic": "Pharmacology (local anaesthetic)",
+      "stem": "A 42-year-old man receives local infiltration of lidocaine before excision of a cutaneous cyst. Lidocaine binds with high affinity to the intracellular pore of voltage-gated sodium channels in sensory nerve endings, preventing channel opening. Which component of the axonal action potential waveform is directly and selectively suppressed by this local anaesthetic?",
+      "options": [
+        "Late active restoration of chemical gradients",
+        "Rapid upstroke phase of depolarisation",
+        "Delayed after-hyperpolarisation phase",
+        "Initial rapid phase of repolarisation",
+        "Steady resting membrane potential maintenance"
+      ],
+      "answer": 1,
+      "teaching_point": "The action potential upstroke is carried by voltage-gated sodium channels, so local anaesthetics such as lidocaine suppress it.",
+      "why": [
+        "Restoring the gradients is done later by the sodium-potassium pump, not by the sodium channels.",
+        "The upstroke is driven by sudden sodium influx through voltage-gated sodium channels; blocking them suppresses it and prevents the action potential from forming and travelling.",
+        "The after-hyperpolarisation comes from prolonged potassium conductance, which lidocaine does not block.",
+        "Early repolarisation depends on sodium channel inactivation and potassium efflux, not on the channels opening.",
+        "The resting potential depends mainly on potassium leak channels, which lidocaine does not affect."
+      ],
+      "note": "The stem gives the drug mechanism and asks for the consequence. All options are parts of the same waveform, in the same short phrase style, so the student must map the channel to the phase."
+    }
+  ],
+  "unverified_examples": [
+    {
+      "topic": "Autonomic pharmacology (ganglia)",
+      "stem": "A pharmacologist investigates a systemic ganglionic antagonist that produces combined sympathetic and parasympathetic blockade, causing orthostatic hypotension and dry mouth. Which neurotransmitter, released by preganglionic fibers in both the sympathetic and parasympathetic autonomic ganglia, is antagonized by this agent?",
+      "options": [
+        "Gamma-aminobutyric acid",
+        "Dopamine",
+        "Serotonin",
+        "Acetylcholine",
+        "Noradrenaline"
+      ],
+      "answer": null,
+      "note": "Screenshot did not show the right answer, so it is NOT known. Not used in any prompt. Once you confirm the answer, set \"answer\", add teaching_point, why and note, and move it into \"examples\"."
+    },
+    {
+      "topic": "Autonomic anatomy (parasympathetic outflow)",
+      "stem": "A 60-year-old man develops flaccid bladder urinary retention and erectile dysfunction following deep pelvic lymph node dissection for rectal adenocarcinoma. The operative notes indicate iatrogenic disruption of the pelvic splanchnic nerves. From which central nervous system locus do the preganglionic parasympathetic axons damaged in this procedure originate?",
+      "options": [
+        "Dorsal root sensory ganglia corresponding to the S2 through S4 spinal nerves",
+        "Anterior horn motor nuclei of the S1, S2, and S3 spinal cord segments",
+        "Inferior mesenteric sympathetic prevertebral ganglion",
+        "Intermediolateral gray column of the T10 through L2 spinal cord segments",
+        "Intermediolateral gray column of the S2, S3, and S4 spinal cord segments"
+      ],
+      "answer": null,
+      "note": "Screenshot did not show the right answer, so it is NOT known. Not used in any prompt. Once you confirm the answer, set \"answer\", add teaching_point, why and note, and move it into \"examples\"."
+    },
+    {
+      "topic": "Neuroanatomy (spinal roots)",
+      "stem": "A 52-year-old man presents with severe burning pain, tingling, and sensory loss across the dorsum of his foot caused by a foraminal disc protrusion selectively compressing the L5 dorsal nerve root, leaving the ventral root completely intact. Which structural and functional property is characteristic of the nerve fibers traversing the compressed dorsal root?",
+      "options": [
+        "Exclusively myelinated efferent axons originating from motor neurons in the anterior gray horn",
+        "Direct efferent motor projections terminating on neuromuscular junctions of the anterior compartment",
+        "Exclusively unmyelinated autonomic efferents originating from the lateral gray horn",
+        "Postganglionic sympathetic fibers directing sudomotor responses in the lower extremity",
+        "A mixture of myelinated and unmyelinated primary afferent axons conducting toward the spinal cord"
+      ],
+      "answer": null,
+      "note": "Screenshot did not show the right answer, so it is NOT known. Not used in any prompt. Once you confirm the answer, set \"answer\", add teaching_point, why and note, and move it into \"examples\"."
+    },
+    {
+      "topic": "Autonomic anatomy (rami communicantes)",
+      "stem": "A 28-year-old man undergoes selective upper thoracic sympathectomy for debilitating primary palmar hyperhidrosis. During surgical dissection near the sympathetic trunk, the surgeon isolates the rami communicantes connecting the spinal nerve to the paravertebral chain. Which description correctly characterizes the nerve fibers traversing the white ramus communicans at this thoracic level?",
+      "options": [
+        "Unmyelinated postganglionic fibers exiting the sympathetic chain to re-enter the spinal nerve",
+        "Myelinated postganglionic fibers conducting motor commands to vascular smooth muscle",
+        "Unmyelinated preganglionic fibers directly innervating cutaneous eccrine sweat glands",
+        "Somatic primary afferents conducting light touch toward the posterior horn of the spinal cord",
+        "Myelinated preganglionic fibers entering the sympathetic chain from the ventral ramus"
+      ],
+      "answer": null,
+      "note": "Screenshot did not show the right answer, so it is NOT known. Not used in any prompt. Once you confirm the answer, set \"answer\", add teaching_point, why and note, and move it into \"examples\"."
+    }
+  ]
+}
