@@ -146,8 +146,6 @@ const shuffleOptions = q => {
   const explanation = (q.explanation || '').split('\n').map(l => { const m = /^([A-H])\s*:/.exec(l); return m && at[L.indexOf(m[1])] !== undefined ? L[at[L.indexOf(m[1])]] + l.slice(1) : l; }).join('\n');
   return { options: order.map(i => q.options[i]), answer: at[q.answer], explanation };
 };
-const correctIsLongest = q => q.options.every((o, i) => i === q.answer || o.length < q.options[q.answer].length);
-const tooLong = q => { const len = q.options.map(o => o.length), top = Math.max(...len), rest = len.filter((_, i) => i !== len.indexOf(top)); return top >= 25 && top > 1.25 * rest.reduce((a, b) => a + b, 0) / rest.length; };   // same cap as the generator: no option over 125% of the average of the others
 
 let lastDeck = null;   // deck created by the most recent successful import (used to attach slides)
 async function importFile(file, folder = '') {
@@ -168,9 +166,7 @@ async function importFile(file, folder = '') {
   await putMany('cards', out);
   lastDeck = d.deck;
   if (folder) { FM.assign[d.deck] = folder; if (!FM.folders.includes(folder)) FM.folders.push(folder); await saveFM(); }
-  const longest = d.questions.filter(correctIsLongest).length, uneven = d.questions.filter(tooLong).length;
-  const bias = longest > d.questions.length * .3 || uneven > d.questions.length * .2;
-  return `"${d.deck}" in ${folderOf(d.deck)}: ${added} new, ${out.length - added} updated (progress kept).` + (bias ? `\n\n⚠ This deck could be biased. In ${longest} of ${d.questions.length} questions the right answer is the longest option${uneven ? `, and ${uneven} have one option much longer than the rest` : ''}, so students can guess by length. Consider regenerating it.` : '');
+  return `${d.deck}: ${added} new question${added === 1 ? '' : 's'}${out.length > added ? `, ${out.length - added} updated` : ''}.`;
 }
 
 // ---- stats ----
@@ -712,8 +708,6 @@ async function uploadSlides(deckNames, files, say) {
       chk(await sb.from('slide_files').insert({ id, deck_id: cache.deckId.get(deckName), file_name: f.name, storage_path: path, page_count: doc.numPages }));
       for (const part of chunks(pages.map((body, i) => ({ file_id: id, page: i + 1, body })), 200)) chk(await sb.from('slides').insert(part));
     }
-    const blank = pages.filter(t => t.length < 20).length;
-    if (blank) notes.push(`${blank} page${blank === 1 ? '' : 's'} in "${f.name}" have almost no text (images only).`);
   }
   return notes;
 }
@@ -822,8 +816,8 @@ const slideRowId = async (f, deckName) => {
   await attachExisting(f, deckName);
   return chk(await sb.from('slide_files').select('id').eq('deck_id', cache.deckId.get(deckName)).eq('storage_path', f.storage_path))[0].id;
 };
-// split the slide files into reads of at most GEN_PAGES pages and share the question count out by pages
-function planWindows(files, count, max = GEN_PAGES) {
+// split the slide files into reads of at most GEN_PAGES pages
+function planWindows(files, max = GEN_PAGES) {
   const wins = [], small = [];
   for (const f of files) {
     if (f.page_count > max) for (let p = 1; p <= f.page_count; p += max) wins.push({ ids: [f.id], from: p, to: Math.min(f.page_count, p + max - 1), pages: Math.min(max, f.page_count - p + 1) });
@@ -831,10 +825,7 @@ function planWindows(files, count, max = GEN_PAGES) {
   }
   let cur = null;
   for (const f of small) { if (!cur || cur.pages + f.page_count > max) wins.push(cur = { ids: [], pages: 0 }); cur.ids.push(f.id); cur.pages += f.page_count; }
-  const total = wins.reduce((t, w) => t + w.pages, 0) || 1;
-  let left = count;
-  wins.forEach((w, i) => { w.n = i === wins.length - 1 ? left : Math.min(left, Math.round(count * w.pages / total)); left -= w.n; });
-  return wins.filter(w => w.n > 0);
+  return wins;
 }
 // "Auto" deck name: the slide file's title (a few files: the first, plus how many more), made unique
 function autoDeckName(fileNames) {
@@ -869,7 +860,7 @@ function generateBody({ files, by, dn, covers, note }) {
       ${folderPart}
       <div class="dsec"><p class="dlbl">${GEN.deckMode === 'new' ? '4' : '3'} · How many questions</p>
         <div class="gcount"><input type="range" id="gcr" min="1" max="${GEN_MAX}" value="${GEN.count}" aria-label="Number of questions"><input class="inp" type="number" id="gcn" min="1" max="${GEN_MAX}" value="${GEN.count}" inputmode="numeric" aria-label="Number of questions"></div>
-        <p class="fine">Most decks use about 30. The most you can ask for at once is ${GEN_MAX}.</p></div>
+        <p class="fine">Most decks use about 30. The most you can ask for at once is ${GEN_MAX}. Every topic gets a question first; if you ask for more, the main topics come back from a new angle.</p></div>
       <div class="dsec"><button class="p gbig" id="ggo">Generate questions</button><p class="err" id="ger"></p>
         <p class="fine gnote">${note}</p><p class="fine gnote">AI can make mistakes. Report any that look wrong.</p></div></div>
     </section>
@@ -914,7 +905,7 @@ function bindGenerate() {
     let folder = isNew ? (GEN.folder === '__new' ? GEN.newFolder.trim() : GEN.folder) : '';
     if (isNew && GEN.folder === '__new' && !folder) return er('Type a name for the new folder.');
     q('#ggo').disabled = true;
-    let added = 0, err = null;
+    let added = 0, supported = count, err = null;
     try {
       const say = t => er(t);
       await ensureDecks([deck]);
@@ -929,13 +920,29 @@ function bindGenerate() {
         await uploadSlides([deck], GEN.pdfs, say);
         rows = chk(await sb.from('slide_files').select('id,page_count').eq('deck_id', cache.deckId.get(deck)).in('file_name', GEN.pdfs.map(f => f.name)));
       }
-      for (const w of planWindows(rows, count)) {
-        let done = 0;
-        while (done < w.n) {
-          say(added ? `Writing questions… ${added} of ${count}` : 'Writing questions… this can take a minute.');
-          const n = Math.min(10, w.n - done), r = await callGenerate({ deck, fileIds: w.ids, fromPage: w.from, toPage: w.to, count: n });
-          added += r.added; done += r.added;
-          if (r.added < n) break;   // these slides are used up, or the monthly limit was reached
+      // 1. the AI lists the concepts in each read of the slides and ranks them; 2. assignSlots picks which to write (every concept once, then variations on the most important); 3. each batch writes its assigned questions
+      const wins = planWindows(rows);
+      await guideReady;
+      if (!GUIDE) throw new Error("Couldn't load the question guide. Check your connection and try again.");
+      const concepts = [];
+      let objectives = [];
+      const planWin = async wi => {
+        const w = wins[wi], r = await callGenerate({ deck, fileIds: w.ids, fromPage: w.from, toPage: w.to, plan: true, objectives });
+        (r.concepts || []).forEach((c, i) => concepts.push({ ...c, win: wi, order: wi * 1000 + i }));
+        return r.objectives || [];
+      };
+      say('Reading your slides… this can take a minute.');
+      objectives = await planWin(0);   // the first read usually holds the objectives slide; every later read ranks against them
+      await Promise.all(wins.slice(1).map((_, i) => planWin(i + 1)));
+      const plan = assignSlots(concepts, count, GUIDE.angles);
+      supported = plan.supported;
+      for (const [wi, w] of wins.entries()) {
+        const mine = plan.slots.filter(s => s.win === wi);
+        for (let i = 0; i < mine.length; i += 10) {
+          say(added ? `Writing questions… ${added} of ${plan.slots.length}` : 'Writing questions… this can take a minute.');
+          const batch = mine.slice(i, i + 10), r = await callGenerate({ deck, fileIds: w.ids, fromPage: w.from, toPage: w.to, slots: batch.map(({ concept, angle, pages }) => ({ concept, angle, pages })) });
+          added += r.added;
+          if (!r.added) break;   // the monthly limit was reached, or the AI wrote nothing usable
         }
       }
     } catch (e) { console.error(e); err = e.friendly ? e : new Error('Something went wrong. Try again.'); }
@@ -943,7 +950,8 @@ function bindGenerate() {
     if (!err || added) { GEN.pdfs = []; GEN.sel = new Set(); GEN.newDeck = ''; }
     view = 'generate';
     if (err && !added) { await home(); er(err.message); return; }
-    home(added ? `Added ${added} question${added === 1 ? '' : 's'} to "${deck}".${err ? ' ' + err.message : ''}` : 'No new questions were written. The slides may not have enough new material.');
+    const short = supported < count ? ` These slides support ${supported} good question${supported === 1 ? '' : 's'}, so that is as many as could be written.` : '';
+    home(added ? `Added ${added} question${added === 1 ? '' : 's'} to "${deck}".${short}${err ? ' ' + err.message : ''}` : 'No new questions were written. The slides may not have enough new material.');
   };
 }
 
@@ -1054,7 +1062,7 @@ async function importDialog(pre = '') {
         if (pdfs.length) msg += ' ' + ['Slides uploaded.', ...await uploadSlides([lastDeck], pdfs, er)].join(' ');
       } catch (err) { msg += oops(err, ' The slides could not be linked. You can add them in the Slides tab.'); }
       const missing = names.filter(n => !attached(n) && !found(n));
-      if (missing.length) msg += ` Still missing: ${missing.join(', ')}. Upload ${missing.length === 1 ? 'it' : 'them'} in the Slides tab and ${missing.length === 1 ? 'it' : 'they'} will connect on their own.`;
+      if (missing.length) msg += ` Missing slides: ${missing.join(', ')}. Add them in the Slides tab.`;
       close(); home(msg);
     };
     go(1, 'Choose the deck file');
@@ -1071,7 +1079,7 @@ async function home(msg = '') {
   const [allCards, logs, slideN] = await Promise.all([all('cards'), all('logs'), view === 'decks' || view === 'today' ? slideCounts() : new Map()]);
   const cards = allCards.filter(c => !c.flagged), reported = allCards.filter(c => c.flagged);   // a reported question is hidden from studying and stats until it is restored in Settings
   const now = Date.now(), today = dayKey(now);
-  const banner = `${msg ? `<div class="msg ${/failed|valid JSON/.test(msg) ? 'err' : msg.includes('⚠') ? 'warn' : ''}">${esc(msg)}</div>` : ''}`;
+  const banner = `${msg ? `<div class="msg ${/failed|valid JSON/.test(msg) ? 'err' : ''}">${esc(msg)}</div>` : ''}`;
   const todoOf = cs => cs.filter(c => !c.reps || c.due <= now).length;
   const trash = svg('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/>', 20);
   const delBadge = (attr, v) => editing ? `<span class="del" data-${attr}="${esc(v)}" role="button" aria-label="Delete">${trash}</span>` : '';
