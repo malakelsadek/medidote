@@ -1,0 +1,332 @@
+{
+  "deck": "Biochemistry - Protein structure and function",
+  "questions": [
+    {
+      "evidence": "Slide 3: \"Quaternary structure: non-covalent interactions that bind multiple polypeptides into a single, larger protein... hemoglobin has quaternary structure due to association of two alpha globin and two beta globin\". Slide 16: \"Aggregation of more than one polypeptide chain\".",
+      "stem": "The two α and two β polypeptide chains of haemoglobin come together as one protein. Which level of structure describes how these chains are associated?",
+      "options": [
+        "Primary structure, the sequence of amino acids joined by peptide bonds",
+        "Secondary structure, regular folding of the backbone held by hydrogen bonds",
+        "Tertiary structure, the final three-dimensional fold of a single polypeptide chain",
+        "Quaternary structure, the association of more than one polypeptide chain",
+        "Super secondary structure, a combination of β-sheets and α-helices within a chain"
+      ],
+      "answer": 3,
+      "explanation": "Quaternary structure is the association of more than one polypeptide chain, as in the two α and two β chains of haemoglobin.\nA: Primary structure is the linear sequence of one chain, not the association of several chains.\nB: Secondary structure is local folding within one chain, such as the α-helix and β-sheet.\nC: Tertiary structure is the fold of one chain, as in myoglobin, which has a single chain.\nE: Super secondary structures (motifs) are patterns of helices and sheets within one chain.",
+      "slide": [
+        3,
+        16
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 15: \"Tertiary structure can be broken by the action of heat... the bonds that maintain its shape (which are mainly weak, non-covalent bonds) will be more likely to break. When a protein loses its shape in this way it is said to be Denatured, It loose its biological function\".",
+      "stem": "A purified single-chain enzyme is heated briefly and then cooled. It no longer catalyses its reaction. Which change best explains this loss of function?",
+      "options": [
+        "Breakage of the weak non-covalent bonds that maintain the tertiary shape",
+        "Hydrolysis of the peptide bonds that link neighbouring amino acids",
+        "Cleavage of the covalent disulphide bridges that define the primary sequence",
+        "Dissociation of a prosthetic group from the quaternary structure",
+        "Loss of the hydrogen bonds of the secondary structure, leaving the tertiary fold intact"
+      ],
+      "answer": 0,
+      "explanation": "Heat gives the protein kinetic energy that breaks the weak non-covalent bonds holding its shape, so it denatures and loses function.\nB: Peptide bonds are covalent and strong; heating does not hydrolyse them, and the sequence stays intact.\nC: Disulphide bridges are covalent, so brief heating does not cleave them; the weak bonds break first.\nD: A single-chain enzyme has no subunits and so no quaternary structure to lose.\nE: Heat disrupts the weak bonds that maintain the whole shape, so the tertiary fold is lost as well.",
+      "slide": 15,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 8: \"N-H makes H-bond to C=O that is 4 residues forward, 3.6 residues per turn\".",
+      "stem": "A student builds a model of a right-handed α-helix. Each main-chain N-H group forms a hydrogen bond with the C=O group of which residue?",
+      "options": [
+        "The residue 2 positions further along the chain",
+        "The residue 3 positions further along the chain",
+        "The residue 4 positions further along the chain",
+        "The residue 5 positions further along the chain",
+        "The residue 7 positions further along the chain"
+      ],
+      "answer": 2,
+      "explanation": "In the α-helix each N-H bonds to the C=O four residues forward, which gives 3.6 residues per turn.\nA: This is too close; the bonding partner is four residues forward.\nB: The helix has 3.6 residues per turn, but the hydrogen-bonded partner is four residues forward, not three.\nD: The partner is four residues forward, not five.\nE: The partner is four residues forward, not seven.",
+      "slide": 8,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 9: \"In a ẞ-sheet the two or more polypeptide chains run alongside each other and are linked in a regular manner by hydrogen bonds between the opposing C=O and N-H. When they run in the same direction: parallel. When they run in the opposite direction: antiparallel\". Side groups R up and down.",
+      "stem": "In a protein structure, two extended zig-zag segments lie side by side, and the N-terminal end of one lies next to the C-terminal end of the other. Hydrogen bonds link the main-chain groups of the neighbouring segments, and the side groups point alternately above and below the plane. Which secondary structure is this?",
+      "options": [
+        "Antiparallel β-pleated sheet, with strands in opposite directions",
+        "Parallel β-pleated sheet, with strands running in the same direction",
+        "Right-handed α-helix, with hydrogen bonds along the helix axis",
+        "β bend, a four-residue turn linking two strands",
+        "Loop, a longer segment of charged and polar residues on the surface"
+      ],
+      "answer": 0,
+      "explanation": "Neighbouring strands with N-terminus beside C-terminus run in opposite directions, which defines an antiparallel β-pleated sheet.\nB: In a parallel sheet the N-terminal ends of neighbouring strands lie together, so the strands run the same way.\nC: An α-helix is a rod formed by one chain with hydrogen bonds parallel to its axis, not two side-by-side extended segments.\nD: A bend is a short turn of about four residues that connects regular structures; it is not a sheet of adjacent strands.\nE: Loops are less regular segments of 6 to 16 residues on the surface and do not form hydrogen-bonded sheets.",
+      "slide": 9,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 10: \"B Bends and loops: Less regular structure connecting a helical and or B strand. Bend: 4 aa, Contain proline and glycine, At the bending site, connect regular structure\"; loops: \"6-16 aa, charged and polar aa, on the surface\".",
+      "stem": "A protein has a short four-residue turn that connects two regular secondary structure elements at a change of direction. Which pair of amino acids is characteristic of such a turn?",
+      "options": [
+        "Lysine and glutamate",
+        "Serine and threonine",
+        "Leucine and valine",
+        "Cysteine and methionine",
+        "Proline and glycine"
+      ],
+      "answer": 4,
+      "explanation": "A bend of about four residues at a change of direction is characterised by proline and glycine.\nA: Charged residues are characteristic of the longer loops (6 to 16 residues) on the surface, not of bends.\nB: Polar residues are characteristic of loops on the surface rather than of bends.\nC: These hydrophobic residues are typically buried in the centre of a globular protein, not found at bends.\nD: Cysteine forms disulphide bridges and methionine is hydrophobic; neither characterises a bend.",
+      "slide": 10,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 14: \"Ionic Bonds: If two oppositely charged 'R' groups (+ve and -ve) are found close to each other, and ionic bond forms between them\". Slide 47: -COO- with H3N+ (carboxyl and amino).",
+      "stem": "In a folded globular protein, the carboxylate group of an aspartate side chain lies close to the ammonium group of a lysine side chain. The protein is in an aqueous solution at physiological pH. Which interaction forms between them?",
+      "options": [
+        "Ionic bond, between oppositely charged R groups",
+        "Disulphide bond, between the sulphur atoms of two cysteines",
+        "Hydrogen bond, between a C=O and an N-H group",
+        "Hydrophobic interaction, between non-polar side chains in the centre",
+        "van der Waals attraction, between transient charges on neighbouring atoms"
+      ],
+      "answer": 0,
+      "explanation": "A negatively charged carboxylate next to a positively charged ammonium group attract each other as an ionic bond.\nB: A disulphide bond needs two cysteine side chains, and neither residue here is cysteine.\nC: Hydrogen bonds form between C=O and N-H groups; these two groups are oppositely charged ions.\nD: Both side chains here are charged, so they are not the non-polar groups that cluster in the centre.\nE: van der Waals forces arise from short-lived charge arrangements; these groups carry fixed opposite charges.",
+      "slide": [
+        14,
+        47
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 19: globular: \"Immunoglobulins - part of the immune defense system\"; fibrous: \"a-Keratin - external protection\". Slide 37: \"HYBRID (FIBROUS-GLOBULAR) PROTEINS... Fibrinogen\".",
+      "stem": "Proteins can be classified as globular, fibrous or hybrid. Which assignment is correct for immunoglobulin G, α-keratin and fibrinogen?",
+      "options": [
+        "Immunoglobulin G: globular; α-keratin: hybrid; fibrinogen: fibrous",
+        "Immunoglobulin G: hybrid; α-keratin: fibrous; fibrinogen: globular",
+        "Immunoglobulin G: fibrous; α-keratin: globular; fibrinogen: hybrid",
+        "Immunoglobulin G: globular; α-keratin: fibrous; fibrinogen: hybrid",
+        "Immunoglobulin G: globular; α-keratin: fibrous; fibrinogen: globular"
+      ],
+      "answer": 3,
+      "explanation": "Immunoglobulin G is a globular defence protein, α-keratin a fibrous protective protein and fibrinogen a hybrid with globular and fibrous parts.\nA: α-Keratin is purely fibrous, and fibrinogen is the hybrid with globular ends and a fibrous part.\nB: IgG is a globular protein with Y-shaped domains, and fibrinogen has fibrous α-helices as well as globular parts.\nC: IgG is a globular protein and α-keratin forms long insoluble fibres, so these two are reversed.\nE: Fibrinogen is not purely globular: its three supercoiled α-helices form the fibrous part that makes the fibres of fibrin.",
+      "slide": [
+        19,
+        37
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 20: \"Two reasons why it is a tough protective protein... Rich in Cys aa residues, it form disulphide bridges resist stretch and make it insoluble\"; two parallel α-helices supercoil to form a dimer; dimers associate antiparallel to form the protofibril; four protofibrils form a four-stranded rope.",
+      "stem": "A chemical treatment breaks the covalent bridges between sulphur atoms in the hair of a volunteer. Afterwards the hairs stretch far more easily and are less resistant to pulling. Which feature of α-keratin's structure is directly lost?",
+      "options": [
+        "Supercoiling of two parallel α-helices into a dimer",
+        "Antiparallel association of dimers into a protofibril",
+        "Cross-links between cysteine residues that resist stretch",
+        "Association of four protofibrils into a four-stranded rope",
+        "The right-handed twist of each α-helix"
+      ],
+      "answer": 2,
+      "explanation": "Bridges between cysteine residues make α-keratin resist stretch and insoluble, so breaking them makes hair stretch easily.\nA: The dimer is formed by supercoiling of helices, which is not the feature broken by cleaving sulphur bridges.\nB: This is a later level of assembly that does not depend on the sulphur bridges being intact.\nD: This higher-order assembly is not itself a sulphur-containing cross-link.\nE: Every α-helix is right-handed and held by hydrogen bonds, not by sulphur bridges.",
+      "slide": 20,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 22: elastin \"α-spiral secondary structure exists. This is able to stretch and relax like a coiled spring\". Slide 23: collagen \"Secondary structure is a triple helix\". Slide 19: elastin in ligaments, lung walls and aorta; collagen gives tensile strength in tendons.",
+      "stem": "Samples of aortic wall and of tendon are stretched and released. The aortic tissue extends and then returns to its original length, whereas the tendon hardly extends and resists the pull. Which pair of secondary structures best explains the behaviour of the main fibrous proteins, aorta first and tendon second?",
+      "options": [
+        "Aorta: α-spiral stretching like a coiled spring; tendon: triple helix",
+        "Aorta: triple helix; tendon: α-spiral stretching like a coiled spring",
+        "Aorta: extended β-pleated sheet; tendon: triple helix",
+        "Aorta: α-spiral stretching like a coiled spring; tendon: β-pleated sheet",
+        "Aorta: two supercoiled α-helices in a dimer; tendon: triple helix"
+      ],
+      "answer": 0,
+      "explanation": "Elastin in the aorta has an α-spiral that stretches and relaxes like a coiled spring, while collagen in tendon is a strong triple helix.\nB: This reverses the two: the triple helix belongs to collagen and the coiled-spring α-spiral to elastin.\nC: The elastic protein of the aorta is not a β-pleated sheet; it has an α-spiral.\nD: The tensile protein of tendon is collagen, whose secondary structure is a triple helix, not a β-sheet.\nE: Supercoiled α-helix dimers are the pattern of α-keratin, not of elastin.",
+      "slide": [
+        22,
+        23
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 23: \"amino acids (1/3 glycin, 1/3 hydroxy proline, hydroxy lysine, 1/3 all other aa)\".",
+      "stem": "An amino acid analysis is carried out on a protein purified from tendon. About what fraction of its residues is glycine?",
+      "options": [
+        "About one tenth",
+        "About one quarter",
+        "About one third",
+        "About one half",
+        "About two thirds"
+      ],
+      "answer": 2,
+      "explanation": "Glycine makes up about one third of the residues of collagen.\nA: This is too low; glycine is about one third of collagen residues.\nB: This is close but too low; the fraction is about one third.\nD: This is too high; the other amino acids, including hydroxylated proline and lysine, make up the rest.\nE: This is too high; glycine is about one third of the residues.",
+      "slide": 23,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 23: \"amino acids (1/3 glycin, 1/3 hydroxy proline, hydroxy lysine...); vitamin C help hydroxylation\".",
+      "stem": "A man who has eaten no fresh fruit or vegetables for many months develops fragile connective tissue. Analysis of his collagen shows poorly formed fibres. Which step in the making of collagen is directly impaired?",
+      "options": [
+        "Formation of peptide bonds between adjacent amino acids by dehydration",
+        "Hydroxylation of proline and lysine residues in the chains",
+        "Formation of disulphide bridges between cysteine residues",
+        "Staggered assembly of tropocollagen units into the fibre",
+        "Chemical crosslinking between neighbouring tropocollagen molecules"
+      ],
+      "answer": 1,
+      "explanation": "Vitamin C helps hydroxylation, so without it proline and lysine residues are not hydroxylated and the collagen is defective.\nA: Peptide bond formation builds the primary structure and does not depend on vitamin C.\nC: The slides link vitamin C to hydroxylation, not to disulphide bridge formation.\nD: Assembly of tropocollagen units follows chain formation; vitamin C acts earlier, in hydroxylation.\nE: Crosslinking strengthens the fibre, but the step the slides tie to vitamin C is hydroxylation.",
+      "slide": 23,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 16: \"Some proteins are made up of multiple polypeptide chains, sometimes with an inorganic component (for example, a haem group in haemoglobin) called a Prosthetic Group\".",
+      "stem": "What is the name for the non-polypeptide inorganic component of a multi-chain protein, such as the haem group in haemoglobin?",
+      "options": [
+        "A structural motif, a recurring combination of β-sheets and α-helices",
+        "A hypervariable loop, a segment that contacts antigen in an antibody",
+        "A protofibril, an association of keratin dimers into a larger strand",
+        "A globin fold, the arrangement of eight α-helices around the iron",
+        "A prosthetic group, an inorganic component bound to the protein"
+      ],
+      "answer": 4,
+      "explanation": "An inorganic component attached to a multi-chain protein, such as haem in haemoglobin, is called a prosthetic group.\nA: A motif is a pattern of secondary structure within a chain, not an inorganic component.\nB: Hypervariable loops are part of the polypeptide chain of an antibody.\nC: A protofibril is an assembly of keratin dimers, which are made of polypeptide chains.\nD: The globin fold is the arrangement of the polypeptide's helices; the haem is separate from it.",
+      "slide": 16,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 28: \"Fe bonds to the four nitrogens of the porphyrin ring. Fifth bind to Histidine. Sixth Fe(II) co-ordination position is: empty in deoxy Mb or Hb, contains O2 in oxy Mb or Hb\".",
+      "stem": "The haem iron(II) of deoxyhaemoglobin is studied by spectroscopy. How is the iron coordinated?",
+      "options": [
+        "To four porphyrin nitrogens and one histidine, with the sixth position empty",
+        "To four porphyrin nitrogens and one histidine, with O2 in the sixth position",
+        "To four porphyrin nitrogens and two histidines, with the sixth position empty",
+        "To three porphyrin nitrogens and one histidine, with the sixth position empty",
+        "To four porphyrin nitrogens and one histidine, with water in the sixth position"
+      ],
+      "answer": 0,
+      "explanation": "Iron binds the four porphyrin nitrogens and a histidine, and the sixth position is empty until O2 binds.\nB: This describes the oxygenated form; in the deoxy form the sixth position is empty.\nC: Only one histidine binds the iron directly; the second sixth-position site is empty in the deoxy form.\nD: The iron binds all four porphyrin nitrogens.\nE: In the deoxy form the sixth position is empty, not occupied by water.",
+      "slide": 28,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 31: \"Eight salt-bridges stabilise deoxy Hb relative to oxy Hb... The interaction of the four subunits drastically changes (decrease) the O2 affinity of Hb (release of O2 in the tissue)\". Slide 28: His F8 sends an allosteric signal to helix F that breaks ionic bonds between the 4 units (relaxed heme, cooperativity).",
+      "stem": "A mutant haemoglobin cannot form the salt bridges that normally link its subunits in the deoxygenated state, although its chains and haem groups are intact. A researcher compares its behaviour with normal haemoglobin in a solution that mimics a tissue capillary. How will its oxygen behaviour differ?",
+      "options": [
+        "Lower affinity for O2, so more O2 is released in the tissues",
+        "Higher affinity for O2, so less O2 is released in the tissues",
+        "Unchanged affinity for O2, because the haem groups alone determine O2 binding",
+        "Higher affinity for O2, so more O2 is released in the tissues",
+        "Lower affinity for O2, so less O2 is picked up in the lungs"
+      ],
+      "answer": 1,
+      "explanation": "The salt bridges stabilise deoxyhaemoglobin and lower its O2 affinity so O2 is released in tissues; without them affinity stays high and less O2 is released.\nA: The salt bridges are what lower O2 affinity in the tissues; removing them raises affinity.\nC: Interaction between the four subunits changes O2 affinity, so haem groups alone do not decide it.\nD: Higher affinity means O2 is held more tightly, so less is released.\nE: Without the salt bridges the relaxed, high-affinity form is favoured, not a lower-affinity form.",
+      "slide": [
+        28,
+        31
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 35: \"Function of V-domain ẞ-sheet is: to present the 3 hypervariable loops to antigen... located at loops at one end of the ẞ-sheet structure\". Slide 36: \"A variable domain makes contact with antigens by non-covalent interactions (key and lock)\".",
+      "stem": "Sequence comparison of many different IgG antibodies shows that three short loops at one end of each variable-domain β-sheet differ greatly between antibodies, while the rest of the domain is similar. Each antibody is an IgG with the usual Y-shaped arrangement of light and heavy chains. What is the most likely role of these loops?",
+      "options": [
+        "They join the heavy chains through disulphide bridges in the flexible hinge",
+        "They carry the effector function of the antibody in the Fc fragment",
+        "They connect the two β-sheets of each domain through a disulphide bridge",
+        "They contact antigen through non-covalent interactions at the binding site",
+        "They stabilise the domain by hydrogen bonds within its two β-sheets"
+      ],
+      "answer": 3,
+      "explanation": "The three hypervariable loops are presented to antigen by the β-sheet and contact it non-covalently, defining the binding site.\nA: Disulphide bridges in the hinge link the heavy chains, but the hinge is rich in glycine and cysteine, not variable.\nB: The Fc fragment carries the effector role, and it is the constant part, not the variable loops.\nC: A disulphide bridge connects the two sheets of each domain, but this is a conserved stabilising feature, not a variable one.\nE: Hydrogen bonds within the sheets stabilise every domain and do not need variation.",
+      "slide": [
+        35,
+        36
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 38: \"Cleavage by thrombin removes the α, ẞ, ẞ and α peptides. The central region is attracted to the ends to form a fibre. Transamidase forms peptide bonds between Gln and Lys. A mass of fibrin fibres and platelets form a haemostatic plug\".",
+      "stem": "Thrombin is added to a solution of purified fibrinogen, and it gradually forms insoluble fibres. The solution starts clear and soluble and ends as a gel. Which event happens first at the molecular level?",
+      "options": [
+        "Thrombin removes small peptides from the α and β chains",
+        "The central region is attracted to the ends to form a fibre",
+        "Transamidase forms peptide bonds between glutamine and lysine",
+        "Platelets and fibres form a haemostatic plug",
+        "Globular regions interact first to trigger clotting before any cleavage"
+      ],
+      "answer": 0,
+      "explanation": "Cleavage by thrombin removes peptides from the α and β chains first, which lets the central region be attracted to the ends.\nB: This follows the removal of the peptides by thrombin and cannot come first.\nC: This crosslinking comes after the fibre has formed.\nD: The plug is the last step, once fibres have formed.\nE: Thrombin cleavage is the trigger for converting soluble fibrinogen into fibrin, so it comes first.",
+      "slide": 38,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 40: myosin heavy chain \"is globular (S1) and fibrous (LMM and S2). S1 contains an ATP-binding site, an actin binding site and light chain binding sites. LMM forms rods by self-association\". Slide 41: LMM contains 2 α-helices coiled around each other as in α-keratin.",
+      "stem": "A proteolytic digest of myosin yields a fragment that assembles into long rods through association of copies of itself. It has no ATP-binding site and no actin-binding site. Which part of the heavy chain is it?",
+      "options": [
+        "S1, the globular head with ATP and actin binding sites",
+        "S2, a fibrous region joining the head to the rod",
+        "LMM, a fibrous region of two coiled α-helices",
+        "A light chain, bound to the S1 head region",
+        "The whole heavy chain, with S1, S2 and LMM together"
+      ],
+      "answer": 2,
+      "explanation": "LMM is the fibrous rod-forming region made of two α-helices coiled around each other, and it lacks the ATP and actin binding sites of S1.\nA: S1 is the globular head that contains the ATP-binding and actin-binding sites, which this fragment lacks.\nB: S2 is also fibrous, but it is the rod-forming self-association that the slides assign to LMM.\nD: Light chains bind to S1; they are separate polypeptides and do not form rods.\nE: The whole heavy chain contains S1, which has the ATP-binding and actin-binding sites that this fragment lacks.",
+      "slide": [
+        40,
+        41
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 45: \"The electrons that are shared by the Carbon and Hydrogen atoms in the covalent bonds do not have static positions... arrangements of charges + - + -. These arrangements of electrons are short lived and not permanent. Thus the forces of attraction are constantly being formed and lost\". Slide 44: van der Waals is \"a weak force of attraction\".",
+      "stem": "Neighbouring non-polar groups attract each other weakly because the electrons in their covalent bonds are constantly moving. Which force is this?",
+      "options": [
+        "Ionic bond, attraction between oppositely charged groups",
+        "Hydrogen bond, attraction involving a polar covalent bond",
+        "van der Waals attraction, arising from short-lived charge arrangements",
+        "Hydrophobic exclusion, the pushing together of non-polar groups by water",
+        "Disulphide bridge, a covalent bond between two sulphur atoms"
+      ],
+      "answer": 2,
+      "explanation": "Moving electrons create brief charge arrangements that attract neighbouring groups; this weak force is the van der Waals attraction.\nA: An ionic bond needs ions of opposite charge, not fleeting charges on neutral groups.\nB: Hydrogen bonds need polar covalent bonds, while C-H bonds in non-polar groups are not polar.\nD: This is driven by water and not by the electrons of the groups themselves.\nE: A disulphide bridge is a strong covalent bond, not a weak attraction.",
+      "slide": [
+        44,
+        45
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 33: \"Hinge region, rich in glyceine (flexible hinge region) and cysteine aa (disulphide bonds)\".",
+      "stem": "The hinge region of an IgG molecule is rich in two amino acids. Which pair gives the hinge its flexibility and its disulphide links respectively?",
+      "options": [
+        "Glycine for flexibility and methionine for disulphide bonds",
+        "Glycine for flexibility and cysteine for disulphide bonds",
+        "Proline for flexibility and cysteine for disulphide bonds",
+        "Cysteine for flexibility and glycine for disulphide bonds",
+        "Serine for flexibility and lysine for disulphide bonds"
+      ],
+      "answer": 1,
+      "explanation": "The hinge is rich in glycine, which makes it flexible, and in cysteine, whose sulphur atoms form the disulphide bonds.\nA: Disulphide bonds form between cysteines, not methionines.\nC: Proline makes sharp bends and is not what gives the hinge its flexibility; glycine does.\nD: This swaps the roles: glycine gives flexibility and cysteine forms the disulphide bonds.\nE: Neither serine nor lysine is the characteristic hinge residue, and lysine does not form disulphide bonds.",
+      "slide": 33,
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    },
+    {
+      "evidence": "Slide 11: \"Some of these combinations of β-sheets and α-helices, and the patterns they make, appear to be common features in many proteins and are called super secondary structures, structural motifs\". Slide 12 shows the αα motif, ββ motif and βαβ motif, Greek key, β-meander and β-barrel.",
+      "stem": "Many proteins contain a common pattern in which a β strand leads into an α-helix, which leads into a second β strand. What is this super secondary structure called?",
+      "options": [
+        "βαβ motif",
+        "αα motif",
+        "ββ motif",
+        "Greek key motif",
+        "β-barrel"
+      ],
+      "answer": 0,
+      "explanation": "A β strand, an α-helix and a second β strand in sequence form the βαβ motif.\nB: The αα motif is two α-helices packed together, with no β strand.\nC: The ββ motif is two β strands joined by a turn, with no helix between them.\nD: The Greek key is a pattern of antiparallel β strands connected by loops, without a helix.\nE: A β-barrel is a closed cylinder of β strands and has no α-helix.",
+      "slide": [
+        11,
+        12
+      ],
+      "file": "IM 6.3.5.2 IM PSBC 006.1 Proteins 2026-2027_2240a77950a86aeaefbf04706e41f3dc.pdf"
+    }
+  ]
+}

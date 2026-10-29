@@ -1,0 +1,185 @@
+{
+  "deck": "Physiology - Introduction to the cardiovascular and respiratory systems",
+  "questions": [
+    {
+      "evidence": "Slide 13: \"Arrangement in Parallel: minimizes the resistance to flow in such small vessels\"; the diagram shows the lungs, head, neck and arms, liver, digestive system, kidneys and sex organs and legs each fed by its own branch. Slide 12 (series): \"Blood in each segment must pass through the rest of segments before returning back to flow in the same segment\".",
+      "stem": "A 70-year-old man has a clot that sharply reduces blood flow through one renal artery. Over the next hour, blood flow to his brain, gut and legs stays unchanged. Which feature of the way the systemic circulation is organised best explains why the other organs are spared?",
+      "options": [
+        "Organ vascular beds arranged in series, each supplied by the blood leaving the one before",
+        "Vessel segments arranged in series within each organ, so blood passes through them in turn",
+        "Organ vascular beds arranged in parallel, each with its own branch from the main arterial supply",
+        "Portal vessels linking the capillary networks of neighbouring organs, so each drains into the next",
+        "A closed system in which the same volume of blood circulates between the two circuits"
+      ],
+      "answer": 2,
+      "explanation": "Each organ bed has its own arterial branch, so flow to one can fall without lowering flow to the others.\nA: In a series arrangement a fall in flow at one point reduces flow to everything downstream, which did not happen here.\nB: The order artery, arteriole, capillary, venule, vein is a series arrangement within one pathway, but it does not make separate organs independent of each other.\nD: Portal vessels connect two capillary networks only in special cases such as the liver and kidney; they are not the general arrangement of the organs.\nE: The circulation is closed and the same blood keeps circulating, but this conserves volume and does not explain why one organ's flow can change alone.",
+      "slide": [
+        12,
+        13
+      ],
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 9: \"Veins: most of the volume of the circulating blood\".",
+      "stem": "A researcher is designing a model of the systemic circulation in which one segment can be narrowed by 10% to shift blood back towards the heart. She wants the segment whose narrowing displaces the largest absolute volume of blood. The model uses the distribution of blood found in a healthy adult at rest. Which segment should she choose?",
+      "options": [
+        "The aorta and big arteries, the largest vessels leaving the heart",
+        "The muscular arteries, the middle-sized vessels that supply the organs",
+        "The arterioles, the smallest vessels on the arterial side",
+        "The capillaries, the thin-walled vessels between arterioles and venules",
+        "The veins, the vessels that return blood towards the heart"
+      ],
+      "answer": 4,
+      "explanation": "Veins hold most of the volume of the circulating blood, so a 10% change in their capacity moves the most blood.\nA: These act as pressure stores but hold only a small share of the circulating volume.\nB: Their function is distribution, rapidly delivering blood to tissues, and they hold a small share of the volume.\nC: They hold very little of the circulating blood, so narrowing them displaces little.\nD: The capillaries are the exchange vessels and contain only a small fraction of the blood at any moment.",
+      "slide": 9,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 14: pulmonary capillaries ➞ pulmonary veins ➞ the left atrium; systemic circulation: \"Blood flows from left ventricle ➞ aorta ➞ systemic arteries ➞ arterioles ➞ capillaries\". Slide 12: both sides of the heart in series: right ventricle → pulmonary circulation → left atrium and left ventricle → systemic circulation → right atrium.",
+      "stem": "A cardiologist follows one red blood cell to teach the course of the blood. The cell has just left a pulmonary capillary after taking up oxygen from an alveolus. Which sequence of structures will it pass through before it next enters a systemic capillary?",
+      "options": [
+        "Pulmonary vein, right atrium, right ventricle, aorta, systemic arteries and arterioles",
+        "Pulmonary vein, left atrium, left ventricle, aorta, systemic arteries and arterioles",
+        "Pulmonary artery, left atrium, left ventricle, aorta, systemic arteries and arterioles",
+        "Pulmonary vein, left atrium, left ventricle, vena cava, systemic veins and venules",
+        "Pulmonary vein, left ventricle, left atrium, aorta, systemic arteries and arterioles"
+      ],
+      "answer": 1,
+      "explanation": "Blood leaves the lung in the pulmonary vein, enters the left atrium and left ventricle, and is pumped into the aorta and the systemic arteries and arterioles.\nA: Blood from the lungs enters the left side of the heart, not the right; the right atrium receives blood returning from the systemic circulation.\nC: Blood leaves the pulmonary capillaries in pulmonary veins; the pulmonary artery carries blood from the right ventricle to the lungs.\nD: From the left ventricle blood goes to the aorta and systemic arteries first, and returns by veins only after the systemic capillaries.\nE: The atrium receives blood and passes it to the ventricle; the ventricle then pumps it into the aorta.",
+      "slide": [
+        12,
+        14
+      ],
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 10: \"Portal vessels: Are 'Vessels connecting 2 exchange sites' = between 2 capillary networks e.g.: 1- Liver portal vessels\".",
+      "stem": "An anatomist traces a vessel that begins in the capillaries of the small intestine. It ends in the capillary-like channels of the liver, so the blood it carries passes through a second exchange site before it returns to the heart. Which description best fits this vessel?",
+      "options": [
+        "A portal vessel, connecting two capillary networks",
+        "A muscular artery, distributing blood to the tissues",
+        "A venule, collecting blood from one capillary network",
+        "A vein, returning blood directly to the right atrium",
+        "An arteriole, supplying one capillary network"
+      ],
+      "answer": 0,
+      "explanation": "A vessel that links two exchange sites, one capillary network to another, is a portal vessel, as in the liver.\nB: Muscular arteries rapidly deliver blood to tissues and lead to capillaries; they do not collect blood from a capillary network.\nC: A venule drains a capillary network towards the veins and the heart; it does not feed a second network.\nD: Veins return blood to the heart, but this vessel first delivers blood to another capillary network.\nE: An arteriole supplies a capillary network with blood from an artery; it does not drain one.",
+      "slide": 10,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 7: \"The Cardiac muscle differs from the skeletal muscles in: a) Being not dependent on CNS b) having no neuromuscular junctions\"; it is similar in \"having origin & insertion\" and \"microstructure\".",
+      "stem": "A patient is given a drug that stops motor nerves from activating skeletal muscle fibres, and she cannot move any limb. Her ECG shows that her heart keeps beating with an unchanged rhythm. Which feature of cardiac muscle best explains why the heart is spared?",
+      "options": [
+        "It lacks an origin and insertion, so it is not moved by the same mechanism as skeletal muscle",
+        "It has a different microstructure from skeletal muscle, so the drug cannot bind to it",
+        "It is arranged as two hearts working in parallel, so one side continues if the other is blocked",
+        "It is not dependent on the CNS, and it has no neuromuscular junctions in its fibres",
+        "It is wrapped in connective tissue that stops the drug reaching its muscle fibres"
+      ],
+      "answer": 3,
+      "explanation": "Cardiac muscle is not dependent on the CNS and has no neuromuscular junctions, so a block between motor nerves and muscle fibres does not reach it.\nA: Cardiac muscle shares an origin and insertion with skeletal muscle, so this is not a difference.\nB: Cardiac and skeletal muscle are similar in microstructure; the difference is in nervous control.\nC: Two hearts working side by side give an intermittent flow, which does not protect against a drug acting on nerve-muscle transmission.\nE: The outer epicardium is connective tissue, but it does not exclude drugs; the drug acts at junctions that cardiac muscle lacks.",
+      "slide": 7,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 19: Conducting Zone: \"From trachea to terminal bronchioles - No gas exchange\"; Respiratory Zone: \"From respiratory bronchioles to alveoli - Gas exchange\".",
+      "stem": "A pathologist cuts serial sections along one airway pathway, from the trachea down to the alveoli. She examines the wall of each section for evidence that gas can cross it. At which level can this first occur?",
+      "options": [
+        "Terminal bronchioles, the last segment of the conducting zone",
+        "Alveoli, the final segment of the respiratory zone",
+        "Respiratory bronchioles, where the respiratory zone begins",
+        "Main bronchi, the first branches of the tracheobronchial tree",
+        "Trachea, the first segment of the conducting zone"
+      ],
+      "answer": 2,
+      "explanation": "The respiratory zone begins at the respiratory bronchioles, so this is the first level at which gas exchange can occur.\nA: The conducting zone ends at the terminal bronchioles and has no gas exchange.\nB: The alveoli do exchange gas, but they come after the respiratory bronchioles, so they are not the first level.\nD: The bronchi are part of the conducting zone, which has no gas exchange.\nE: The trachea only conducts air; gas exchange does not take place in its wall.",
+      "slide": 19,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 23: \"Mechanism of Gas exchange: Simple diffusion ➞ down partial pressure Gradient (from high to low partial pressure)\"; sites: \"At tissues (between blood & tissues)\".",
+      "stem": "Blood arriving in the capillaries of a resting thigh muscle has a PO2 of 95 mmHg and a PCO2 of 40 mmHg. The muscle cells beside the capillary have a PO2 of 15 mmHg and a PCO2 of 40 mmHg. Which net movement of gas occurs across the capillary wall?",
+      "options": [
+        "O2 moves into the muscle cells, with no net movement of CO2",
+        "O2 moves into the muscle cells and CO2 moves into the blood",
+        "O2 moves into the blood and there is no net movement of CO2",
+        "O2 moves into the muscle cells and CO2 moves into the muscle cells",
+        "There is no net movement of either gas"
+      ],
+      "answer": 0,
+      "explanation": "Gases diffuse down their partial pressure gradients: O2 passes from blood to cells, and CO2 has no gradient so does not move on balance.\nB: CO2 would move into the blood only if the cells had a higher PCO2 than the blood, and here the two are equal.\nC: O2 moves from the higher PO2 (blood) to the lower (cells), not the other way.\nD: There is no PCO2 gradient from blood to cells, so CO2 does not move into them.\nE: There is a large PO2 gradient from blood to cells, so O2 does move.",
+      "slide": 23,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 24: in the lungs \"O2 diffuses from alveoli to blood of pulmonary capillaries; CO2 diffuses from blood circulating in the pulmonary capillaries to alveoli\". Slide 23: diffusion is \"down partial pressure Gradient (from high to low partial pressure)\".",
+      "stem": "A climber at extreme altitude has an alveolar PO2 of 30 mmHg, while the blood entering her pulmonary capillaries has a PO2 of 40 mmHg. Her alveolar PCO2 is 36 mmHg and the incoming blood PCO2 is 46 mmHg. Which net gas movement is expected across the alveolar wall?",
+      "options": [
+        "O2 moves from alveoli into blood, and CO2 moves from blood into alveoli",
+        "O2 moves from alveoli into blood, and CO2 moves from alveoli into blood",
+        "O2 moves from blood into alveoli, and CO2 moves from alveoli into blood",
+        "There is no net movement of O2, and CO2 moves from blood into alveoli",
+        "O2 moves from blood into alveoli, and CO2 moves from blood into alveoli"
+      ],
+      "answer": 4,
+      "explanation": "Each gas moves from the higher to the lower partial pressure: PO2 is higher in the blood than in the alveoli, and PCO2 is also higher in the blood.\nA: This is the usual pattern, but here the blood PO2 (40) exceeds the alveolar PO2 (30), so O2 is driven the other way.\nB: CO2 moves from the higher PCO2 in the blood (46) to the alveoli (36), and O2 is driven out of the blood here.\nC: O2 does move out of the blood, but CO2 follows its gradient from blood (46) to alveoli (36).\nD: A 10 mmHg difference is a gradient, so O2 does move, from blood to alveoli.",
+      "slide": [
+        23,
+        24
+      ],
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 21: alveoli are \"Very thin walled sacs\". Slide 23: gas exchange is by \"Simple diffusion ➞ down partial pressure Gradient\".",
+      "stem": "A lung biopsy from a man with progressive breathlessness shows alveoli whose walls are thickened by scar tissue. The number of alveoli and of capillaries around them is normal. Which process is most directly impaired by this change?",
+      "options": [
+        "Conduction of air to the alveoli at low resistance",
+        "Diffusion of O2 and CO2 between alveolar air and capillary blood",
+        "Warming and moistening of the air before it reaches the alveoli",
+        "Defence against inhaled foreign material in the airways",
+        "Return of venous blood and lymph assisted by the respiratory pump"
+      ],
+      "answer": 1,
+      "explanation": "Gases cross the thin alveolar wall by simple diffusion, so a thicker wall slows their movement between air and blood.\nA: Conduction of air is a function of the conducting airways and is not changed by the alveolar wall.\nC: The conducting zone warms and moistens the air before it reaches the alveoli.\nD: Defence against inhaled material is a function of the airways and is not changed by scarring of the alveolar wall.\nE: The respiratory pump depends on breathing movements, not on the thickness of the alveolar wall.",
+      "slide": [
+        21,
+        23
+      ],
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 17: Non-Respiratory functions include \"Defensive function against inhaled foreign materials\".",
+      "stem": "A 62-year-old man who has smoked for 40 years has repeated chest infections and a persistent cough productive of sputum. Lung function testing shows that his gas exchange is only mildly reduced. Which non-respiratory function of his respiratory system is most compromised?",
+      "options": [
+        "Defence against inhaled foreign material in the airways",
+        "Regulation of body temperature by the airways and lungs",
+        "Production of voice by the larynx and airways",
+        "Regulation of blood pH through the removal of CO2",
+        "Venous and lymphatic return through the respiratory pump"
+      ],
+      "answer": 0,
+      "explanation": "Repeated infections and a productive cough show failure of the defence against inhaled material, which smoking damages.\nB: Temperature regulation is a non-respiratory function but is not linked to recurrent infection and sputum.\nC: Voice production is a function of the airways but would not explain repeated infections.\nD: This depends on CO2 removal, which is largely preserved when gas exchange is only mildly reduced.\nE: The respiratory pump aids venous and lymphatic return and would not cause repeated chest infections.",
+      "slide": 17,
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    },
+    {
+      "evidence": "Slide 8: \"A- Aorta and big arteries ➞ Pressure stores\". Slide 4: the two hearts \"result in an intermittent flow\".",
+      "stem": "In a healthy resting adult the ventricles eject blood during only part of each cardiac cycle, yet flow in the capillaries downstream is almost continuous. A researcher replaces one segment of the arterial tree with a rigid tube of the same size and finds that capillary flow becomes strongly pulsatile. Which segment did she replace?",
+      "options": [
+        "The aorta and big arteries, the largest vessels leaving the heart",
+        "The muscular arteries, the middle-sized vessels that supply the organs",
+        "The arterioles, the smallest vessels on the arterial side",
+        "The capillaries, the thin-walled vessels between arterioles and venules",
+        "The veins, the vessels that return blood towards the heart"
+      ],
+      "answer": 0,
+      "explanation": "These vessels store pressure from each ejection and release it between beats, which keeps flow downstream nearly continuous.\nB: Their role is to distribute blood rapidly to the tissues, not to store pressure.\nC: The arterioles lead blood into the capillaries and are not the main pressure store.\nD: The capillaries are the exchange vessels and do not store pressure from the ejections.\nE: Veins hold most of the blood volume but are downstream of the capillaries and do not smooth the output of the heart.",
+      "slide": [
+        4,
+        8
+      ],
+      "file": "IM 10.3.4 IM PH 008.1 Introduction to the cardiovascular and respiratory systems 2026-2027_476be7273c2fa95dceea43c5c6875dc9.pdf"
+    }
+  ]
+}
