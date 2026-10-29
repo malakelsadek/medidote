@@ -3,7 +3,7 @@
 import Anthropic from "npm:@anthropic-ai/sdk";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { lopsided, shuffleQ } from "./balance.ts";
-import { buildSystem } from "./guide.ts";
+import { buildPlanSystem, buildSystem } from "./guide.ts";
 import guide from "./guide.json" with { type: "json" };
 import { pickImagePages } from "./pdfpages.ts";
 import * as pdfLib from "npm:pdf-lib@1.17.1";
@@ -12,8 +12,10 @@ const MODEL = "claude-sonnet-5-5";
 const MONTHLY_QUESTION_LIMIT = 400;   // AI questions per subscriber per month
 const MAX_PAGES = 60;             // slide pages per request
 const MAX_QUESTIONS = 10;         // per request, so one call stays inside the function time limit; the app calls again for more
+const MAX_CONCEPTS = 40;         // concepts listed per window of slides
 const TRIAL_QUESTIONS = 100;      // free trial: AI questions per month (tighten this when paid plans start)
 const MAX_IMAGE_PAGES = 20;       // picture slides (tables, diagrams, charts) shown to the AI per request
+const MAX_PLAN_IMAGE_PAGES = 30;  // the concept plan sees more of them, so a concept that only appears in a diagram is still listed
 const IMAGE_SLIDE_TEXT = 400;     // a slide with less text than this may be mostly a picture
 const MAX_PDF_BYTES = 40e6;       // skip pictures from a PDF bigger than this
 const SELF_CHECKS = false;        // the length check and the blind check each cost an extra AI call; switched off while the prompt itself is being tested
@@ -30,6 +32,7 @@ const SCHEMA = {
       items: {
         type: "object",
         properties: {   // the order matters: the quote comes first so the question is built on it
+          slot: { type: "integer" },   // the number of the assigned concept and angle this question answers (0 when none was assigned)
           evidence: { type: "string" },
           stem: { type: "string" },
           options: { type: "array", items: { type: "string" } },
@@ -38,7 +41,7 @@ const SCHEMA = {
           teaching_point: { type: "string" },
           sources: { type: "array", items: { type: "integer" } },
         },
-        required: ["evidence", "stem", "options", "answer", "why", "teaching_point", "sources"],
+        required: ["slot", "evidence", "stem", "options", "answer", "why", "teaching_point", "sources"],
         additionalProperties: false,
       },
     },
@@ -48,6 +51,28 @@ const SCHEMA = {
 };
 
 const SYSTEM = buildSystem(guide);
+const PLAN_SYSTEM = buildPlanSystem(guide);
+const PLAN_SCHEMA = {
+  type: "object",
+  properties: {
+    objectives: { type: "array", items: { type: "string" } },
+    concepts: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          name: { type: "string" },
+          tier: { type: "string", enum: ["core", "important", "minor"] },
+          slides: { type: "array", items: { type: "integer" } },
+        },
+        required: ["name", "tier", "slides"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["objectives", "concepts"],
+  additionalProperties: false,
+};
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -58,8 +83,11 @@ Deno.serve(async (req) => {
     if (!who.user) return reply({ error: "Please sign in again." }, 401);
     const admin = createClient(url, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
-    const { deck, fileIds, week, fromPage, toPage, count } = await req.json();
-    let n = Math.max(1, Math.min(MAX_QUESTIONS, Math.floor(Number(count) || 5)));
+    const { deck, fileIds, week, fromPage, toPage, count, plan, objectives: rawObjectives, slots: rawSlots } = await req.json();
+    const objectives: string[] = Array.isArray(rawObjectives) ? rawObjectives.slice(0, 12).map((o) => String(o).slice(0, 200)) : [];   // the lecture objectives, passed on from the first read of the slides
+    // plan: true lists the concepts in these slides; slots: [{ concept, angle, pages }] asks for exactly those questions; a bare count is the old way
+    let slots = Array.isArray(rawSlots) ? rawSlots.slice(0, MAX_QUESTIONS).map((s) => ({ concept: String(s?.concept ?? "").slice(0, 120), angle: String(s?.angle ?? "").slice(0, 120), pages: Array.isArray(s?.pages) ? s.pages : [] })).filter((s) => s.concept) : null;
+    let n = slots ? slots.length : Math.max(1, Math.min(MAX_QUESTIONS, Math.floor(Number(count) || 5)));
 
     const { data: d } = await user.from("decks").select("id").eq("name", deck).maybeSingle();
     if (!d) return reply({ error: "That deck has no slides yet." }, 404);
@@ -76,7 +104,7 @@ Deno.serve(async (req) => {
     const pictures = new Map<string, { name: string; pdf: Uint8Array; pages: number[] }>(), picture = new Set<string>();
     const byFile = new Map<string, number[]>();
     for (const r of rows ?? []) if (r.body.length < IMAGE_SLIDE_TEXT) byFile.set(r.file_id, [...(byFile.get(r.file_id) ?? []), r.page]);
-    let budget = MAX_IMAGE_PAGES;
+    let budget = plan ? MAX_PLAN_IMAGE_PAGES : MAX_IMAGE_PAGES;
     for (const [fileId, pages] of byFile) {
       if (budget <= 0) break;
       const f = (rows ?? []).find((r) => r.file_id === fileId)!.slide_files;
@@ -109,35 +137,74 @@ Deno.serve(async (req) => {
     const limit = active ? MONTHLY_QUESTION_LIMIT : TRIAL_QUESTIONS;
     if (used >= limit) return reply({ error: `Monthly limit reached (${used} of ${limit} questions used). It resets next month.`, code: active ? undefined : "subscribe" }, 429);
     n = Math.min(n, limit - used);
+    if (slots) slots = slots.slice(0, n);
 
-    const { data: have } = await user.from("questions").select("stem").eq("deck_id", d.id).limit(300);
-    const asked = (have ?? []).map((h) => `- ${h.stem.slice(0, 140)}`).join("\n") || "(none)";
+    const { data: have } = await user.from("questions").select("stem, extra").eq("deck_id", d.id).limit(300);
+    const asked = (have ?? []).map((h) => `- ${h.extra?.concept ? `[${h.extra.concept} / ${h.extra.angle ?? "?"}] ` : ""}${h.stem.slice(0, 140)}`).join("\n") || "(none)";
+    const haveCount = new Map<string, number>();   // questions already in this deck per concept name, so a later run carries on instead of starting over
+    for (const h of have ?? []) if (h.extra?.concept) haveCount.set(String(h.extra.concept).toLowerCase(), (haveCount.get(String(h.extra.concept).toLowerCase()) ?? 0) + 1);
+    const known = [...new Set((have ?? []).map((h) => h.extra?.concept).filter(Boolean))].join("; ");
     const material = slides.map((s, i) => `[S${i + 1}] ${s.slide_files.file_name} p.${s.page}: ${s.body}${picture.has(`${s.file_id}:${s.page}`) ? " (this slide has a picture, table or diagram: see the attached PDF)" : ""}`).join("\n\n");
     const attached = [...pictures].map(([fileId, f], n) => `Attached PDF ${n + 1} (${f.name}): ${f.pages.map((p, i) => `page ${i + 1} is [S${slides.findIndex((s) => s.file_id === fileId && s.page === p) + 1}]`).join(", ")}.`).join("\n");
 
     const client = new Anthropic();   // reads ANTHROPIC_API_KEY
-    const ask = async (content: string | unknown[]) => {
+    const ask = async (content: string | unknown[], system = SYSTEM, schema: unknown = SCHEMA) => {
       const res = await client.beta.messages.create({
         model: MODEL,
         max_tokens: 16000,
         betas: ["server-side-fallback-2026-07-01"],
         fallbacks: "default",
-        system: SYSTEM,
-        output_config: { effort: "medium", format: { type: "json_schema", schema: SCHEMA } },
+        system,
+        output_config: { effort: "medium", format: { type: "json_schema", schema } },
         messages: [{ role: "user", content }],
       } as never);
       return res;
     };
-    const prompt = `Slides:
+    const tagOf = new Map(slides.map((s, i) => [`${s.file_id}:${s.page}`, i + 1]));
+    const items = (slots ?? []).map((s, i) => `${i + 1}. Concept: ${s.concept}. Angle: ${s.angle}. Slides: ${s.pages.map((p: { file_id: string; page: number }) => tagOf.get(`${p.file_id}:${p.page}`)).filter(Boolean).map((t: number) => `[S${t}]`).join(", ") || "any"}.`).join("\n");
+    const prompt = slots
+      ? `Slides:
 
 ${material}
 
-Write ${n} questions.
+Write one question for each item below, in order, and put the item's number in "slot". Build each question on its concept, from the given angle, using the listed slides as the evidence. If the concept does not suit the angle, use the closest different skill. A concept that was asked before gets a different case and different options, never a reworded copy.
+
+${items}
+
+Already asked (concept / angle):
+${asked}`
+      : `Slides:
+
+${material}
+
+Write ${n} questions. Put 0 in "slot".
 
 Already asked:
 ${asked}`;
     const docs = [...pictures.values()].map((f) => ({ type: "document", title: f.name, source: { type: "base64", media_type: "application/pdf", data: b64(f.pdf) } }));
     const withDocs = (text: string) => docs.length ? [...docs, { type: "text", text: attached + "\n\n" + text }] : text;
+
+    if (plan) {   // list and rank the concepts in these slides; the app turns the list into assigned questions
+      const pres = await ask(withDocs(`Slides:
+
+${material}
+
+Lecture objectives:
+${objectives.length ? objectives.map((o) => `- ${o}`).join("\n") : "(not given: copy them into objectives if these slides list them)"}
+
+Names already used in this deck:
+${known || "(none)"}`), PLAN_SYSTEM, PLAN_SCHEMA);
+      if (pres.stop_reason === "refusal") return reply({ error: "The AI declined to read this material. Try a different range of slides." }, 422);
+      const ptext = pres.content.find((b: { type: string }) => b.type === "text") as { text: string } | undefined;
+      const parsedPlan = JSON.parse(ptext?.text ?? "{}"), concepts = [];
+      for (const c of (parsedPlan.concepts ?? []).slice(0, MAX_CONCEPTS)) {
+        const name = String(c.name ?? "").trim().slice(0, 120);
+        const pages = [...new Set<number>(c.slides ?? [])].filter((t) => t >= 1 && t <= slides.length).map((t) => ({ file_id: slides[t - 1].file_id, page: slides[t - 1].page }));
+        if (name && pages.length) concepts.push({ name, tier: ["core", "important", "minor"].includes(c.tier) ? c.tier : "important", pages, have: haveCount.get(name.toLowerCase()) ?? 0 });
+      }
+      return reply({ concepts, objectives: objectives.length ? objectives : (parsedPlan.objectives ?? []).slice(0, 12).map((o: unknown) => String(o).slice(0, 200)) });
+    }
+
     const res = await ask(withDocs(prompt));
 
     if (res.stop_reason === "refusal") return reply({ error: "The AI declined to write questions from this material. Try a different range of slides." }, 422);
@@ -180,8 +247,11 @@ ${JSON.stringify(flagged)}`)).filter(wellFormed);
     const parsed = { questions: checked };
 
     // keep only well-formed questions; map the model's slide tags back to real files and pages
-    const out = [];
+    const out = [], usedSlot = new Set<number>();
     for (const x of parsed.questions ?? []) {
+      const slot = slots ? slots[(x.slot | 0) - 1] : undefined;
+      if (slots && (!slot || usedSlot.has(x.slot))) continue;   // each assigned concept and angle is written once
+      if (slot) usedSlot.add(x.slot);
       if (!Array.isArray(x.options) || x.options.length < 2 || !Number.isInteger(x.answer) || x.answer < 0 || x.answer >= x.options.length) continue;
       const why = x.options.map((_: string, i: number) => String(x.why?.[i] ?? ""));
       const src = [...new Set<number>(x.sources ?? [])].filter((t) => t >= 1 && t <= slides.length).map((t) => slides[t - 1]);
@@ -195,7 +265,7 @@ ${JSON.stringify(flagged)}`)).filter(wellFormed);
         explanation: String(x.teaching_point ?? ""),
         source_file_id: first?.file_id ?? null,
         source_pages: first ? src.filter((s) => s.file_id === first.file_id).map((s) => s.page) : [],
-        extra: { why, evidence: String(x.evidence ?? ""), source: "ai", sources: src.map((s) => ({ file_id: s.file_id, page: s.page })) },
+        extra: { why, evidence: String(x.evidence ?? ""), source: "ai", ...(slot ? { concept: slot.concept, angle: slot.angle } : {}), sources: src.map((s) => ({ file_id: s.file_id, page: s.page })) },
       });
     }
     if (out.length) {

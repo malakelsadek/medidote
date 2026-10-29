@@ -18,7 +18,7 @@ for (let n = 0; n < 3000; n++) {
 
 // 2. the import shuffle (app.js): same checks, plus the "A: reason" lines in the explanation are re-lettered
 const src = readFileSync(new URL("../../../app.js", import.meta.url), "utf8");
-const from = src.indexOf("const hash = "), mid = src.indexOf("const shuffleOptions = q => {"), to = src.indexOf("const correctIsLongest");
+const from = src.indexOf("const hash = "), mid = src.indexOf("const shuffleOptions = q => {"), to = src.indexOf("let lastDeck = null");
 assert(from >= 0 && mid > from && to > mid, "could not find the shuffle code in app.js");
 const { hash, shuffleOptions } = new Function(src.slice(from, src.indexOf("\n", from)) + "\n" + src.slice(mid, to) + "\nreturn { hash, shuffleOptions };")();
 for (let n = 0; n < 3000; n++) {

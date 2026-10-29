@@ -1,14 +1,27 @@
 {
   "_about": "Question-writing guide, read by the AI generator (index.ts). Edit the rules or add examples here, then redeploy. Keep examples original, correct and in the style you want; the AI copies their style, never their content. \"unverified_examples\" are never sent to the AI.",
   "rules": [
-    "Correct first. Each question rests on one statement in the slides that makes exactly one option right. Every wrong option must be clearly wrong for this case. If you are not certain, skip the question.",
-    "Write a case-study stem: a short clinical or experimental case (3-5 sentences) with the findings and numbers a student needs, then one precise question. The stem must never hand over the answer: do not name the answer, diagnosis or mechanism, do not say what the patient made or took if that is the answer, do not state the rule or formula the student has to use, and do not repeat the slide's own wording. A \"normal\" or negative finding in the stem must not rule out several wrong options at once (for example \"all other hormones are normal\"): after drafting, check that each wrong option still needs its own reasoning to reject. If one sentence removes two or more options, cut it or rewrite it. Test: if the stem could only describe one bullet on one slide, rewrite it so the student has to infer that bullet from the findings. The student works it out from the case.",
-    "Test application, not recall: the student must interpret the case and take one step of reasoning beyond the wording of the slide. A calculation needs a reasoning step, not just plugging numbers into a rule or multiplying a remembered figure. No definitions, trivia, or tiny and practice-dependent details such as storage temperatures, shelf life, time windows or cut-offs that differ between hospitals. Aim for an end-of-module exam: a student who revised well gets it right about two times in three, and one who only memorised the headings is caught by the near-miss options.",
-    "Exactly 5 options, the same kind of thing, in one sentence template and about the same length. Length must not point at the answer: the right option is sometimes the longest, sometimes the shortest and most often in the middle, never longer or more specific by habit. Write the wrong options first, then fit the right one to them.",
-    "Wrong options are near-misses that are true in some other context. Each must be something a half-prepared student could genuinely pick: never absurd, impossible, overlapping or synonyms of each other. In \"which gland, organ or structure\" questions keep every option in the same plausible region or system (all organs in the neck, all endocrine glands, all enzymes of one pathway), never padded with parts of the body that location alone rules out.",
+    "Correct first. Each question rests on one statement in the slides that makes exactly one option right. The stem and the answer must follow from what the slides say, not from a standard consequence you add yourself: if the case depends on a step the slides never state, cite the slide that states it, or ask something the slides do state. Every wrong option must be clearly wrong for this case. If you are not certain, skip the question.",
+    "Cover everything the slides teach. For each concept choose the kind of question that best tests whether the student understands it: a direct recall question when the material is a fact, definition, name, value, sequence or classification, or a multi-step reasoning question when the material is a mechanism, a finding to interpret or a decision. Favour reasoning where the material allows it, but never skip a fact or a concept only because it is recall: ask it as a direct recall question. The number of questions asked for is always written in full. A recall question has a short stem of one or two sentences and exactly one question. A reasoning question uses a case-study stem: a short clinical or experimental case (3-5 sentences) with the findings and numbers a student needs, then one precise question. The stem must never hand over the answer: do not name the answer, diagnosis or mechanism, do not say what the patient made or took if that is the answer, do not state the rule or formula the student has to use, and do not repeat the slide's own wording. A \"normal\" or negative finding in the stem must not rule out several wrong options at once (for example \"all other hormones are normal\"): after drafting, check that each wrong option still needs its own reasoning to reject. If one sentence removes two or more options, cut it or rewrite it. Test: if the stem could only describe one bullet on one slide, rewrite it so the student has to infer that bullet from the findings. The student works it out from the case. Do not echo the stem in the right option: if the stem says what has already been done or measured (for example \"the difference in means and its standard error\"), the right option must not repeat those words. Describe the inputs in different terms so the student has to know the step, not match the wording.",
+    "A reasoning question may also need recalled facts when that makes it harder, but it does not have to. Every question, recall or reasoning, must be hard: the wrong options are close enough that a student who only skimmed cannot pick the answer by elimination or by the wording. Difficulty comes from the task, not from obscure facts. When a concept is easy, do not ask it back as stated and do not hunt for a tiny detail; change what the student has to do with it: apply it to a new case with different numbers, choose between two look-alike concepts, decide which conclusion from a result is justified, spot what is wrong with a stated conclusion, or predict what changes if one finding changes. Across a set, include questions that need two steps or a comparison, not only one. A reasoning question makes the student interpret the case and take one step beyond the wording of the slide. A calculation needs a reasoning step, not just plugging numbers into a rule or multiplying a remembered figure. Skip only details that differ between hospitals or sources, such as local storage temperatures, shelf life, time windows or cut-offs. Aim for an end-of-module exam: a student who revised well gets it right about two times in three, and one who only memorised the headings is caught by the near-miss options.",
+    "Exactly 5 options, the same kind of thing, in one sentence template and about the same length. Length must not point at the answer: the right option is sometimes the longest, sometimes the shortest and most often in the middle, never longer or more specific by habit. Write the wrong options first, then fit the right one to them. If the right option needs a qualifying clause to be accurate, give the wrong options a clause of the same shape.",
+    "Wrong options are near-misses that are true in some other context. Each must be something a half-prepared student could genuinely pick: never absurd, impossible, overlapping or synonyms of each other. In \"which gland, organ or structure\" questions keep every option in the same plausible region or system (all organs in the neck, all endocrine glands, all enzymes of one pathway), never padded with parts of the body that location alone rules out. A wrong option must not flatly contradict a definition the slides state plainly (for example saying a test for continuous data needs categorical data): a student who read the slides once would cross it out without thinking. Write it as the closer mistake, a statement that sounds reasonable but misapplies the idea to this case.",
     "Avoid: all/none of the above, \"which is NOT\", absolute words only on wrong options, grammar that fits only one option. Put numbers in order, with units.",
-    "Spread questions across the whole material and vary what is asked (mechanism, consequence, next step, how two similar things differ). List the distinct topics on the slides first and cover each major one once before going deeper into any; if you are asked for fewer questions than there are topics, choose the most examinable. Never test the same fact or concept twice, even in different words or from a different angle.",
+    "Work from the concepts on the slides, not the slides one by one. List the distinct concepts, rank them by importance, and cover every concept once before writing a second question on any. If you are asked for more questions than there are concepts, write the further questions on the most important concepts first, each from a different angle, with a different case and different options, never a reworded copy. If you are asked for fewer questions than there are concepts, keep the most important and skip the minor ones. Never test the same concept from the same angle twice. Never reuse an option list: two questions that choose among the same set of things (for example the same five vessel types) must each have their own options, worded differently and with different wrong options, so no question helps answer another.",
     "Explanations must be accurate: for each wrong option say what it actually is or does and why it does not fit this case, and never justify it with a statement that is itself inaccurate."
+  ],
+  "importance": [
+    "Core: named in the lecture objectives, or taught over several slides or with a worked example, a diagram or a table.",
+    "Important: has its own slide and can be turned into a case (it explains a finding, a disease, a treatment or how to interpret a result).",
+    "Minor: a single mention, or a name, date, figure or other detail that can only test recall. Minor concepts still get a recall question once the core and important ones are covered and the count allows.",
+    "A concept that other concepts depend on, or one students often confuse with a look-alike (it makes good near-miss options), counts one tier higher. Slides with no teaching content (title, references, thanks) are not concepts."
+  ],
+  "angles": [
+    "mechanism: why or how it happens",
+    "consequence: what follows, or what is lost or spared",
+    "next step: what to do or expect next",
+    "difference: how two similar things differ",
+    "interpretation: what a given finding or result means"
   ],
   "examples": [
     {
@@ -157,6 +170,27 @@
         "The resting potential depends mainly on potassium leak channels, which lidocaine does not affect."
       ],
       "note": "The stem gives the drug mechanism and asks for the consequence. All options are parts of the same waveform, in the same short phrase style, so the student must map the channel to the phase."
+    },
+    {
+      "topic": "Lipid metabolism (recall)",
+      "stem": "Which enzyme catalyses the rate-limiting step of cholesterol synthesis?",
+      "options": [
+        "Acetyl-CoA carboxylase, the committed step of fatty acid synthesis",
+        "Carnitine palmitoyltransferase I, the entry step of fatty acid oxidation",
+        "HMG-CoA reductase, the committed step of cholesterol synthesis",
+        "Squalene synthase, the step joining two farnesyl pyrophosphate units",
+        "Lipoprotein lipase, the step releasing fatty acids from circulating triglyceride"
+      ],
+      "answer": 2,
+      "teaching_point": "HMG-CoA reductase catalyses the rate-limiting, committed step of cholesterol synthesis.",
+      "why": [
+        "This enzyme controls fatty acid synthesis, not cholesterol synthesis.",
+        "This enzyme controls how fast fatty acids enter mitochondria for oxidation.",
+        "HMG-CoA reductase converts HMG-CoA to mevalonate, the rate-limiting step of the pathway.",
+        "This enzyme works later in the pathway, after the committed step.",
+        "This enzyme acts in the blood vessels on lipoproteins and is not part of cholesterol synthesis."
+      ],
+      "note": "Recall question: a fact is asked directly in one sentence. It is still hard because every wrong option is a real enzyme from the same area, so the student must know the fact exactly rather than recognise a familiar name."
     }
   ],
   "unverified_examples": [
