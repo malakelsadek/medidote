@@ -1,0 +1,327 @@
+{
+  "deck": "Physiology - Blood components and blood groups",
+  "questions": [
+    {
+      "evidence": "Slide 8: \"The biconcave shape a larger surface area for diffusion of oxygen and carbon dioxide across the membrane than a spherical cell of the same volume.\"",
+      "stem": "A researcher places normal erythrocytes in a solution that makes each cell swell into a sphere without changing its volume. The cells stay intact and keep all of their haemoglobin. Which property of the cell is most directly reduced by this change of shape?",
+      "options": [
+        "Number of iron atoms available to bind oxygen in each haemoglobin molecule",
+        "Membrane surface area available for oxygen and carbon dioxide exchange",
+        "Proportion of the cell volume occupied by organelles and ribosomes",
+        "Concentration of haemoglobin available to buffer the blood in the cell",
+        "Volume of water contained within each red cell, normally about 60%"
+      ],
+      "answer": 1,
+      "explanation": "A sphere has less surface area than a biconcave disc of the same volume, so less membrane is available for gas diffusion.\nA: Iron atoms are part of each haemoglobin molecule, and the shape of the cell does not change them.\nC: Mature red cells have no organelles or ribosomes, whatever their shape.\nD: Volume and haemoglobin content are unchanged, so the concentration is unchanged.\nE: The volume is stated to be unchanged, so the water content is unchanged.",
+      "slide": 8,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 10: \"No nucleus, organelles or ribosomes (They were extracted during the cells development to make room for more hemoglobin).\"",
+      "stem": "A drug that blocks protein synthesis on ribosomes is added to a suspension of mature circulating red cells. Over the next hour the haemoglobin content of the cells does not change at all. Which feature of the mature cells best explains why they are unaffected?",
+      "options": [
+        "Loss of ribosomes during development to make room for haemoglobin",
+        "Protection of the cell interior by a membrane impermeable to all drugs",
+        "Replacement of ribosomes by enzymes that carry out protein synthesis",
+        "Concealment of the ribosomes within the dip of the biconcave shape",
+        "Rapid removal of the affected cells by the spleen before any change"
+      ],
+      "answer": 0,
+      "explanation": "Ribosomes were extracted during development to make room for more haemoglobin, so there is nothing for the drug to act on.\nB: The red cell membrane is semipermeable, not impermeable to everything.\nC: The enzymes in the cell are not a substitute for ribosomes, which are absent.\nD: The biconcave shape serves gas diffusion and does not hide ribosomes, which are absent.\nE: The cells are in a test suspension, and the spleen removes old cells, not drug-exposed ones.",
+      "slide": 10,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 11: \"Each hemoglobin molecule is made up of four heme groups surrounding a globin group... There are four iron atoms in each molecule of hemoglobin, which accordingly can bind four molecules of oxygen.\"",
+      "stem": "A researcher isolates 250 haemoglobin molecules from blood leaving the lungs and finds every one fully saturated with oxygen. Each molecule has the normal structure, with a globin group surrounded by heme groups. How many oxygen molecules are bound in total?",
+      "options": [
+        "250 molecules",
+        "500 molecules",
+        "750 molecules",
+        "1,000 molecules",
+        "1,250 molecules"
+      ],
+      "answer": 3,
+      "explanation": "Each haemoglobin molecule has four iron atoms and binds four oxygen molecules, so 250 x 4 = 1,000.\nA: This assumes one oxygen molecule per haemoglobin molecule.\nB: This assumes two oxygen molecules per haemoglobin molecule.\nC: This assumes three oxygen molecules per haemoglobin molecule.\nE: This assumes five oxygen molecules per haemoglobin molecule.",
+      "slide": 11,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 6, 12: Slide 12: \"Hemolysis means the lysis of RBCs with liberation of Hb, and its appearance in plasma.\" Slide 6: plasma \"Colour: Yellow.\"",
+      "stem": "A blood sample is drawn through a very narrow needle and then centrifuged. The cells settle at the bottom of the tube, but the plasma above is pink-red instead of its usual yellow. Which process most likely occurred during collection?",
+      "options": [
+        "Clotting of fibrinogen with loss of clotting factors from the plasma",
+        "Diffusion of plasma proteins through narrow pores in capillary walls",
+        "Lysis of red cells with release of haemoglobin into the plasma",
+        "Increase in the water content of the plasma above its usual 90%",
+        "Secretion of immunoglobulins into the plasma sample by the liver"
+      ],
+      "answer": 2,
+      "explanation": "Haemolysis liberates haemoglobin, which appears in the plasma and turns it pink-red.\nA: Clotting removes proteins but does not add a red pigment.\nB: Plasma proteins do not exit through the narrow capillary pores, and they would not colour the plasma.\nD: Dilution would make the plasma paler, not pink-red.\nE: Immunoglobulins are part of normal plasma and are not red.",
+      "slide": [
+        6,
+        12
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 9, 14, 15: Slide 9: the RBC membrane \"contains the agglutinogens to determine the blood groups\". Slide 15: agglutinins are \"present in plasma\" and are \"naturally occurring antibodies to the antigens that the person does not express\".",
+      "stem": "A laboratory separates the red cells from the plasma of blood from a group A donor and examines each part. One part carries the agglutinogens that determine the blood group, and the other contains naturally occurring antibodies to antigens the donor does not have. Which result is expected?",
+      "options": [
+        "A-agglutinogen in the plasma and anti-B agglutinin on the red cell membrane",
+        "B-agglutinogen on the red cell membrane and anti-A agglutinin in plasma",
+        "A-agglutinogen on the red cell membrane and anti-A agglutinin in plasma",
+        "Both agglutinogens on the red cell membrane and no agglutinin in plasma",
+        "A-agglutinogen on the red cell membrane and anti-B agglutinin in plasma"
+      ],
+      "answer": 4,
+      "explanation": "Group A cells carry A-agglutinogen on the membrane, and the plasma has anti-B against the antigen the person lacks.\nA: The agglutinogens are on the red cell membrane and the agglutinins are in the plasma, not the reverse.\nB: This is the pattern of group B, not group A.\nC: A person does not make antibodies to the antigen they express.\nD: This is the pattern of group AB, not group A.",
+      "slide": [
+        9,
+        14,
+        15
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 15: \"Agglutinins against A and B-agglutinogens [anti-A (α) and anti-B (β)] occur 3-6 months from birth.\" and \"Naturally occurring antibodies to the antigens that the person does not express\".",
+      "stem": "A 6-week-old healthy infant is typed as blood group A, and no anti-B agglutinins are found in the plasma. The test is repeated at 8 months and anti-B agglutinins are now detected, although the child has never been transfused. Which explanation is correct?",
+      "options": [
+        "Agglutinins form only after a first exposure to incompatible red cells",
+        "Naturally occurring agglutinins appear 3 to 6 months after birth",
+        "Agglutinins from the mother remain in the circulation throughout life",
+        "Agglutinins form once the cells lose their A agglutinogen in infancy",
+        "Agglutinins appear only after the D antigen has been encountered"
+      ],
+      "answer": 1,
+      "explanation": "ABO agglutinins are naturally occurring and appear 3 to 6 months after birth, without any transfusion.\nA: This describes anti-D, but anti-A and anti-B form without exposure.\nC: ABO agglutinins are made by the child from 3 to 6 months of age and are not maternal.\nD: The red cells keep their agglutinogen, and the agglutinins are against the antigen not expressed.\nE: ABO agglutinins are unrelated to the Rh system and the D antigen.",
+      "slide": 15,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 15, 16: Slide 15: agglutinins are IgM and \"can agglutinate and activate complement\". Slide 16: mismatched cells clump, plug small vessels and are destroyed, \"releasing Hb\".",
+      "stem": "A 40-year-old RhD positive woman of blood group A is given a unit of group B, RhD positive red cells by mistake. Within minutes she develops fever, loin pain and passes dark urine. Which mechanism best explains the reaction?",
+      "options": [
+        "Recipient anti-B antibodies bind donor red cells, which clump and release haemoglobin",
+        "Recipient anti-A antibodies bind donor red cells, which clump and release haemoglobin",
+        "Recipient anti-D antibodies bind donor red cells, which clump and release haemoglobin",
+        "Recipient anti-B antibodies bind her own red cells, which clump and release haemoglobin",
+        "Recipient anti-B antibodies bind donor red cells, which survive and are cleared at 120 days"
+      ],
+      "answer": 0,
+      "explanation": "Group A recipients have anti-B, which binds the B agglutinogen on donor cells and causes clumping and destruction, releasing haemoglobin.\nB: A group A recipient does not have anti-A.\nC: She is RhD positive and has no anti-D.\nD: Her own cells are group A and do not carry the B agglutinogen.\nE: Mismatched cells are agglutinated and destroyed, they do not survive for their normal 120 days.",
+      "slide": [
+        15,
+        16
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 17: \"Rh-negative: the individual has no D-antigen and forms the anti-D agglutinin when injected with D+ve cells. The anti-D antibodies are not naturally present in Rh-negative individuals.\"",
+      "stem": "A 30-year-old man of blood group O who is RhD negative has never been transfused. After an accident he is given a unit of group O, RhD positive red cells and no reaction occurs during or after the transfusion. Which statement describes his situation?",
+      "options": [
+        "He has made no anti-D, so future RhD positive blood is safe for him",
+        "He already had anti-D from birth, so the cells were destroyed unnoticed",
+        "He has begun to make anti-D, so future RhD positive blood is dangerous",
+        "He has begun to make anti-D, which will cause haemolytic disease in his children",
+        "He has begun to make anti-A, so future group A blood is dangerous"
+      ],
+      "answer": 2,
+      "explanation": "Anti-D is not naturally present but is formed after exposure to D+ve cells, so a later RhD positive transfusion can cause haemolysis.\nA: Exposure to D+ve cells is what makes an RhD negative person form anti-D.\nB: Anti-D is not naturally present in RhD negative people.\nD: Haemolytic disease of the newborn needs a pregnant RhD negative mother, and he is male.\nE: As a group O person he already has anti-A naturally, and this transfusion did not cause it.",
+      "slide": 17,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 18: \"D - codes for D antigen on RBC and is dominant; d - codes for no antigen and is recessive. dd = RhD negative; DD or Dd = RhD positive.\"",
+      "stem": "A RhD negative woman and her RhD positive partner are expecting a child. The partner's own father was RhD negative, and D is dominant over d. What proportion of the couple's children is expected to be RhD positive?",
+      "options": [
+        "0%",
+        "25%",
+        "50%",
+        "75%",
+        "100%"
+      ],
+      "answer": 2,
+      "explanation": "The partner is Dd because he inherited d from his RhD negative father and is RhD positive; with a dd mother, half of the children are Dd.\nA: This would need the partner to be dd, but he is RhD positive.\nB: This treats the cross as Dd by Dd, but the mother is dd.\nD: This treats the cross as Dd by Dd and counts the dominant phenotype.\nE: This would need the partner to be DD, but his father was dd so he carries d.",
+      "slide": 18,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 20: \"if RhD -ve mother has anti-D - and in next pregnancy her foetus is RhD +ve mother's IgG anti-D antibodies can cross placenta causes haemolysis of fetal red cells\".",
+      "stem": "A 28-year-old RhD negative woman delivers her second baby, who is RhD positive and is born with severe anaemia and jaundice. Her first baby, also RhD positive, was healthy, and she was given no anti-D treatment after that delivery. Which mechanism best explains the second baby's condition?",
+      "options": [
+        "Maternal IgM anti-D present since infancy crossed the placenta and lysed fetal red cells",
+        "Fetal IgG anti-D made in utero crossed the placenta and lysed maternal red cells",
+        "Maternal D antigen crossed the placenta and triggered lysis of the fetal red cells",
+        "Maternal IgG anti-D made after delivery one crossed the placenta and lysed fetal cells",
+        "Maternal IgG anti-D made after the first delivery lysed her own red cells in utero"
+      ],
+      "answer": 3,
+      "explanation": "Exposure at the first delivery led her to make IgG anti-D, which crosses the placenta in the next pregnancy and haemolyses D+ve fetal cells.\nA: Anti-D is not naturally present, and the antibody that crosses the placenta is IgG.\nB: The fetus is RhD positive and has no reason to make anti-D, and the mother's cells are the ones without D.\nC: She is RhD negative and has no D antigen.\nE: Her own cells lack D antigen, so anti-D does not bind them.",
+      "slide": 20,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 21, 23: Slide 23: \"be careful when giving blood transfusion to females (even very young girls) who may be Rh-negative and are transfused with Rh-positive blood.\" Slide 21 diagram: Rh sensitization of the mother by child or by Rh-mismatched transfusion.",
+      "stem": "A 7-year-old RhD negative girl receives RhD positive red cells after a severe haemorrhage. Twenty years later she is pregnant for the first time with an RhD positive fetus, and no anti-D has ever been given to her. What is expected in this first pregnancy?",
+      "options": [
+        "The fetus is safe because anti-D forms only after a first delivery",
+        "The fetus is at risk because anti-D formed after the childhood transfusion",
+        "The fetus is safe because anti-D is not found naturally in RhD negative women",
+        "The fetus is at risk because RhD negative women carry anti-D from birth",
+        "The fetus is at risk only if she also has anti-A and anti-B agglutinins"
+      ],
+      "answer": 1,
+      "explanation": "A mismatched transfusion sensitises a RhD negative female, so anti-D is already present and can cross the placenta in a first pregnancy.\nA: Sensitisation can also come from a mismatched transfusion.\nC: Anti-D is not natural, but she formed it after the transfusion.\nD: Anti-D is not naturally present in RhD negative people.\nE: ABO agglutinins are unrelated to the risk from anti-D.",
+      "slide": [
+        21,
+        23
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 22, 23: Slide 23: \"she is given a single dose of anti-Rh antibodies in the first 48 hours after delivery starting from first delivery.\" Slide 22: \"Prevention targets the mother\".",
+      "stem": "A 25-year-old RhD negative woman has just delivered her first baby, who is RhD positive. She has never been transfused and her blood contains no anti-D. Which step best prevents haemolytic disease of the newborn in her later pregnancies?",
+      "options": [
+        "Give a single dose of anti-Rh antibodies to the mother in her next pregnancy",
+        "Give a single dose of anti-Rh antibodies to the baby within 48 hours of delivery",
+        "Give an exchange transfusion of RhD negative blood to the baby after delivery",
+        "Give no treatment until anti-D is first detected in the mother's blood after delivery",
+        "Give a single dose of anti-Rh antibodies to the mother within 48 hours of delivery"
+      ],
+      "answer": 4,
+      "explanation": "A single dose of anti-Rh antibodies given to the mother within 48 hours of delivery, starting from the first delivery, stops her becoming sensitised.\nA: Prevention starts from the first delivery, before sensitisation can happen.\nB: Prevention targets the mother, not the baby.\nC: This is a treatment for an affected newborn and does not stop the mother making anti-D.\nD: By then she is sensitised and prevention has failed.",
+      "slide": [
+        22,
+        23
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 22: \"Treatment: Exchange transfusion, to replace the newborn's blood with Rh -ve blood.\"",
+      "stem": "A RhD positive newborn has severe anaemia and jaundice from haemolytic disease of the newborn, and maternal IgG anti-D is still circulating in the baby's blood. The paediatrician replaces the baby's blood by exchange transfusion using RhD negative blood. Why is RhD negative blood chosen?",
+      "options": [
+        "Its red cells lack the D antigen, so circulating maternal anti-D cannot lyse them",
+        "Its red cells carry the D antigen, so they absorb the circulating maternal anti-D",
+        "Its plasma contains anti-D, which neutralises the maternal antibodies in the baby",
+        "Its red cells lack the A and B agglutinogens, so maternal anti-D cannot lyse them",
+        "Its red cells lack the D antigen, so the baby stops making its own anti-D"
+      ],
+      "answer": 0,
+      "explanation": "Without the D antigen the donor cells are not targets for the maternal anti-D still in the baby.\nB: D positive cells would be attacked by the maternal anti-D, not protected from it.\nC: Anti-D is not naturally present in RhD negative donors, and it would not neutralise the maternal antibodies.\nD: Anti-D acts on the D antigen, so A and B agglutinogens are irrelevant.\nE: The injury is from maternal antibodies, not anti-D made by the baby.",
+      "slide": 22,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 19: \"patient must have RhD negative blood in future (otherwise anti-D would react with RhD positive blood causes delayed haemolytic transfusion reaction - anaemia; high bilirubin; jaundice)\".",
+      "stem": "A 34-year-old woman of blood group O, RhD negative, made anti-D after the birth of an RhD positive baby. Years later she receives group O, RhD positive red cells after a postpartum haemorrhage. A week later she is pale and jaundiced, her haemoglobin has fallen and her bilirubin is high. Which antibody best accounts for this picture?",
+      "options": [
+        "Anti-D made for the first time in response to this transfusion",
+        "Anti-D present naturally in her plasma since infancy, reacting with donor cells",
+        "Anti-D made after her earlier pregnancy, reacting with donor red cells",
+        "Anti-A present naturally in her plasma since infancy, reacting with donor cells",
+        "Anti-D made by the donor and passed on with the red cell unit"
+      ],
+      "answer": 2,
+      "explanation": "Preformed anti-D reacts with RhD positive blood and causes a delayed haemolytic reaction with anaemia, high bilirubin and jaundice.\nA: She was already sensitised by the earlier pregnancy.\nB: Anti-D is not naturally present in RhD negative people.\nD: Donor cells are group O and carry no A agglutinogen.\nE: The antibody involved is the recipient's own.",
+      "slide": 19,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 29: \"3ml/kg increases the Hb by 1g\".",
+      "stem": "A 70-kg man has a haemoglobin of 8 g/dl and is to receive packed red cells to bring it to 10 g/dl. Using the rule that 3 ml/kg raises haemoglobin by 1 g/dl, what volume of packed cells is expected to produce this rise?",
+      "options": [
+        "140 ml",
+        "210 ml",
+        "280 ml",
+        "420 ml",
+        "560 ml"
+      ],
+      "answer": 3,
+      "explanation": "3 ml/kg x 70 kg = 210 ml per 1 g/dl, so a 2 g/dl rise needs 420 ml.\nA: This is too small for a 2 g/dl rise in a 70-kg adult.\nB: This is the volume for a rise of only 1 g/dl.\nC: This is the volume of one unit and gives a rise of about 1.3 g/dl.\nE: This would raise haemoglobin by about 2.7 g/dl.",
+      "slide": 29,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 30: \"Store at 22oC (Room temp) - constantly agitated. Shelf life 7 days only - (risk of bacterial infection)\".",
+      "stem": "A blood bank receives a pooled platelet pack made from four donors for a bleeding patient on an oncology ward. The porter offers to put it in the same 4°C refrigerator as the red cell units. Which storage conditions are correct for the platelet pack?",
+      "options": [
+        "Stored at 4°C without agitation, for up to 35 days",
+        "Stored at 22°C, constantly agitated, for up to 7 days",
+        "Stored at 22°C without agitation, for up to 35 days",
+        "Stored at -30°C without agitation, for up to 1 year",
+        "Stored at 4°C with constant agitation, for up to 7 days"
+      ],
+      "answer": 1,
+      "explanation": "Platelets are kept at room temperature (22°C), constantly agitated, with a 7 day shelf life because of bacterial infection risk.\nA: These are the conditions for packed red cells.\nC: Platelets need constant agitation and have a 7 day shelf life.\nD: These are the conditions for fresh frozen plasma.\nE: Platelets are stored at room temperature, not at 4°C.",
+      "slide": 30,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 31: \"Must thaw approximately 20-30 mins before use (if too hot proteins cook) - Give ASAP - within 1h or else coagulation factors degenerate\".",
+      "stem": "A unit of fresh frozen plasma is thawed at 09:00 for a patient with a coagulation defect. The patient is sent to theatre and the plasma is not given until 11:00. Which concern applies to this plasma?",
+      "options": [
+        "Its proteins have cooked because thawing took longer than 30 minutes",
+        "Its shelf life has run out because thawed plasma keeps only 7 days",
+        "It now needs a crossmatch with the patient's red cells before use",
+        "Its blood group has changed because ABO antibodies fall after it is thawed in the bag",
+        "Its coagulation factors have degenerated as it was not given within an hour"
+      ],
+      "answer": 4,
+      "explanation": "Thawed plasma should be given within 1 hour or its coagulation factors degenerate, so it may no longer work.\nA: Proteins cook if the plasma is too hot, not if it is thawed slowly.\nB: Two hours is well within any such limit, and 7 days is the platelet shelf life.\nC: Plasma needs only the same blood group, with no crossmatch.\nD: Thawing does not change the ABO group of plasma.",
+      "slide": 31,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 14, 17: Slide 14: agglutinogens are present in \"epithelial and endothelial cells, and secretions (salivary glands...)\". Slide 17: Rh is \"not been found in tissues other than red cells\".",
+      "stem": "A forensic laboratory receives a dried saliva stain from a crime scene, with no blood or red cells. The saliva is tested for blood group agglutinogens. Which statement about the result is correct?",
+      "options": [
+        "ABO group can be determined from the saliva, but RhD status cannot be",
+        "RhD status can be determined from the saliva, but ABO group cannot be",
+        "Both ABO group and RhD status can be determined from the saliva",
+        "Neither can be determined, because agglutinogens occur only on red cells",
+        "RhD status and Kell group can be determined, but ABO group cannot be"
+      ],
+      "answer": 0,
+      "explanation": "ABO agglutinogens occur in secretions such as saliva, but Rh antigens are found only on red cells.\nB: This reverses the facts: Rh is found only on red cells.\nC: Rh is not found in tissues or secretions other than red cells.\nD: ABO agglutinogens are present in secretions such as saliva.\nE: ABO agglutinogens are in secretions, and RhD is only on red cells.",
+      "slide": [
+        14,
+        17
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 4: \"All blood cells are formed from a common stem cell by a process referred to as HAEMOPOIESIS, which occurs in the bone marrow.\" Plasma proteins (clotting factors, albumin) are \"largely made in the liver\".",
+      "stem": "A patient develops marrow aplasia after chemotherapy, and liver function remains normal. Blood tests are repeated over the next two weeks. Which combination of changes is expected?",
+      "options": [
+        "A fall in red cells only, with white cells and platelets preserved",
+        "Falls in clotting factors and albumin only, with all blood cells preserved",
+        "Falls in red cells, white cells and platelets, with albumin preserved",
+        "Falls in white cells and platelets, with red cells made by the spleen",
+        "Falls in red cells and white cells, with platelets preserved by the liver"
+      ],
+      "answer": 2,
+      "explanation": "All blood cells arise from a common stem cell in the bone marrow, while albumin is made in the liver.\nA: All blood cell types come from the same marrow stem cell, so they fall together.\nB: These proteins are made in the liver, which is normal here.\nD: Red cells are also made in the bone marrow, and the spleen takes up old red cells.\nE: Platelets are also made in the bone marrow.",
+      "slide": 4,
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    },
+    {
+      "evidence": "Slide 3, 12: Slide 12: \"The normal hemoglobin content of blood is 16g/dl in men and 14g/dl in women (all in RBC).\" Slide 3: volume \"5 liters in woman and 5.5 liters in men\".",
+      "stem": "A researcher estimates the total haemoglobin circulating in a normal healthy woman using the average figures for women. The average blood volume is 5 litres and the haemoglobin concentration is the normal value for women. What is the approximate total haemoglobin in her circulation?",
+      "options": [
+        "70 g",
+        "350 g",
+        "700 g",
+        "770 g",
+        "880 g"
+      ],
+      "answer": 2,
+      "explanation": "5 litres is 50 dl, and 50 dl x 14 g/dl = 700 g.\nA: This multiplies 5 by 14 and forgets that 5 litres is 50 dl.\nB: This uses 7 g/dl, the plasma protein concentration, instead of the haemoglobin concentration.\nD: This uses the man's blood volume of 5.5 litres with the woman's concentration.\nE: This is the value for a man: 55 dl x 16 g/dl.",
+      "slide": [
+        3,
+        12
+      ],
+      "file": "IM 16.3.1.1 IM PH 009.1 Blood components and blood groups2026-2027_281d34337ebf39a68992aab0a1262c2d.pdf"
+    }
+  ]
+}

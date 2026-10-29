@@ -1,0 +1,167 @@
+{
+  "deck": "Physiology - Introduction to endocrine and reproduction",
+  "questions": [
+    {
+      "evidence": "Slide 8: \"Antidiuretic hormone (vasopressin): Controls water loss by the kidneys\" (posterior pituitary).",
+      "stem": "A 35-year-old man is admitted after a head injury with a fractured skull base. Over the next three days he passes about 12 litres of very dilute urine a day and drinks constantly. His blood glucose is normal, and imaging shows damage to the pituitary gland. Deficiency of which hormone best explains his urine output?",
+      "options": [
+        "Oxytocin, released from the posterior pituitary",
+        "Antidiuretic hormone, released from the posterior pituitary",
+        "Prolactin, released from the anterior pituitary",
+        "Thyroid-stimulating hormone, released from the anterior pituitary",
+        "Growth hormone, released from the anterior pituitary"
+      ],
+      "answer": 1,
+      "explanation": "Excessive dilute urine means the hormone that controls water loss by the kidneys is missing, and this hormone is released from the pituitary.\nA: Oxytocin contracts the uterus in childbirth and stimulates milk production; it does not control water loss by the kidneys.\nC: Prolactin stimulates milk production in females and has no action on the kidneys.\nD: TSH stimulates the thyroid gland to produce thyroid hormones; it does not control water loss.\nE: Growth hormone stimulates growth of bone and tissue; it does not control water loss by the kidneys.",
+      "slide": 8,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 8: \"Adrenocorticotropin hormone (ACTH): Stimulates the adrenal gland to produce steroid hormones\". Slide 12: \"the adrenal cortex produces corticosteroids... adrenal medulla produces catecholamine's\".",
+      "stem": "A trial drug prevents the anterior pituitary from releasing the hormone that acts on the adrenal glands. Over the following weeks the investigators measure the output of several hormone groups in the volunteers. Which output is expected to fall most directly?",
+      "options": [
+        "Corticosteroids produced by the adrenal cortex",
+        "Catecholamines produced by the adrenal medulla",
+        "Thyroid hormones produced by the thyroid gland",
+        "Androgens produced by the testes",
+        "Parathyroid hormone produced by the parathyroid glands"
+      ],
+      "answer": 0,
+      "explanation": "The pituitary hormone that acts on the adrenal gland stimulates steroid hormone production, and the corticosteroids are made by the adrenal cortex.\nB: The medulla also lies in the adrenal gland, but its catecholamines are not the steroid hormones stimulated by the pituitary.\nC: Thyroid hormone output is driven by TSH, a different pituitary hormone that is not blocked here.\nD: Testicular androgens are driven by LH and FSH, which are not blocked here.\nE: Parathyroid hormone regulates blood calcium and is not controlled by the pituitary hormone acting on the adrenal glands.",
+      "slide": [
+        8,
+        12
+      ],
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 13: parathyroid glands are \"two pairs of small glands embedded in the surface of the thyroid gland\" and \"release parathyroid hormone, which plays a role in regulating calcium levels in the blood and bone metabolism\".",
+      "stem": "A 52-year-old woman has surgery to remove her thyroid gland. Two days later she has tingling around her mouth and a low blood calcium, while her thyroid hormone levels are normal on replacement tablets. Which structures were most likely injured or removed during the operation?",
+      "options": [
+        "Parathyroid glands, embedded in the thyroid surface",
+        "Adrenal glands, located on top of each of the kidneys",
+        "Hypothalamus, lying in the lower central part of the brain",
+        "Pituitary gland, connected to the hypothalamus",
+        "Endocrine pancreas, secreting insulin and glucagon"
+      ],
+      "answer": 0,
+      "explanation": "The glands that regulate blood calcium lie embedded in the surface of the thyroid, so they can be damaged or removed with it.\nB: The adrenal glands are in the abdomen and are not near the surgical field; their hormones do not regulate blood calcium.\nC: The hypothalamus is in the brain, away from the neck, and does not regulate calcium directly.\nD: The pituitary lies in the head, not in the neck, and is not removed during a thyroidectomy.\nE: Insulin and glucagon regulate blood glucose, and the pancreas is not near the thyroid.",
+      "slide": 13,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 6: the hypothalamus is \"important in regulation of satiety, metabolism, and body temperature\".",
+      "stem": "A 28-year-old man develops a brain tumour. Over several months he eats constantly without ever feeling full, and his body temperature rises and falls with the temperature of the room. Thyroid hormone levels are normal. Which structure is most likely involved?",
+      "options": [
+        "Anterior pituitary",
+        "Posterior pituitary",
+        "Hypothalamus",
+        "Pineal gland",
+        "Thyroid gland"
+      ],
+      "answer": 2,
+      "explanation": "Satiety and body temperature regulation are functions of the hypothalamus.\nA: The anterior pituitary releases hormones such as GH, TSH, ACTH, LH, FSH and prolactin; it does not itself regulate satiety or temperature.\nB: The posterior pituitary releases ADH and oxytocin, which control water loss and uterine contraction, not satiety or temperature.\nD: The pineal gland is an endocrine gland but is not described as regulating satiety or body temperature.\nE: Thyroid hormones regulate metabolism, but the normal levels make the thyroid an unlikely cause.",
+      "slide": 6,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 15: \"Acromegaly is growth hormone excess that occurs after the epiphysis closure\"; \"Gigantism is excess production of growth hormone before the epiphysis closure\".",
+      "stem": "A 48-year-old man notices that his shoe and ring sizes have increased over several years, and his jaw and brow have become coarser. An X-ray shows that the growth plates of his hand bones are fused, and a tumour is found in his pituitary gland. Which condition best describes his presentation?",
+      "options": [
+        "Gigantism, from growth hormone excess before the epiphyses close",
+        "Acromegaly, from growth hormone excess after epiphysis closure",
+        "Dwarfism, from growth hormone deficiency during childhood",
+        "Prolactinoma, from prolactin excess due to a pituitary tumour",
+        "Hyperthyroidism, from excess thyroid hormone production"
+      ],
+      "answer": 1,
+      "explanation": "Overgrowth of hands, jaw and soft tissue with fused growth plates and a pituitary tumour indicates growth hormone excess after the epiphyses have closed.\nA: Gigantism needs growth hormone excess while the epiphyses are open, but his growth plates are already fused.\nC: Dwarfism is growth hormone deficiency in children with short stature, the opposite of his overgrowth.\nD: Prolactin stimulates milk production and does not cause enlargement of the hands and jaw.\nE: Hyperthyroidism is excess thyroid hormone, which does not explain bone and soft tissue overgrowth with a pituitary tumour.",
+      "slide": 15,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 9: thyroid hormones play a role in the \"development of the nervous system in children\".",
+      "stem": "A newborn girl is found at birth to have no functioning thyroid tissue, and treatment is delayed for several months. Her blood calcium, blood glucose and urine output are normal at this stage. Which long-term consequence is most likely if the deficiency stays untreated?",
+      "options": [
+        "Impaired regulation of blood calcium",
+        "Impaired regulation of blood glucose",
+        "Impaired regulation of salt and water balance",
+        "Impaired development of the nervous system",
+        "Impaired control of water loss by the kidneys"
+      ],
+      "answer": 3,
+      "explanation": "Thyroid hormones play a role in the development of the nervous system in children, so untreated deficiency impairs it.\nA: Calcium is regulated by parathyroid hormone from the parathyroid glands, and her calcium is normal.\nB: Glucose is regulated by insulin and glucagon from the pancreas, not by thyroid hormones.\nC: Salt and water balance is regulated by corticosteroids from the adrenal cortex.\nE: This is the role of antidiuretic hormone from the posterior pituitary.",
+      "slide": 9,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 8: Oxytocin \"Contracts the uterus during childbirth and stimulates milk production\". Slide 7 diagram: \"Oxytocin is essential for initiation of labour\".",
+      "stem": "In a study of pregnant sheep, a researcher blocks the release of all hormones from the posterior pituitary a week before the expected delivery. All of the anterior pituitary hormones remain at normal levels. Which event is most directly impaired at term?",
+      "options": [
+        "Contraction of the uterus to deliver the lamb",
+        "Release of sex hormones from the ovaries",
+        "Production of steroid hormones by the adrenal cortex",
+        "Production of thyroid hormones by the thyroid gland",
+        "Growth of the lamb's long bones in the uterus"
+      ],
+      "answer": 0,
+      "explanation": "Oxytocin is released from the posterior pituitary and contracts the uterus during childbirth.\nB: Ovarian hormone output is controlled by LH and FSH from the anterior pituitary, which are normal.\nC: Adrenal steroid output is stimulated by ACTH from the anterior pituitary, which is normal.\nD: Thyroid hormone output is stimulated by TSH from the anterior pituitary, which is normal.\nE: Growth hormone from the anterior pituitary drives bone growth, and it is normal.",
+      "slide": [
+        7,
+        8
+      ],
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 8: \"Luteinizing hormone (LH) and follicle-stimulating hormone (FSH): Hormones that control sexual function and production of the sex hormones\". Slide 11: the testes \"secrete androgens... as well as sperm production\".",
+      "stem": "A 26-year-old man has been unable to father a child. Examination shows small testes and sparse facial and pubic hair, and blood tests show a low sperm count and low androgen levels. His thyroid hormone and adrenal steroid levels are normal, and MRI shows a small tumour in the pituitary gland. Which pair of pituitary hormones is most likely deficient?",
+      "options": [
+        "Thyroid-stimulating hormone and adrenocorticotropin hormone, from the anterior pituitary",
+        "Growth hormone and prolactin, from the anterior pituitary",
+        "Luteinizing hormone and follicle-stimulating hormone, from the anterior pituitary",
+        "Antidiuretic hormone and oxytocin, from the posterior pituitary",
+        "Luteinizing hormone and growth hormone, from the anterior pituitary"
+      ],
+      "answer": 2,
+      "explanation": "LH and FSH control sexual function and sex hormone production, so their loss explains the failure of the testes to make androgens and sperm.\nA: TSH and ACTH act on the thyroid and adrenal glands, whose hormone levels are normal here.\nB: Growth hormone drives bone and tissue growth and prolactin stimulates milk production; neither controls the testes.\nD: These control water loss by the kidneys and uterine contraction, not testicular function.\nE: LH is part of the answer, but growth hormone does not control the testes, and FSH would also be lost.",
+      "slide": [
+        8,
+        11
+      ],
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 8: \"Prolactin: Hormone that stimulates milk production in females\"; posterior pituitary: \"Oxytocin: Contracts the uterus during childbirth and stimulates milk production\".",
+      "stem": "A 30-year-old woman who has never been pregnant reports a milky discharge from both nipples for six months, although she is not breastfeeding. MRI shows a small tumour confined to the anterior part of the pituitary gland. Which hormone is being secreted in excess?",
+      "options": [
+        "Prolactin, from the anterior pituitary",
+        "Oxytocin, from the posterior pituitary",
+        "Antidiuretic hormone, from the posterior pituitary",
+        "Growth hormone, from the anterior pituitary",
+        "Thyroid-stimulating hormone, from the anterior pituitary"
+      ],
+      "answer": 0,
+      "explanation": "Milk production in a non-breastfeeding woman, with a tumour of the anterior pituitary, points to excess of the hormone that stimulates milk production there.\nB: Oxytocin also stimulates milk production, but it is released from the posterior pituitary, not the site of the tumour.\nC: ADH controls water loss by the kidneys and does not stimulate milk production.\nD: Excess growth hormone causes overgrowth of bone and tissue, not milk discharge.\nE: TSH stimulates the thyroid gland and does not stimulate milk production.",
+      "slide": 8,
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    },
+    {
+      "evidence": "Slide 6: the hypothalamus \"secretes hormones that stimulate or suppress the release of other hormones in the pituitary gland\". Slide 8: TSH \"Stimulates the thyroid gland to produce thyroid hormones\"; ACTH \"Stimulates the adrenal gland to produce steroid hormones\".",
+      "stem": "After a road traffic accident, a 40-year-old man's MRI shows that the link between his hypothalamus and pituitary gland has been cut. The pituitary, thyroid and adrenal glands themselves look structurally normal. Blood tests show low thyroid hormone and low adrenal steroid levels. Which mechanism best explains these results?",
+      "options": [
+        "Direct injury to the thyroid and adrenal glands that stops their hormone production",
+        "Excess hypothalamic hormones that suppress the pituitary release of hormones acting on these glands",
+        "Direct injury to the anterior pituitary cells that make hormones acting on these glands",
+        "Loss of antidiuretic hormone that normally stimulates these glands to produce hormones",
+        "Loss of hypothalamic hormones that stimulate release of pituitary hormones acting on these glands"
+      ],
+      "answer": 4,
+      "explanation": "The hypothalamus normally stimulates the pituitary to release TSH and ACTH, so cutting the link lowers them and the thyroid and adrenal output falls.\nA: Both glands look structurally normal, so the fault is in the signals driving them.\nB: With the link cut, hypothalamic hormones cannot reach the pituitary, so they cannot be in excess.\nC: The pituitary appears structurally normal, and the problem is the lost connection from above.\nD: ADH controls water loss by the kidneys and does not stimulate the thyroid or adrenal glands.",
+      "slide": [
+        6,
+        8
+      ],
+      "file": "IM 16.3.2 IM PH 010.1 Introduction to endocrine and reproductive system (1)_8001337fe86422f7f1cbe384f5407be5.pdf"
+    }
+  ]
+}

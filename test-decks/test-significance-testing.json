@@ -1,0 +1,143 @@
+{
+  "deck": "Medical statistics - Significance testing",
+  "questions": [
+    {
+      "evidence": "Slide 20: \"29 students: FEV1 measured before and after use of bronchodilator (N.B. data are PAIRED observations)\" (Paired (one sample) t-test). Slide 8: the unpaired t-test is for \"Comparing continuous outcome (FEV1) between two groups (males versus females)\".",
+      "stem": "A physiologist measures the resting heart rate of 24 students before and again one hour after a standard cup of coffee. She wants to know whether the mean heart rate differs after the coffee. Each student's two readings are recorded together, and the individual changes look roughly symmetrical. Which analysis is most appropriate?",
+      "options": [
+        "Paired t-test, testing whether the mean change within each student differs from zero",
+        "Unpaired t-test, comparing the before readings and the after readings as two separate groups",
+        "Unpaired t-test, after pooling all 48 readings into a single group of observations",
+        "Test for categorical data, after classifying each student as raised or not raised",
+        "Unpaired t-test, comparing these students with a separate group who drank no coffee"
+      ],
+      "answer": 0,
+      "explanation": "Each student is measured twice, so the readings are paired observations and the analysis tests whether the mean change within students is zero.\nB: An unpaired test treats the two sets of readings as independent groups, which ignores that they come from the same students.\nC: Pooling the 48 readings into one group removes the before and after labels, so no change can be tested.\nD: Heart rate is a quantitative measurement, so reducing it to categories wastes information; the test follows the type of data.\nE: No separate no-coffee group was studied, so there is no second independent group to compare with.",
+      "slide": [
+        8,
+        20
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 5: \"H0: precise statement about population of interest, that there is no effect or no difference (usually converse of study hypothesis!)\". Slide 6: \"The difference in mean FEV1 between the population of young adult males and females is 0 litres\".",
+      "stem": "A researcher believes that a new inhaler improves lung function. She will measure FEV1 in 40 adults using the inhaler and 40 adults using a placebo, and compare the two groups. Before collecting data she must write the statement that her analysis will look for evidence against. Which statement should she write?",
+      "options": [
+        "The mean FEV1 of the 40 inhaler users is higher than that of the 40 placebo users",
+        "The mean FEV1 of the population using the inhaler is higher than that of the placebo population",
+        "The difference in mean FEV1 between the inhaler and placebo populations is zero litres",
+        "The mean FEV1 of the 40 inhaler users equals that of the 40 placebo users",
+        "The probability that the inhaler has no effect on mean FEV1 is less than 0.05"
+      ],
+      "answer": 2,
+      "explanation": "The null hypothesis is a precise statement about the populations that there is no difference, here a mean FEV1 difference of zero.\nA: This is the study hypothesis written for the two samples; the null hypothesis is about the population and states no difference.\nB: This is the study hypothesis for the populations, and the null hypothesis is its converse, no difference.\nD: The null hypothesis concerns the populations, not the two samples, whose means will differ somewhat by chance.\nE: This mixes the null hypothesis with a p-value; the null hypothesis is a statement about the population, not a probability.",
+      "slide": [
+        5,
+        6
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 19: \"Define H0; Collect data; Calculate summary measure (e.g. difference in means); Calculate value of test statistic; Derive p-value; Decide whether enough evidence to reject H0\". Slide 4, stage 3: \"Calculate the value of the test statistic specific to the null hypothesis\".",
+      "stem": "Investigators compare mean systolic blood pressure between 35 men taking a new drug and 38 men taking a placebo. They have written their null hypothesis, collected the measurements, and calculated the difference between the two group means and its standard error. What is the next step in the hypothesis test?",
+      "options": [
+        "Read the p-value straight from tables using the difference in means",
+        "Decide to reject the null hypothesis because the two group means are not identical",
+        "Define the null and alternative hypotheses to be examined in the study",
+        "Interpret the p-value to decide whether the null hypothesis should be rejected",
+        "Calculate the test statistic from the difference in means and its standard error"
+      ],
+      "answer": 4,
+      "explanation": "After the summary measure is known, the next stage is the test statistic, which compares the difference in means with its standard error.\nA: Tables give a p-value only for a test statistic, so the statistic must be calculated first.\nB: Sample means are almost never identical by chance alone, so the decision must wait for the p-value.\nC: Defining the hypotheses is the first stage and has already been done.\nD: Interpreting the p-value is the last stage, and no p-value has been derived yet.",
+      "slide": [
+        4,
+        19
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 8: the unpaired t-test is for \"Quantitative (continuous) data\", comparing \"two groups\", and \"Assumes values follow normal distribution (in each of the two population subgroups)\". Slide 6: \"Use a sample to make inferences about wider population\".",
+      "stem": "A student compares fasting triglyceride levels between 30 vegans and 34 omnivores using an unpaired t-test. A histogram of the omnivore values has a long tail to the right with a few very high results, whereas the vegan values are symmetrical about their mean. The group means are 1.1 mmol/L and 1.6 mmol/L. Which feature of her data most threatens the validity of the test?",
+      "options": [
+        "Skewed omnivore values, because the test assumes a normal distribution in each group",
+        "Unequal group sizes, because the test needs the same number in each group",
+        "A continuous outcome, because the test requires categorical rather than continuous data",
+        "Independent groups, because the test requires the same people to be measured in both groups",
+        "Use of samples, because the test needs measurements on the whole population"
+      ],
+      "answer": 0,
+      "explanation": "The unpaired t-test assumes the values follow a normal distribution in each group, and the long right tail in the omnivore group breaks this.\nB: The test does not need equal numbers; the lecture example compared 39 males with 46 females.\nC: The unpaired t-test is designed for quantitative (continuous) data such as triglyceride concentration.\nD: Two separate groups is exactly the design of the unpaired test; the same people measured twice would call for a paired test.\nE: A sample is used to make inferences about the wider population, because the whole population cannot be measured.",
+      "slide": [
+        6,
+        8
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 15: \"If the null hypothesis were true, there is less than 1 in 100,000 probability, that the difference we have seen between sample means in our data, would occur by chance.\" Slide 11: \"P-value is a probability (ranges between zero and one)\".",
+      "stem": "A trial in 60 patients compares systolic blood pressure on a new drug with placebo. The mean blood pressure is 8 mmHg lower on the drug, and the analysis gives p = 0.03. Which interpretation of the p-value is most accurate?",
+      "options": [
+        "There is a 3% probability that the null hypothesis of no difference is true",
+        "There is a 97% probability that the drug truly lowers blood pressure in the population",
+        "The drug lowers blood pressure by 3% of the placebo value in the population",
+        "With no true difference, a gap this large would occur by chance about 3 times in 100",
+        "Three out of every 100 patients on the drug had a lower pressure than placebo patients"
+      ],
+      "answer": 3,
+      "explanation": "A p-value is the probability, if the null hypothesis were true, of seeing a difference at least this large by chance.\nA: The p-value is calculated assuming the null hypothesis is true, so it cannot be the probability that the null hypothesis is true.\nB: The p-value describes the data under the null hypothesis; it is not the probability that the drug works.\nC: A p-value is a probability between zero and one and says nothing about the size of the effect.\nE: A p-value is not a proportion of patients; it is a probability about the sample difference arising by chance.",
+      "slide": [
+        11,
+        15
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 13: \"P > 0.05 not enough evidence to reject the null hypothesis. Null hypothesis has not been proved correct! Do NOT say we accept the null hypothesis. We say: No evidence against the null hypothesis.\"",
+      "stem": "A study of 32 students measures FEV1 before and after a bronchodilator, and the paired analysis gives a mean change of 0.09 litres with p = 0.08. The study was well designed and each student was measured under the same conditions. The investigator writes that the null hypothesis is accepted and that the bronchodilator has no effect on FEV1. How should her conclusion be judged?",
+      "options": [
+        "Appropriate, because a p-value above 0.05 shows that the null hypothesis is correct",
+        "Inappropriate, because p above 0.05 means no evidence against the null hypothesis, not proof of it",
+        "Inappropriate, because p = 0.08 is strong evidence that the bronchodilator improves FEV1",
+        "Inappropriate, because the null hypothesis should be rejected at the 8% significance level",
+        "Inappropriate, because the before and after readings should have been compared with an unpaired test"
+      ],
+      "answer": 1,
+      "explanation": "A p-value above 0.05 means not enough evidence to reject the null hypothesis, which has not been proved correct.\nA: A non-significant result does not prove the null hypothesis correct.\nC: Strong evidence against the null hypothesis needs a small p-value, and 0.08 is above the usual 0.05 level.\nD: The null hypothesis is rejected only when p falls below the chosen level, usually 5%, and 0.08 does not.\nE: Readings from the same students are paired observations, so the paired test used was the right analysis.",
+      "slide": 13,
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 18: \"We can see that the 95% CI does not contain the value zero... From both CI and p-value from hypothesis test lead to same conclusion\". Slide 22: \"Zero is contained in 95% CI. Confidence interval is compatible with the null hypothesis. No evidence against H0\".",
+      "stem": "A trial reports that mean systolic blood pressure was 6.0 mmHg higher in group A than in group B, with a 95% confidence interval for the difference from -1.2 to 13.2 mmHg. The authors did not report a p-value. At the 5% significance level, what can be concluded about the null hypothesis of no difference between the populations?",
+      "options": [
+        "Rejected, because the observed difference of 6.0 mmHg is clearly far from zero",
+        "Rejected, because the interval is wide, so the estimate is too unreliable to use",
+        "Not rejected, because the interval includes zero, so no evidence against it",
+        "Accepted as true, because the interval includes zero within its range",
+        "Not assessable, because a p-value is needed to decide at the 5% level"
+      ],
+      "answer": 2,
+      "explanation": "Zero lies inside the interval, so it is compatible with the null hypothesis, the same conclusion as a p-value above 0.05.\nA: A sample difference away from zero is expected by chance; what matters is whether the interval contains zero.\nB: A wide interval shows imprecision, but the decision rests on whether zero lies inside it.\nD: The null hypothesis is never proved correct; the interval is only compatible with it.\nE: The interval and the p-value lead to the same conclusion, so the interval is enough to decide.",
+      "slide": [
+        18,
+        22
+      ],
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    },
+    {
+      "evidence": "Slide 18: \"95% certain that the true difference in mean FEV1 between the population of young adult males and females lies somewhere between 1.034 litres and 1.646 litres\".",
+      "stem": "Researchers compare fasting glucose between two populations of adults. From their samples, the difference in mean glucose (group X minus group Y) is 1.0 mmol/L, with a 95% confidence interval of 0.6 to 1.4 mmol/L. How should this interval be interpreted?",
+      "options": [
+        "Ninety-five per cent of individuals in group X have glucose 0.6 to 1.4 mmol/L higher than those in group Y",
+        "The difference between the two sample means lies between 0.6 and 1.4 mmol/L with 95% probability",
+        "There is a 95% probability that the null hypothesis of no difference is true",
+        "The true population difference is certain to lie between 0.6 and 1.4 mmol/L",
+        "We are 95% certain that the true population difference in mean glucose lies between 0.6 and 1.4 mmol/L"
+      ],
+      "answer": 4,
+      "explanation": "A 95% confidence interval for a difference in means is the range within which we are 95% certain the true population difference lies.\nA: The interval concerns the difference between population means, not differences between individual people.\nB: The sample difference is known exactly (1.0 mmol/L); the uncertainty is about the population difference.\nC: The interval gives no probability that the null hypothesis is true; it only shows whether zero lies inside it.\nD: The level is 95% certainty, not certainty, so the true difference could lie outside the range.",
+      "slide": 18,
+      "file": "IM [VM 8.2.1.5] Significance Testing (Lecture)_db9103787c97c54f2e5ec3d178425c4a.pdf"
+    }
+  ]
+}

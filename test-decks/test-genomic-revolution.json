@@ -1,0 +1,303 @@
+{
+  "deck": "Genetics - The genomic revolution and personalised medicine",
+  "questions": [
+    {
+      "stem": "A 34-year-old woman is given the standard dose of codeine for pain after dental surgery. Within hours she is very drowsy with slow, shallow breathing, and her family reports a brief seizure. Pharmacogenetic testing shows several copies of the gene for the liver enzyme that activates codeine. Which change best explains this reaction?",
+      "options": [
+        "Reduced serum morphine from a loss-of-function allele of CYP2D6",
+        "Raised serum morphine from gene amplification of CYP2C19",
+        "Raised serum morphine from gene amplification of CYP2D6",
+        "Reduced serum morphine from gene amplification of CYP2D6",
+        "Raised serum codeine from reduced activity of CYP2D6"
+      ],
+      "answer": 2,
+      "explanation": "Gene amplification of CYP2D6 makes an ultra-rapid metaboliser: increased enzyme activity raises serum morphine and causes seizures, anaphylaxis and respiratory depression.\nA: A loss-of-function allele lowers morphine and gives no pain relief rather than toxicity.\nB: CYP2C19 is linked to clopidogrel in the gene table, not to codeine activation.\nD: More enzyme copies raise activity, so morphine rises rather than falls.\nE: Reduced activity would give a poor metaboliser with no pain relief, not toxicity.",
+      "slide": [
+        20,
+        21
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 45-year-old man with a fractured tibia takes codeine exactly as prescribed but gets no pain relief at all. His brother had the same problem with the same drug. Genotyping shows two copies of CYP2D6*3, an allele that lowers enzyme activity. Which combination would be expected?",
+      "options": [
+        "Low serum morphine from reduced enzyme activity, with no pain relief",
+        "Low serum morphine from reduced enzyme activity, with respiratory depression",
+        "High serum morphine from increased enzyme activity, with no pain relief",
+        "High serum morphine from increased enzyme activity, with seizures",
+        "Normal serum morphine from unchanged enzyme activity, with no pain relief"
+      ],
+      "answer": 0,
+      "explanation": "A poor CYP2D6 metaboliser has decreased activity, decreased serum morphine and no pain relief.\nB: Respiratory depression is a feature of high morphine in ultra-rapid metabolisers.\nC: Increased activity is the ultra-rapid state, which would not leave him without relief.\nD: Seizures come with high morphine from amplified enzyme activity, the opposite of his genotype.\nE: A reduced-activity allele lowers morphine, so the level is not normal.",
+      "slide": 21,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 51-year-old woman has invasive breast cancer. Tumour testing shows overexpression of a growth factor receptor of the EGFR family. Her oncologist prescribes a monoclonal antibody directed against that receptor, quoting survival of about 87%. Which statement describes who is expected to benefit from this antibody?",
+      "options": [
+        "Only HER2-negative patients, roughly one fifth to a quarter of breast cancers",
+        "Only HER2-positive patients, roughly three quarters of breast cancers",
+        "Every breast cancer patient, regardless of receptor expression",
+        "Only HER2-positive patients, roughly one fifth to a quarter of breast cancers",
+        "Only HER2-negative patients, roughly three quarters of breast cancers"
+      ],
+      "answer": 3,
+      "explanation": "Trastuzumab acts on HER2; HER2 is overexpressed in about 20-25% of breast cancers and only HER2-positive patients benefit.\nA: HER2-negative tumours lack the target, so the antibody does not help them.\nB: HER2 overexpression is found in only about 20-25% of breast cancers, not three quarters.\nC: Benefit is limited to patients whose tumours overexpress HER2.\nE: HER2-negative patients lack the target, so they are not expected to benefit.",
+      "slide": 22,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A drug company analyses a trial of a new antihypertensive. It divides the participants with hypertension into subgroups using one measurable characteristic, and finds that one subgroup responds more often to the drug while another has fewer side effects. Which term and purpose describe this approach?",
+      "options": [
+        "Randomisation, to remove the influence of known and unknown confounders",
+        "Stratification, to find subgroups with better response or fewer side effects",
+        "Matching, to pair each treated patient with a control of similar characteristics",
+        "Blinding, to prevent participants and clinicians knowing the allocated treatment",
+        "Pooling, to combine all participants into one group for a larger average effect"
+      ],
+      "answer": 1,
+      "explanation": "Stratification divides patients with a disease into subgroups by a specific characteristic, who respond more frequently to a drug or have a lower risk of side effects.\nA: Randomisation allocates participants by chance; it does not divide them by a characteristic to find responders.\nC: Matching pairs individuals for comparison and does not identify subgroups that respond differently.\nD: Blinding conceals allocation and does not subdivide patients.\nE: Pooling hides subgroup differences rather than revealing them.",
+      "slide": [
+        8,
+        10
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A committee reviewing therapeutic areas notes that standard drug treatments for cancer, asthma and depression help only some of the people who receive them. It asks what range of patients has been estimated to respond positively to drugs, to justify tailoring treatment. Which range fits the estimate?",
+      "options": [
+        "5-15%",
+        "10-30%",
+        "30-70%",
+        "70-90%",
+        "90-100%"
+      ],
+      "answer": 2,
+      "explanation": "It has been estimated that only 30-70% of patients respond positively to drugs, the reason stratified medicine is needed.\nA: This is lower than the estimate; even the weakest area shown sits at about 25%.\nB: This understates the range, which runs from 30% upwards.\nD: This overstates response; the estimate tops out at 70%.\nE: Nearly universal response would remove the need for stratified medicine.",
+      "slide": 12,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "Two patients of the same age are given an identical dose of the same drug for the same condition. One recovers fully, the other shows no response. Adherence, dose and diagnosis are the same for both. Which explanation does the pharmacogenetics approach give?",
+      "options": [
+        "Random variation in response that no inherited factor can explain",
+        "Differences in the manufacturing quality of the drug between patients",
+        "Differences in patient motivation to take the drug as prescribed",
+        "Differences in the clinical skill of the prescribing doctors",
+        "Genetic variations between the two individuals that alter their response"
+      ],
+      "answer": 4,
+      "explanation": "Patients respond differently to the same drug because of genetic variations between individuals, which is the basis of pharmacogenetics.\nA: Pharmacogenetics assumes an inherited basis, not unexplained chance.\nB: The same drug was given, so manufacturing does not explain the difference.\nC: Adherence was the same for both patients.\nD: Prescriber skill cannot explain a different response to an identical prescription.",
+      "slide": [
+        13,
+        14
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A researcher compares one stretch of DNA in 100 healthy volunteers and finds the sequence GTAC in most but GTGC in a small number. The variant involves a change of a single base and occurs in more than 1% of the population. Which description fits this variation?",
+      "options": [
+        "A single nucleotide polymorphism, a single-base change present in over 1% of people",
+        "A point mutation, a single-base change present in under 1% of people",
+        "A copy number variant, a duplicated gene present in over 1% of people",
+        "An insertion-deletion variant, a lost segment present in over 1% of people",
+        "A chromosomal translocation, an exchange between chromosomes in over 1% of people"
+      ],
+      "answer": 0,
+      "explanation": "A SNP is a single nucleotide change with greater than 1% abundance; the example GTAC to GTGC is a single base substitution.\nB: A change present in under 1% of people would not be classed as a polymorphism.\nC: A copy number variant changes the number of gene copies, not one base.\nD: A single-base change is not an insertion or deletion of a segment.\nE: A translocation moves large pieces between chromosomes, not one base.",
+      "slide": [
+        15,
+        16
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A hospital pharmacogenetics unit is deciding how to use SNP data in clinic. It has a table showing that patients who suffered side effects more often carry a G base at one position than a C base. Which list of uses of SNPs in personalised medicine is correct?",
+      "options": [
+        "Predicting side effects, drug effects and hospital length of stay",
+        "Predicting drug effects, doses required and patient adherence",
+        "Predicting side effects, doses required and drug manufacturing quality",
+        "Predicting side effects, drug effects and doses required",
+        "Predicting drug effects, patient adherence and drug cost"
+      ],
+      "answer": 3,
+      "explanation": "SNPs can be used to predict the side effects of drugs, their possible effects and the doses required.\nA: Hospital length of stay is not a use listed for SNPs.\nB: Adherence is a behaviour, not something a SNP predicts here.\nC: Manufacturing quality has nothing to do with the patient's genotype.\nE: Neither adherence nor cost is predicted by SNPs in the lecture.",
+      "slide": 16,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "After the Human Genome Project sequenced all 3.3 billion base pairs, each person was found to carry about 10 million SNPs. A funding panel asks what downstream aim justified cataloguing these variants for personalised medicine. Which aim was it?",
+      "options": [
+        "Linking SNPs with the speed of drug approval by regulators",
+        "Linking SNPs with variability in the response to drugs",
+        "Linking SNPs with the rate of new mutations in somatic cells",
+        "Linking SNPs with the number of base pairs on each chromosome",
+        "Linking SNPs with the prevalence of infectious disease in populations"
+      ],
+      "answer": 1,
+      "explanation": "The aim was to establish a connection between SNPs and variability in drug response.\nA: Regulatory approval speed is administrative and not what SNP cataloguing aimed to explain.\nC: Somatic mutation rate is not the stated aim.\nD: Chromosome length is already known from the sequence itself.\nE: Disease prevalence is not the aim given for linking SNPs.",
+      "slide": 19,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 29-year-old woman with an autoimmune disease is about to start azathioprine, a purine analogue. Her physician wants to know which gene's variation is relevant to this drug before prescribing. Which gene should be considered?",
+      "options": [
+        "DPYD",
+        "UGT1A1",
+        "TPMT",
+        "G6PD",
+        "CFTR"
+      ],
+      "answer": 2,
+      "explanation": "In the gene-drug table, TPMT is paired with azathioprine and purine analogues, used in autoimmune disease and leukaemia.\nA: DPYD is paired with antineoplastic agents in colorectal neoplasms.\nB: UGT1A1 is paired with atazanavir and ritonavir in HIV infection.\nD: G6PD is paired with rasburicase in haemolytic anaemia.\nE: CFTR is paired with ivacaftor in cystic fibrosis.",
+      "slide": 17,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 67-year-old man with atrial fibrillation is started on warfarin. His clinic offers pharmacogenetic testing to anticipate how he will respond. Variation in which pair of genes is linked to warfarin?",
+      "options": [
+        "CYP2C19 and VKORC1",
+        "CYP2C9 and CYP2C19",
+        "CYP2D6 and VKORC1",
+        "CYP2C9 and SLCO1B1",
+        "CYP2C9 and VKORC1"
+      ],
+      "answer": 4,
+      "explanation": "The gene table links warfarin to both CYP2C9 and VKORC1, in cardiovascular disease.\nA: CYP2C19 is paired with clopidogrel, not warfarin.\nB: CYP2C19 is paired with clopidogrel; only CYP2C9 of this pair relates to warfarin.\nC: CYP2D6 is paired with codeine and antidepressants.\nD: SLCO1B1 is paired with simvastatin and myopathy.",
+      "slide": 17,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 38-year-old man with HIV is about to start abacavir. Before treatment, his team wants a genetic test that can predict a drug hypersensitivity reaction. Variation in which gene is relevant to abacavir?",
+      "options": [
+        "CYP3A5",
+        "HLA-B",
+        "IFNL3",
+        "UGT1A1",
+        "DPYD"
+      ],
+      "answer": 1,
+      "explanation": "HLA-B is listed with abacavir, phenytoin and allopurinol, in drug hypersensitivity.\nA: CYP3A5 is paired with tacrolimus in transplantation.\nC: IFNL3 is paired with peginterferon and ribavirin in hepatitis C.\nD: UGT1A1 is paired with atazanavir and ritonavir, not abacavir.\nE: DPYD is paired with antineoplastic agents in colorectal cancer.",
+      "slide": 17,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A genetics student reads that researchers have read the entire genetic code of one human and now catalogue the differences between people. The student wants the size of the sequence that was read, to appreciate how many positions can vary. How many base pairs did the Human Genome Project sequence?",
+      "options": [
+        "3.3 million",
+        "33 million",
+        "330 million",
+        "3.3 billion",
+        "33 billion"
+      ],
+      "answer": 3,
+      "explanation": "The Human Genome Project sequenced all 3.3 billion base pairs of the human genome.\nA: Far too small; this is about a thousandth of the genome.\nB: Still only a hundredth of the true size.\nC: Only a tenth of the genome.\nE: Ten times larger than the human genome.",
+      "slide": 19,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A clinical geneticist explains that whole-genome sequencing is now possible in a few hours because of advances in technology and falling costs. She tells a trainee that each individual differs from the reference genome in a very large number of places. About how many differences does the average person have compared with the reference genome?",
+      "options": [
+        "5-10 thousand",
+        "5-10 million",
+        "50-100 million",
+        "500-1000 million",
+        "5-10 billion"
+      ],
+      "answer": 1,
+      "explanation": "On average each individual has 5-10 million differences in their genome compared with the reference genome.\nA: This is a thousand times too low.\nC: Ten times higher than the estimate.\nD: Far above the estimate and about a fifth of the whole genome.\nE: More than the number of base pairs in the genome.",
+      "slide": 24,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A national programme lets participants access, understand and share their own digital health data, including donating it for research. It returns results to participants and works under strong privacy and data security principles, with the promise of reducing disparities. Which initiative do these aims describe?",
+      "options": [
+        "The Human Genome Project",
+        "The Stratified Medicine Programme",
+        "The Pharmacogenetics Testing Service",
+        "The Genomic Equality Alliance",
+        "The Precision Medicine Initiative"
+      ],
+      "answer": 4,
+      "explanation": "These are the aims of the Precision Medicine Initiative, including engaging participants as partners and opening up data and tools.\nA: The Human Genome Project sequenced the genome; it was not about sharing health data.\nB: Stratified medicine is a way of dividing patients, not a data-sharing initiative.\nC: A testing service is not described by these research and data aims.\nD: This is not an initiative named in the lecture.",
+      "slide": [
+        25,
+        26
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A biobank asks every new patient to consent to being followed through their health records for their whole lifetime, so it can identify who benefits from a treatment. Some patients worry about who will see the information and about losing control over its use. Which ethical issue is engaged most directly?",
+      "options": [
+        "Protection of patient privacy and autonomy",
+        "Equitable access to costly genomic tests",
+        "Training of healthcare staff in genetic counselling",
+        "Reconciling results with patient fears and values",
+        "Funding of implementation by public or private payers"
+      ],
+      "answer": 0,
+      "explanation": "Lifelong follow-up needs the patient's permission, which raises protecting patient privacy and autonomy.\nB: Access concerns spending on one segment of the population, not data control.\nC: Training and counselling are clinical issues, not consent and data use.\nD: Patient values concern fears about risk information, not the permission for follow-up.\nE: Funding is an implementation challenge, not the issue patients raised.",
+      "slide": [
+        30,
+        31
+      ],
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A health ministry in a region still lacking basic sanitation, immunisation and common medicines is asked to fund pharmacogenomic testing for one segment of its population. Critics object strongly. Which concern are they raising?",
+      "options": [
+        "Breach of confidentiality when genomic data are shared with researchers",
+        "Loss of autonomy when consent is given for lifelong follow-up",
+        "Lack of time for clinicians to provide genetic counselling",
+        "Patient fear of learning about disease risk information",
+        "Diverting resources to one segment while basic needs go unmet"
+      ],
+      "answer": 4,
+      "explanation": "Pharmacogenomics means spending more resources on one segment of the population, which is hard to justify where basic care is missing.\nA: This is a privacy concern, not an access one.\nB: This concerns consent for follow-up, not distribution of resources.\nC: This is a clinical-resource issue for clinicians, not the funding objection.\nD: This concerns individual patient values, not the cost to the system.",
+      "slide": 32,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A 56-year-old woman is offered a genomic test that could guide her management. She is anxious about discovering risk information and unsure which tests and treatments she would want. Which approach does the lecture support?",
+      "options": [
+        "Override her hesitation because genomic evidence outweighs personal views",
+        "Withhold the risk information so that she is not worried by it",
+        "Weigh her values, fears and preferences alongside the science, using decision aids",
+        "Leave the decision to the pharmacist because the test is pharmacogenomic",
+        "Offer testing only to patients who express no worries about results"
+      ],
+      "answer": 2,
+      "explanation": "Personalised medicine must take patients' values, fears and preferences into account alongside the science, possibly with decision aids.\nA: Patients have their own ideas, values and preferences that must be respected.\nB: Withholding information ignores her autonomy and the aim of informed choice.\nD: The decision belongs to the patient with her clinicians, not to one profession.\nE: Excluding people who worry would defeat the aim of tailoring care to patients.",
+      "slide": 34,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A medical school asks a student to summarise what personalised medicine is, since it draws on several fields at once. The student lists the disciplines it integrates. Which list is correct?",
+      "options": [
+        "Human genetics, pharmaceutics, health economics, clinical research and patient data management",
+        "Human and medical genetics, pharmaceutics, biomaterial banking, clinical research and patient data management",
+        "Medical genetics, radiology, biomaterial banking, clinical research and patient data management",
+        "Human and medical genetics, pharmaceutics, biomaterial banking, public health law and patient data management",
+        "Human and medical genetics, nursing, biomaterial banking, clinical research and health economics"
+      ],
+      "answer": 1,
+      "explanation": "Personalised medicine is a multidisciplinary integration of human and medical genetics, pharmaceutics, biomaterial banking, clinical research and patient data management.\nA: Health economics replaces medical genetics and biomaterial banking, which are listed disciplines.\nC: Radiology is not among the listed disciplines.\nD: Public health law is not among the listed disciplines.\nE: Nursing and health economics replace listed disciplines.",
+      "slide": 35,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    },
+    {
+      "stem": "A pain clinic finds that adults given the same codeine dose have very different responses, from no relief to toxicity. The pharmacologist says the gene encoding the activating enzyme is the main reason. What is the best description of that gene?",
+      "options": [
+        "Extremely polymorphic, with over 80 variant alleles causing variable enzymatic activity",
+        "Monomorphic, with a single allele producing the same activity in everyone",
+        "Moderately variable, with two alleles that either switch the enzyme on or off",
+        "Polymorphic only in ultra-rapid metabolisers, with a single poor-function allele",
+        "Highly conserved, with variants limited to a handful of rare families"
+      ],
+      "answer": 0,
+      "explanation": "CYP2D6 is extremely polymorphic: over 80 variant alleles cause variable enzymatic activity, explaining the range from poor to ultra-rapid metabolisers.\nB: A single allele would give the same response in everyone, not the observed spread.\nC: Two alleles cannot explain the full range of activities described.\nD: Variation includes both reduced-activity alleles and gene amplification, not one poor allele only.\nE: The variation is common enough to produce frequent poor and ultra-rapid metabolisers.",
+      "slide": 20,
+      "file": "IM [2.26] [IM GN 005.1] The genomic revolution personalised medicine 2026-2027_5c43c19c31a6e061db7523a7e42388e8.pdf"
+    }
+  ]
+}

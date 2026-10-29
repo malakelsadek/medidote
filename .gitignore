@@ -1,0 +1,5 @@
+# local-only files
+.vscode/
+_layout-test.html
+_lt.html
+_frame.html
