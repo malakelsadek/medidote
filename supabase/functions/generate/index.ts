@@ -148,6 +148,9 @@ Deno.serve(async (req) => {
     const attached = [...pictures].map(([fileId, f], n) => `Attached PDF ${n + 1} (${f.name}): ${f.pages.map((p, i) => `page ${i + 1} is [S${slides.findIndex((s) => s.file_id === fileId && s.page === p) + 1}]`).join(", ")}.`).join("\n");
 
     const client = new Anthropic();   // reads ANTHROPIC_API_KEY
+    const spend = async (r: { usage?: { input_tokens?: number; output_tokens?: number } }) => {   // real tokens per person per month, for the admin page's true cost
+      try { await admin.rpc("add_ai_tokens", { p_user: who.user.id, p_month: month, p_in: r.usage?.input_tokens ?? 0, p_out: r.usage?.output_tokens ?? 0 }); } catch (e) { console.error("token log", e); }
+    };
     const ask = async (content: string | unknown[], system = SYSTEM, schema: unknown = SCHEMA) => {
       const res = await client.beta.messages.create({
         model: MODEL,
@@ -158,6 +161,7 @@ Deno.serve(async (req) => {
         output_config: { effort: "medium", format: { type: "json_schema", schema } },
         messages: [{ role: "user", content }],
       } as never);
+      await spend(res);
       return res;
     };
     const tagOf = new Map(slides.map((s, i) => [`${s.file_id}:${s.page}`, i + 1]));
@@ -240,6 +244,7 @@ ${JSON.stringify(flagged)}`)).filter(wellFormed);
           output_config: { effort: "medium", format: { type: "json_schema", schema: { type: "object", properties: { picks: { type: "array", items: { type: "integer" } } }, required: ["picks"], additionalProperties: false } } },
           messages: [{ role: "user", content: withDocs("Slides:\n\n" + material + "\n\nQuestions:\n" + list + "\n\nReturn one pick (zero-based option index) per question, in order.") }],
         } as never);
+        await spend(vres);
         const picks: number[] = JSON.parse((vres.content.find((b: { type: string }) => b.type === "text") as { text: string } | undefined)?.text ?? "{}").picks ?? [];
         if (picks.length === checked.length) checked = checked.filter((x: { answer: number }, i: number) => picks[i] === x.answer);
       } catch (e) { console.error("blind check skipped", e); }

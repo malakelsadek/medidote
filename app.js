@@ -219,14 +219,17 @@ const mkCtx = () => {
 };
 const wait = ms => new Promise(r => setTimeout(r, ms));
 let audioQ = Promise.resolve();                           // one audioOn at a time so two quick sounds can't swap the context under each other
-const audioOn = () => audioQ = audioQ.then(async () => {
-  if (actx && actx.state === 'closed') actx = null;
-  actx ||= mkCtx();
+const hush = () => { clearTimeout(keepT); keep?.pause(); try { if (navigator.audioSession) navigator.audioSession.type = 'auto'; } catch {} };
+const kick = () => {                                      // keep the media channel open while she's studying (30s after the last sound), not toggled around every sound
   try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
   if (!keep) { keep = new Audio(SILENT_WAV); keep.loop = true; keep.preload = 'auto'; }
   keep.play().catch(() => {});
-  clearTimeout(keepT);
-  keepT = setTimeout(() => { keep.pause(); try { if (navigator.audioSession) navigator.audioSession.type = 'auto'; } catch {} }, 2200);
+  clearTimeout(keepT); keepT = setTimeout(hush, 30000);
+};
+const audioOn = () => audioQ = audioQ.then(async () => {
+  if (actx && actx.state === 'closed') actx = null;
+  actx ||= mkCtx();
+  kick();
   if (actx.state !== 'running') {
     await Promise.race([actx.resume().catch(() => {}), wait(400)]);
     if (actx.state !== 'running') {                       // stuck: throw it away and make a fresh one
@@ -239,9 +242,11 @@ const audioOn = () => audioQ = audioQ.then(async () => {
 // unlock on the first touch (iOS only allows starting audio from a tap), and wake up again when the app returns to the foreground
 // ponytail: we resume on every tap/return rather than tracking exactly which events iOS killed audio on; it's cheap and idempotent
 const wake = () => { if (sound && actx && actx.state !== 'running') audioOn(); };
+// iOS can leave the context saying "running" after the app was backgrounded while it is really dead, so drop it on the way out and rebuild on the next tap
+const away = () => { hush(); if (actx) { try { actx.close(); } catch {} actx = null; } };
 ['pointerdown', 'touchend', 'keydown'].forEach(e => addEventListener(e, () => { if (sound && !actx) audioOn(); else wake(); }, { passive: true, capture: true }));
-document.addEventListener('visibilitychange', () => { if (!document.hidden) wake(); });
-addEventListener('pageshow', wake);
+document.addEventListener('visibilitychange', () => { if (document.hidden) away(); });
+addEventListener('pagehide', away);
 // soft pop on any button/toggle; answer choices and the right/wrong buttons have their own sounds
 addEventListener('click', e => {
   const b = e.target.closest('button, .btn, .tgl, [role=button]');
@@ -250,10 +255,10 @@ addEventListener('click', e => {
 async function play(kind) {
   if (!sound) return;
   try {
-    await audioOn();
+    if (actx?.state === 'running') kick(); else await audioOn();   // fast path: no queue, no waiting when the context is already live
     const out = actx.createGain(); out.gain.value = .9; out.connect(actx.destination);
     const bell = (f, t, len = .55, vol = .5) => {            // sine + 2x + 3x partials, fast attack, long exponential decay
-      const at = actx.currentTime + t + .03;
+      const at = actx.currentTime + t + .01;
       [[1, 1], [2, .35], [3, .12]].forEach(([m, v]) => {
         const o = actx.createOscillator(), g = actx.createGain();
         o.type = 'sine'; o.frequency.value = f * m;
@@ -262,13 +267,13 @@ async function play(kind) {
       });
     };
     const tick = () => {                                     // soft "pop": sine with a gentle attack and a low glide down, ~140ms; a little above the very first, quiet version
-      const at = actx.currentTime + .03, o = actx.createOscillator(), g = actx.createGain();
+      const at = actx.currentTime + .01, o = actx.createOscillator(), g = actx.createGain();
       o.frequency.setValueAtTime(680, at); o.frequency.exponentialRampToValueAtTime(430, at + .11);
       g.gain.setValueAtTime(.0001, at); g.gain.exponentialRampToValueAtTime(.2, at + .014); g.gain.exponentialRampToValueAtTime(.0001, at + .15);
       o.connect(g).connect(out); o.start(at); o.stop(at + .16);
     };
     const bonk = (f, t) => {                                 // low sine through a lowpass, gentle pitch drop
-      const at = actx.currentTime + t + .03, o = actx.createOscillator(), g = actx.createGain(), lp = actx.createBiquadFilter();
+      const at = actx.currentTime + t + .01, o = actx.createOscillator(), g = actx.createGain(), lp = actx.createBiquadFilter();
       o.type = 'triangle'; o.frequency.setValueAtTime(f, at); o.frequency.exponentialRampToValueAtTime(f * .88, at + .22);
       lp.type = 'lowpass'; lp.frequency.value = 700;
       g.gain.setValueAtTime(.0001, at); g.gain.exponentialRampToValueAtTime(.7, at + .015); g.gain.exponentialRampToValueAtTime(.0001, at + .3);
@@ -371,8 +376,8 @@ addEventListener('resize', fitNav);
 function renderNav() {
   const nav = document.getElementById('nav');
   nav.className = min ? 'min' : '';
-  nav.innerHTML = `<div class="brand"><img src="icon-192.png" alt="" width="36" height="36" style="border-radius:9px;display:block;flex:none">${min ? '' : '<span>ankidote</span>'}</div>`
-    + [['today', 'Study'], ['stats', 'Stats'], ['folders', 'Folders'], ['decks', 'Decks'], ['slides', 'Slides', 'wo'], ['generate', 'Generate', 'wo'], ['community', 'Community', 'wo'], ['guide', 'Guide', 'wo'], ['subscription', 'ANKIDOTE+', 'wo'], ['settings', 'Settings', 'wo']].map(([v, l, c = '']) => (v === 'subscription' ? accountBtn() : '') +`<button class="nv ${c} ${v === view ? 'on' : ''}" data-v="${v}" title="${l}">${svg(ICONS[v])}<span>${l}</span></button>`).join('')
+  nav.innerHTML = `<div class="brand"><img src="icon-192.png" alt="" width="36" height="36" style="border-radius:9px;display:block;flex:none">${min ? '' : '<span>medidote</span>'}</div>`
+    + [['today', 'Study'], ['stats', 'Stats'], ['folders', 'Folders'], ['decks', 'Decks'], ['slides', 'Slides', 'wo'], ['generate', 'Generate', 'wo'], ['community', 'Community', 'wo'], ['guide', 'Guide', 'wo'], ['subscription', 'MEDIDOTE+', 'wo'], ['settings', 'Settings', 'wo']].map(([v, l, c = '']) => (v === 'subscription' ? accountBtn() : '') +`<button class="nv ${c} ${v === view ? 'on' : ''}" data-v="${v}" title="${l}">${svg(ICONS[v])}<span>${l}</span></button>`).join('')
     + `<button class="nv more ${['more', 'slides', 'generate', 'community', 'subscription', 'guide', 'settings'].includes(view) ? 'on' : ''}" data-v="more" title="More">${svg(ICONS.more)}<span>More</span></button>`
     + `<button class="nv tog" id="tog" title="${min ? 'Expand' : 'Minimize'}">${svg(ICONS.chev)}<span>Minimize</span></button>`;
   nav.querySelectorAll('[data-v]').forEach(b => b.onclick = () => { if (b.dataset.v === 'tour') return walkthrough(); view = b.dataset.v; editing = false; if (view === 'today') folder = null; home(); });
@@ -513,7 +518,7 @@ function newFolderDialog(done) {
 // features switched off for now: their pages just say "coming soon" (set to false to turn the real page back on)
 const COMING_SOON = { generate: false, subscription: true };
 const soon = title => `<h1 class="pt">${title}</h1><p class="tag">Coming soon</p>`;
-const PLAN = { name: 'ankidote Pro', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 100;   // keep TRIAL_QUESTIONS in step with generate/index.ts
+const PLAN = { name: 'medidote Pro', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 100;   // keep TRIAL_QUESTIONS in step with generate/index.ts
 const planOf = s => {
   const now = Date.now();
   if (s?.status === 'active' && s.current_period_end && new Date(s.current_period_end) > now) return { k: 'active', until: new Date(s.current_period_end) };
@@ -1133,7 +1138,7 @@ async function home(msg = '') {
   } else if (view === 'more') {
     const row = (v, t, d) => `<button class="morerow" data-go="${v}"><span class="mi">${svg(ICONS[v], 28)}</span><span class="mt"><b>${t}</b><small>${d}</small></span><span class="chv">›</span></button>`;
     body = `<h1 class="pt">More</h1><div style="height:20px"></div>${banner}
-    <div class="morelist">${row('slides', 'Slides', 'Your uploaded slides, by deck')}${row('generate', 'Generate', 'Write questions from your slides with AI')}${row('community', 'Community', 'Decks shared by other students')}${row('subscription', 'Subscription', 'Your plan and AI usage')}${row('guide', 'Guide', 'Install the app')}${row('settings', 'Settings', 'Theme, sounds and reminders')}</div>`;
+    <div class="morelist">${row('slides', 'Slides', 'Your uploaded slides, by deck')}${row('generate', 'Generate', 'Write questions from your slides with AI')}${row('community', 'Community', 'Decks shared by other students')}${row('subscription', 'Subscription', 'Your plan and AI usage')}${row('guide', 'Guide', 'How it works and installing the app')}${row('settings', 'Settings', 'Theme, sounds and reminders')}</div>`;
   } else if (view === 'decks') {
     const names = [...new Set(cards.map(c => c.deck))].sort((a, b) => folderOf(a).localeCompare(folderOf(b)) || a.localeCompare(b));
     body = `<div class="toprow"><div><h1 class="pt">All decks</h1><p class="tag">${names.length ? names.length + ' deck' + (names.length === 1 ? '' : 's') + ' · tap one to study it' : 'tap + to add your first deck'}</p></div>
@@ -1221,19 +1226,22 @@ async function home(msg = '') {
     body = `<h1 class="pt">Stats</h1><p class="tag">how you're doing, and where to focus</p><div style="height:18px"></div><div class="sw"><div class="stats">${inner}</div></div>`;
   } else if (view === 'guide') {
     const plat = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(navigator.userAgent) ? 'android' : 'desktop';
-    body = `<h1 class="pt">Guide</h1><p class="tag">install ankidote on your device</p><div style="height:18px"></div>${banner}
-    <p class="gdesc" style="margin:18px 0 0">Everything lives in your account, so there are no folders to set up and no files to keep track of. Sign in on any device and your decks, slides and progress are there.</p>
-    <button id="wt" style="margin:22px 0 18px">Replay the app walkthrough</button>
+    const how = [['slides', 'Add slides', 'Upload your lecture PDFs and file them under a deck.'], ['generate', 'Generate', 'AI writes exam-style case questions from them.'], ['today', 'Study', 'A short daily session. Misses come back sooner.'], ['stats', 'Track', 'See your streak, weak topics and what is due.']];
+    body = `<h1 class="pt">Guide</h1><p class="tag">how medidote works, and how to install it</p><div style="height:18px"></div>${banner}
+    <h2>How it works</h2>
+    <div class="istepgrid" style="margin-bottom:14px">${how.map(([v, t, d], i) => `<div class="istep"><span class="inum">${i + 1}</span><span class="iico">${svg(ICONS[v], 34)}</span><b>${t}</b><small>${d}</small></div>`).join('')}</div>
+    <p class="gdesc" style="margin:0 0 14px">Everything lives in your account, so there are no files to keep track of. Sign in on any device and your decks, slides and progress are there.</p>
+    <button id="wt" style="margin:0 0 26px">Replay the app walkthrough</button>
     <h2>Install it as an app</h2>
-    <p class="gdesc" style="margin:0 0 14px">Puts ankidote on your home screen and opens it full screen, like any other app. Free, and about a minute.</p>
+    <p class="gdesc" style="margin:0 0 14px">Puts medidote on your home screen and opens it full screen, like any other app. Free, and about a minute.</p>
     <div class="seg2 vtog" style="margin-bottom:14px">${[['ios', 'iPad / iPhone'], ['android', 'Android'], ['desktop', 'Computer']].map(([k, l]) => `<button data-inst="${k}" class="${k === plat ? 'on' : ''}">${l}</button>`).join('')}</div>
     ${[
-      ['ios', [[ICONS_I.safari, 'Open in Safari', 'Sign in first'], [ICONS_I.share, 'Tap Share', 'Square with an arrow, by the address bar (or ••• first)'], [ICONS_I.plus, 'Add to Home Screen', 'Scroll the menu to find it'], [ICONS_I.tick, 'Tap Add', 'The ankidote icon is on your home screen']]],
+      ['ios', [[ICONS_I.safari, 'Open in Safari', 'Sign in first'], [ICONS_I.share, 'Tap Share', 'Square with an arrow, by the address bar (or ••• first)'], [ICONS_I.plus, 'Add to Home Screen', 'Scroll the menu to find it'], [ICONS_I.tick, 'Tap Add', 'The medidote icon is on your home screen']]],
       ['android', [[ICONS_I.safari, 'Open in Chrome', 'Sign in first'], [ICONS_I.dots, 'Tap the ⋮ menu', 'Top corner'], [ICONS_I.plus, 'Install app', 'Or Add to Home screen'], [ICONS_I.tick, 'Confirm', 'The icon appears on your home screen']]],
       ['desktop', [[ICONS_I.safari, 'Open in Chrome or Edge', 'Sign in first'], [ICONS_I.screen, 'Click the install icon', 'Right end of the address bar'], [ICONS_I.tick, 'Install', 'It opens in its own window']]],
     ].map(([k, steps]) => `<div class="istepgrid" data-ipanel="${k}" ${k === plat ? '' : 'hidden'}>${steps.map(([ic, t, d], i) => `<div class="istep"><span class="inum">${i + 1}</span><span class="iico">${svg(ic, 34)}</span><b>${t}</b><small>${d}</small></div>`).join('')}</div>`).join('')}
     <p class="fine" style="margin:14px 0 0">Open it from the new icon. It needs internet, and updates itself when you close it fully and reopen it. To remove it, press and hold the icon.</p>
-    <p class="fine">Study a little every day.</p>`;
+`;
   } else if (view === 'slides' || view === 'generate') {
     const gen = view === 'generate';
     const files = chk(await sb.from('slide_files').select('id,file_name,week,page_count,storage_path,deck_id').order('file_name'));
@@ -1321,16 +1329,18 @@ async function home(msg = '') {
       <div class="set"><div><strong>Try the sounds</strong><p>No sound? Turn the volume up and check the device isn't muted (the bell icon in Control Center, or the side switch).</p></div>
         <div class="row" style="flex-wrap:nowrap;flex:none"><button id="t-ok">Correct</button><button id="t-no">Wrong</button></div></div>`)}
     ${card('Help', `
-      <div class="set"><div><strong>App walkthrough</strong><p>A quick tour of what ankidote can do.</p></div>
+      <div class="set"><div><strong>App walkthrough</strong><p>A quick tour of what medidote can do.</p></div>
         <div class="row"><button id="wt">Start</button></div></div>
       <div class="set"><div><strong>Guide</strong><p>How to install the app.</p></div>
         <div class="row"><button data-go="guide">Open</button></div></div>
-      <div class="set"><div><strong>Terms and privacy</strong><p>The rules of using ankidote and how your information is handled.</p></div>
+      <div class="set"><div><strong>Terms and privacy</strong><p>The rules of using medidote and how your information is handled.</p></div>
         <div class="row"><a class="btn" href="legal/terms.html" target="_blank" rel="noopener">Terms</a><a class="btn" href="legal/privacy.html" target="_blank" rel="noopener">Privacy</a></div></div>`)}
     ${reported.length ? card('Reported questions', `<div class="set"><div><strong>${reported.length} hidden question${reported.length === 1 ? '' : 's'}</strong><p>Questions you reported are kept out of your studying. Open them to look again or restore them.</p></div><div class="row"><button data-go="reported">Open</button></div></div>`) : ''}
     ${card('Account', `
       <div class="set"><div><strong>Signed in</strong><p>${esc(me?.email || 'Your account')}</p></div>
-        <div class="row"><button id="so">Sign out</button></div></div>`)}`;
+        <div class="row"><button id="so">Sign out</button></div></div>
+      <div class="set"><div><strong>Delete account</strong><p>Permanently removes your account, decks, slides and progress.</p></div>
+        <div class="row"><button class="danger" id="delacct">Delete</button></div></div>`)}`;
   }
   const screen = view + '|' + folder, still = screen === lastScreen;
   lastScreen = screen;
@@ -1375,6 +1385,13 @@ async function home(msg = '') {
   });
   if (q('#wt')) q('#wt').onclick = walkthrough;
   if (q('#so')) q('#so').onclick = () => sb.auth.signOut().then(() => location.reload());
+  if (q('#delacct')) q('#delacct').onclick = () => confirmDialog('Delete your account?', 'This permanently deletes your account, decks, questions, slides, progress and reports, on every device. This cannot be undone.', 'Delete account', async () => {
+    const { data, error } = await sb.functions.invoke('delete-account');
+    if (error || data?.error) return home('Could not delete the account. Try again.');
+    try { localStorage.clear(); } catch {}
+    await sb.auth.signOut().catch(() => {});   // the user is already gone on the server, so this only clears the local session
+    location.reload();
+  });
   $.querySelectorAll('[data-inst]').forEach(b => b.onclick = () => { $.querySelectorAll('[data-inst]').forEach(x => x.classList.toggle('on', x === b)); $.querySelectorAll('[data-ipanel]').forEach(p => p.hidden = p.dataset.ipanel !== b.dataset.inst); });
   if (q('#slm')) q('#slm').onchange = e => { slideMode = e.target.value; try { localStorage.setItem('slidemode', slideMode); } catch {} };
   if (q('#zm')) {   // applied on release, because zooming while dragging would move the slider out from under the finger
@@ -1556,13 +1573,21 @@ document.addEventListener('touchmove', e => { if (e.touches.length > 1) e.preven
 
 // splash on every launch; the walkthrough only on the first one (or when replayed from the Guide)
 const TOUR = [
-  { h: 'Welcome to ankidote', t: 'A quick tour of the app. Use Next and Back to move around, or Skip any time.' },
-  { s: '[data-v="today"]', v: 'today', h: 'Study', t: 'Your daily questions live here. Missed ones come back sooner, ones you know come back later.' },
-  { s: '[data-v="folders"]', v: 'folders', h: 'Folders', t: 'Group your decks by subject. Tap + to create a folder.' },
-  { s: '[data-v="decks"]', v: 'decks', h: 'Decks', t: 'Every deck you have imported. Tap one to study it, or tap + to add a new one.' },
-  { s: '[data-v="stats"]', v: 'stats', h: 'Stats', t: 'See your streak and which topics need the most work.' },
-  { s: '[data-v="settings"]', v: 'settings', h: 'Settings', t: 'Theme and sounds. You can replay this tour from here or the Guide.' },
-  { h: 'Add to Home Screen', t: 'In Safari tap Share, then Add to Home Screen, and ankidote opens full-screen like an app.' },
+  { h: 'Welcome to medidote', t: 'Turn your slides into exam-style questions, then study them. Works on any device.' },
+  { s: '[data-v="slides"]', v: 'slides', h: '1 · Add your slides', t: 'Upload your lecture PDFs and file each under a deck.' },
+  { s: '[data-act="uploadslides"]', v: 'slides', h: 'Upload', t: 'Press + to add a PDF. Questions link back to the exact slide.' },
+  { s: '[data-v="generate"]', v: 'generate', h: '2 · Generate questions', t: 'AI writes hard, exam-level case questions from your slides.' },
+  { s: '.gform', v: 'generate', h: 'You choose', t: 'Pick the slides, the deck and how many questions. Every option comes with an explanation.' },
+  { s: '#ggo', v: 'generate', h: 'Generate', t: 'One press and your deck is ready. AI can make mistakes, so you can report any question.' },
+  { s: '[data-v="today"]', v: 'today', h: '3 · Study', t: 'A short daily session. Missed questions come back sooner.' },
+  { s: '.hero', v: 'today', h: 'Today at a glance', t: 'What is due, new, or worth redoing. Pick a mode and start.' },
+  { s: '#hc', v: 'today', h: 'Hide choices first', t: 'Recall the answer before you see the options. Harder, but it sticks.' },
+  { s: '[data-v="folders"]', v: 'folders', h: 'Folders', t: 'Group decks by subject, each with its own colour.' },
+  { s: '[data-v="decks"]', v: 'decks', h: 'Decks', t: 'All your decks. Open one to study it, or press + to add one.' },
+  { s: '[data-v="stats"]', v: 'stats', h: '4 · Track progress', t: 'See where you stand and what to fix.' },
+  { s: '.grid, .card.empty', v: 'stats', h: 'Your numbers', t: 'Streak, what you know, weak topics and the questions you keep missing.' },
+  { s: '.nv:not(.acct)[data-v="settings"]', v: 'settings', h: 'Settings', t: 'Theme, size, sounds and slides. Replay this tour from here.' },
+  { s: '[data-v="guide"]', v: 'guide', h: 'Install it', t: 'Add medidote to your home screen or desktop to open it like an app.' },
 ];
 function walkthrough() {
   if (document.querySelector('.tr')) return;
@@ -1585,8 +1610,11 @@ function walkthrough() {
     card.querySelector('#nx').onclick = () => last ? end() : (i++, step());
     if (i) card.querySelector('#bk').onclick = () => (i--, step());
     if (!last) card.querySelector('#sk').onclick = end;
-    setTimeout(() => { // wait for the view to render
-      const t = S.s && document.querySelector(S.s); t?.scrollIntoView({ block: 'nearest' });
+    const place = (tries = 0) => { // views load slides and stats first, so wait for the target to exist
+      let t = S.s && document.querySelector(S.s);
+      if (!t && S.s && !S.s.includes('data-v=') && tries < 10) return setTimeout(place, 150, tries + 1);
+      if ((!t || !t.getBoundingClientRect().width) && S.s?.includes('data-v=')) t = document.querySelector('[data-v="more"]'); // folded into More on small screens
+      t?.scrollIntoView({ block: 'nearest' });
       // interface zoom: rects and fixed-position styles can use different units, so measure the ratio with a probe
       const pr = document.createElement('div'); pr.style.cssText = 'position:fixed;left:100px;top:0;width:1px;height:1px'; ov.append(pr);
       const f = pr.getBoundingClientRect().left / 100 || 1; pr.remove();
@@ -1602,13 +1630,14 @@ function walkthrough() {
       card.style.top = Math.max(12, Math.min(y, H - h - 12)) + 'px';
       card.style.opacity = 1;
       requestAnimationFrame(() => requestAnimationFrame(() => hole.style.transition = card.style.transition = ''));
-    }, 150);
+    };
+    setTimeout(place, 150);
   };
   step();
 }
 function splash() {
   const el = document.createElement('div'); el.className = 'ob';
-  el.innerHTML = '<div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">ankidote</div><p>the antidote to medical exam stress</p></div></div>';
+  el.innerHTML = '<div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>';
   document.body.append(el);
   setTimeout(() => {
     let seen = false; try { seen = localStorage.getItem('onboarded') === '1'; } catch {}
@@ -1623,7 +1652,7 @@ function signIn() {
   document.getElementById('nav').style.display = 'none';
   $.innerHTML = `<div class="auth">
     <div class="apanel">
-      <div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">ankidote</div><p>the antidote to medical exam stress</p></div></div>
+      <div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>
       <h2 class="ahead">Turn your lecture slides into exam-ready questions</h2>
       <ul class="afeat">
         <li><span class="ai">${svg('<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>', 24)}</span><div><b>Case-study questions from your slides</b><small>Written by AI at exam level, with a link back to the exact slide.</small></div></li>

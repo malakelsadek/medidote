@@ -1,8 +1,8 @@
-# ankidote
+# medidote
 
 **The antidote to medical exam stress.**
 
-ankidote is a small study app that turns your lecture slides and notes into exam-style multiple-choice questions and then makes sure you actually remember them, using the same spaced repetition idea as Anki.
+medidote is a small study app that turns your lecture slides and notes into exam-style multiple-choice questions and then makes sure you actually remember them, using the same spaced repetition idea as Anki.
 
 <p align="center">
   <img src="screenshots/today.png" alt="The Today page: questions to study, streak, and folders" width="820">
@@ -15,7 +15,7 @@ I built this for my sister, who is a medical student. She was using a question b
 So the idea is simple:
 
 1. An AI (Claude or ChatGPT) writes single-best-answer questions from a lecture.
-2. ankidote imports them and schedules every question for review.
+2. medidote imports them and schedules every question for review.
 3. The questions she finds hard come back sooner. The ones she knows come back later.
 
 It started as a test for one person, so it is deliberately small: no accounts, no server, no subscription. Everything is stored on her iPad.
@@ -55,7 +55,7 @@ The **Stats** tab shows how much you know, how the last two weeks went, which to
 It is a web app you add to the home screen, so it opens full screen like a normal app and works offline. It adapts to the screen: a sidebar on iPad, a tab bar on iPhone.
 
 <p align="center">
-  <img src="screenshots/phone.png" alt="ankidote on an iPhone" width="640">
+  <img src="screenshots/phone.png" alt="medidote on an iPhone" width="640">
 </p>
 
 ## Make it yours

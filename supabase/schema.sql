@@ -1,4 +1,4 @@
--- ankidote database. Paste into Supabase -> SQL Editor -> Run.
+-- medidote database. Paste into Supabase -> SQL Editor -> Run.
 -- Every table is private per user (row level security). Deleting a user deletes all their rows.
 
 create table folders (

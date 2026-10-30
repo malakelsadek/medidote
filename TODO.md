@@ -1,22 +1,22 @@
-# ankidote: progress and to-do
+# medidote: progress and to-do
 
 Last updated: 2026-10-29. Nothing below is on the live site yet (commits are local).
 
 ## Launch plan
 - AI generator only: the copy-a-prompt Guide is gone; **importing a .json deck stays** (Data page, Add a deck)
-- Testing: my own Claude key. Launch: every new user gets **1 month free** on a limited AI allowance, then subscribes (ankidote Pro, EGP 500 a month)
+- Testing: my own Claude key. Launch: every new user gets **1 month free** on a limited AI allowance, then subscribes (medidote Pro, EGP 500 a month)
 - First: streamline the app and get question quality right
 
 ## Done
 
 **Setup and accounts**
-- [x] Supabase project (Data API on, auto RLS on), Claude API workspace `ankidote` (key kept private), Cloudflare site (`ankidote.elsadek-malak.workers.dev`), Google login, Supabase URL and Redirect URLs
+- [x] Supabase project (Data API on, auto RLS on), Claude API workspace `medidote` (key kept private), Cloudflare site (`medidote.elsadek-malak.workers.dev`), Google login, Supabase URL and Redirect URLs
 
 **Backend and app**
 - [x] Per-user database (`supabase/schema.sql`), sign-in (Google or emailed link), cards, folders, history and settings stored in the account
 - [x] Slides: PDF to private storage, page text saved, cover image; Slides tab (tiles, deck filter, upload to one or more decks, multi-select delete); slides belong to a deck, renaming a deck keeps them, deleting a deck or folder deletes its slides
 - [x] Generate with AI tab (pick deck, files, page range, 10-50 questions); Claude Sonnet 5.5 writes case-study questions with an explanation for every option and the source slides; picture slides (tables, diagrams, charts) are shown to the AI
-- [x] Plan: free period (see below), "ankidote Pro" EGP 500 a month, 400 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
+- [x] Plan: free period (see below), "medidote Pro" EGP 500 a month, 400 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
 - [x] Subscription shows "Coming soon" (`COMING_SOON` in app.js); Generate is open to everyone
 - [x] Community tab placeholder ("Coming soon")
 - [x] Privacy policy (`legal/privacy.html`, name and email filled in)
@@ -38,6 +38,16 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] 2026-10-29: Rewrote the guide: 7 short rules (correct first, case-study stem, application not recall, right option never the longest, near-miss wrong options, things to avoid, spread and variety) and a shorter system prompt
 - [x] 2026-10-29: Backups removed (export, restore, reminders, banner, Settings section); deck .json import and slide upload stay
 - [x] 2026-10-29: Stats revamp: Keep missing now lists the decks you keep missing with a Study button each (and Study all missed); new cards: Study days heat map (13 weeks), Memory strength, When you study best, Deck progress. Needs a look in the browser
+- [x] 2026-10-30: Walkthrough revamped as a 4-part story (add slides, generate, study, track progress) with 15 steps that point at real controls (upload +, generate form and button, today hero, hide-choices, stats tiles); device-neutral wording; steps wait for slow views and tabs folded into More point at More on small screens
+- [x] 2026-10-30: Guide tab cleaned up: new "How it works" 4-step row (slides, generate, study, track), then the walkthrough replay button, then install steps; removed the stray closing line
+- [x] 2026-10-30: Walkthrough Settings step now highlights the Settings tab, not the profile button (both share `data-v="settings"`)
+- [x] 2026-10-30: Delete account in Settings (new `delete-account` Edge Function removes slide files and the auth user; everything else cascades); privacy page updated. Needs `supabase functions deploy delete-account` (or paste in the dashboard) and a test with a throwaway account
+- [x] 2026-10-30: Admin dashboard: profile pictures and names in the Users table, and the admin emails (`ADMIN_EMAILS`) are left out of every number. Re-run `008_admin_stats.sql` and redeploy the `admin` function
+- [x] 2026-10-30: Admin dashboard: change a person's plan (paid 30 days / 1 year, free trial 7 / 30 days, end access) from the Users table; real AI cost from tokens logged per request (`009_ai_tokens.sql`, `add_ai_tokens`, `PRICE_IN`/`PRICE_OUT` in the admin page). Run 009 and 008, then redeploy `generate` and `admin`
+- [x] 2026-10-30: Admin dashboard: Money made (all time and this month), Paid each month, income per month chart (new `payments` table, recorded when you mark someone Paid; gifts are not counted); reported questions: Download report (.md) and Delete all. Run `010_money_and_reports.sql`, then `008` again, redeploy `admin`
+- [x] 2026-10-30: Walkthrough card widened from 340px to 460px (still shrinks to fit small screens)
+- [x] 2026-10-30: Walkthrough text cut down to one short sentence or two per step
+- [x] 2026-10-30: Sound lag/dropout fix: sounds play instantly when the audio is live (no queue), media channel stays open 30s instead of 2s so it isn't reopened for every sound, audio is rebuilt after the app was in the background (needs an iPad re-test)
 - [x] 2026-10-29: Stats layout follows the width of the page itself (container queries, so it also follows interface size and the sidebar): 1 column on phones, 2 columns from about 620px, tiles 4 across from about 860px; progress and tiles always full width; Last 14 days is wide and Study days narrow with square cells, Memory strength sits beside Coming up; with a minimized sidebar the page uses the full width (3 cards per row from about 1250px)
 - [x] 2026-10-29: Folder colours: 12 colours plus the theme colour, picked when creating a folder or from Edit, then tap the folder (rename badge); the colour shows on the folder tile and on its decks. Stored with the folder list (`fm`)
 - [x] 2026-10-29: Add a deck popup redone (pick the .json first, see its name and question count, then the slides it refers to: already in your account / attached now / missing) and the Data tab removed. Slides and decks connect on their own: slide files already in the account are linked to the new deck without uploading again, and uploading slides later ticks the decks whose questions name those files. Needs a real test with a deck and PDFs
@@ -45,7 +55,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 ## To do next
 
 ### Admin dashboard (do later)
-- [ ] Set it up and look at it: run `supabase/008_admin_stats.sql`, deploy the `admin` function (`supabase/functions/admin/index.ts`), add the `ADMIN_EMAILS` secret, add `http://localhost:8001` to the Supabase Redirect URLs, then double-click `start-admin.bat` in the `ankidote-admin` folder. Check phone width and fix anything off
+- [ ] Set it up and look at it: run `supabase/008_admin_stats.sql`, deploy the `admin` function (`supabase/functions/admin/index.ts`), add the `ADMIN_EMAILS` secret, add `http://localhost:8001` to the Supabase Redirect URLs, then double-click `start-admin.bat` in the `medidote-admin` folder (desktop only, no phone view needed)
 - [ ] Later: put it behind Cloudflare Access if it is ever put online, add real cost once the Claude Console shows it, and add more numbers as you find you need them (retention, drop-off, income once Paymob exists)
 
 ### Test the AI (needs a few dollars of credit)
@@ -71,6 +81,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [ ] **Claude API credit**: $5 to start testing, then pay as you go. Rough guess $0.012 per question, so a free-period student using all 100 questions costs about $1.20 and a paying student's 400 questions about $5. Check the real figure in the Claude Console, Usage, and set a monthly spend limit (start $100)
 - [ ] **Supabase custom auth domain** (fixes the odd `...supabase.co` link on the sign-in screen): about $10 a month, check current pricing. Needs Pro and my own domain
 - [ ] **Email sender for sign-in links**: Supabase's built-in sender allows only a few emails an hour, so use a custom one such as Resend or Brevo (free plans cover this size, about $0)
+- [ ] Later, after the domain is bought: set up Brevo (or Resend) as the custom email sender. Verify the domain with them, then in Supabase go to Authentication, Emails, SMTP Settings and paste the SMTP details and a from-address on the domain. Until then, Google sign-in covers it (no emails involved)
 - Free: Cloudflare hosting and a custom domain on it, publishing the Google login (only name, email and picture are asked for)
 - Later: Apple Developer Program $99 a year (App Store); Paymob charges a fee per payment, check when applying
 - Rough first month: about $45-65 fixed ($25 Supabase + $10 custom auth domain + $1.50 domain + $5-10 Claude) plus Claude cost per student
@@ -86,7 +97,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] 2026-10-29: Generate: bigger step titles, shorter notes, and a new deck can be named Auto (from the slide file title, made unique) or typed
 - [x] 2026-10-29: Interface size (zoom) is now per device: it is kept in this browser only and no longer synced through the account, so a phone, an iPad and a laptop can each have their own size
 - [x] 2026-10-29: Scrollbars restyled app-wide: thin, rounded, theme colours, no white track or arrows
-- [x] 2026-10-29: Admin dashboard, kept OUT of the app and the repo: a separate private page in `ankidote-admin` (a folder next to this project, not in git, never uploaded with the app). Double-click `start-admin.bat` to open it at http://localhost:8001. Tiles (users, active, paying, AI questions and estimated cost), new users per week, plans, AI use per month, content counts, a searchable user table and the latest reports. Data comes from `supabase/008_admin_stats.sql` through the `admin` Edge Function, which refuses anyone not in its `ADMIN_EMAILS` secret. To switch on: run 008, deploy `supabase/functions/admin/index.ts`, add the `ADMIN_EMAILS` secret, add `http://localhost:8001` to the Supabase Redirect URLs. Needs a look in the browser
+- [x] 2026-10-29: Admin dashboard, kept OUT of the app and the repo: a separate private page in `medidote-admin` (a folder next to this project, not in git, never uploaded with the app). Double-click `start-admin.bat` to open it at http://localhost:8001. Tiles (users, active, paying, AI questions and estimated cost), new users per week, plans, AI use per month, content counts, a searchable user table and the latest reports. Data comes from `supabase/008_admin_stats.sql` through the `admin` Edge Function, which refuses anyone not in its `ADMIN_EMAILS` secret. To switch on: run 008, deploy `supabase/functions/admin/index.ts`, add the `ADMIN_EMAILS` secret, add `http://localhost:8001` to the Supabase Redirect URLs. Needs a look in the browser
 - [x] 2026-10-29: Service worker no longer tries to cache POST requests (it caused "Failed to execute put on Cache" errors on every AI call)
 - [x] 2026-10-29: `node supabase/functions/generate/build-single.mjs` bundles the whole function into one file, `supabase/paste-into-dashboard/generate.ts`, for pasting into the Supabase dashboard (Edge Functions, generate, Code, Deploy updates). Run it again after any change to the function files
 - [x] 2026-10-29: Prompt: one builder (`generate/guide.ts`) feeds both the AI function and a copy-paste prompt for testing in claude.ai. Run `node supabase/functions/generate/prompt.mjs 30` (30 questions) or add `| clip` to copy it, attach your PDF in claude.ai, paste, save the reply as .json, then Add a deck. Each question now starts with an `evidence` quote from the slides (kept on the card), and the model re-solves each question before returning it
@@ -102,7 +113,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] 2026-10-29: The prompt now always writes exactly the number of questions asked for. The "write fewer if the slides do not support it" clause is gone from both prompts, and facts that are only recall are asked as direct recall questions instead of being skipped (the cardiovascular intro batch came back with 11 of 20 for this reason)
 - [x] 2026-10-29: Question kinds: the prompt covers everything the slides teach and, for each concept, picks whichever best tests understanding: a direct recall question for facts, definitions and classifications, or multi-step reasoning (which may include recall) for mechanisms, findings and decisions. No fixed percentages. Every question must be hard (no answering by elimination or wording). Added a recall example (HMG-CoA reductase) to `guide.json`; `QUALITY-CHECK.md` updated to match
 - [x] 2026-10-29: Third manual batch (significance testing, 8 questions): 6 pass, 2 rewrite, 0 drop. Rules added to `guide.json`: the right option must not echo the stem's wording; a wrong option must not flatly contradict a definition on the slides (write the closer mistake); a right option that needs a qualifier gets matching qualifiers on the wrong ones; difficulty comes from changing the task (new case, look-alike choice, justified conclusion, spot the error, predict the change) not from obscure facts, with a mix of levels. Bundle for the dashboard rebuilt
-- [x] 2026-10-29: The sidebar entry for the plan page now reads ANKIDOTE+ (the page itself and the More list still say Subscription)
+- [x] 2026-10-29: The sidebar entry for the plan page now reads MEDIDOTE+ (the page itself and the More list still say Subscription)
 - [x] 2026-10-29: Looking back at an answered question now keeps the slide beside it and the Report it link, with a plain verdict card instead of the rating buttons (Again / Hard / Good / Easy)
 - [x] 2026-10-29: `QUALITY-CHECK.md` added: a rubric for reviewing every batch (automatic fails, quality yes/no list, three quick tests, whole-batch checks, a score sheet and what to send back). Section 5 is a ready prompt for asking Claude to review a batch in a fixed report format
 - [x] 2026-10-29: Examples from `examples-screenshots`: four with an answer shown in the screenshot are in `guide.json` (7 examples in all, used by the AI function and the manual prompt). The four with no answer shown (ganglionic blocker, pelvic splanchnic nerves, L5 dorsal root, white ramus) are kept under `unverified_examples` with `answer: null` and are never sent to the AI; confirm each answer, then move it into `examples`
@@ -120,9 +131,10 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [ ] Read the reports now and then and turn repeated problems into examples in `guide.json`
 - [ ] Supabase Pro (about $25 a month), check backups are on. Free plan limits: 1 GB storage (about 6-10 students), 5 GB egress a month, 500 MB database, pauses after 1 week idle, no daily backups. Pro: 100 GB storage, 250 GB egress, 8 GB database
 - [ ] Claude Console spend limit (start $100 a month) with an alert
-- [ ] Delete a deck / delete account in the app (Apple needs account deletion)
+- [x] Delete a deck / delete account in the app (Apple needs account deletion), see 2026-10-30 entry; deploy and test still to do
+- [ ] Deploy `delete-account` and test it with a throwaway account: upload a small PDF, delete the account from Settings, check it signs out and the user is gone from Authentication → Users and the PDF from Storage
 - [ ] Google sign-in: decide the route. Testing (add up to 100 classmate emails by hand under Audience, Test users; logins expire after about 7 days) or Publish app (needs domain, privacy and terms pages, Branding filled in; required past 100 people). The sign-in screen shows "supabase.co" until Branding is set (free) or a paid Supabase custom auth domain is used
-- [ ] Push to the live site: confirm the live address is in Supabase Redirect URLs and Google JavaScript origins, sign in on the iPad
+- [x] 2026-10-30: Hosted on free Cloudflare (medidote.elsadek-malak.workers.dev). Push to the live site: confirm the live address is in Supabase Redirect URLs and Google JavaScript origins, sign in on the iPad
 - [ ] Test with 5-10 classmates for a week
 - [ ] Offline study (needs a connection now)
 - [ ] Order: domain, terms, Branding and Publish, Supabase Pro, Claude spend limit, account deletion, live push, classmate test, then payments and the App Store

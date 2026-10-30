@@ -1,6 +1,6 @@
 {
-  "name": "ankidote",
-  "short_name": "ankidote",
+  "name": "medidote",
+  "short_name": "medidote",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#1a1418",
