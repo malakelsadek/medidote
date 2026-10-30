@@ -2,99 +2,74 @@
 
 **The antidote to medical exam stress.**
 
-medidote is a small study app that turns your lecture slides and notes into exam-style multiple-choice questions and then makes sure you actually remember them, using the same spaced repetition idea as Anki.
+medidote turns your own lecture slides into exam-style multiple-choice questions, then uses spaced repetition so you actually remember them. Upload the slides, let the AI write the questions, and study the ones you keep getting wrong until they stick.
 
 <p align="center">
-  <img src="screenshots/today.png" alt="The Today page: questions to study, streak, and folders" width="820">
+  <img src="docs/screenshots/today.png" alt="The Today page: questions to study, streak, and folders" width="820">
 </p>
 
 ## Why I built it
 
 I built this for my sister, who is a medical student. She was using a question bank for her exams and wanted the same thing for her *own* lectures: questions written from the slides she is actually being taught, with the questions she keeps getting wrong coming back until they stick.
 
-So the idea is simple:
+## What it does
 
-1. An AI (Claude or ChatGPT) writes single-best-answer questions from a lecture.
-2. medidote imports them and schedules every question for review.
-3. The questions she finds hard come back sooner. The ones she knows come back later.
+### Questions from your own slides
 
-It started as a test for one person, so it is deliberately small: no accounts, no server, no subscription. Everything is stored on her iPad.
+Upload your lecture PDFs, pick the slides, the deck and how many questions you want, and the AI writes single-best-answer questions from them. Questions are case-based and exam-level, every option comes with an explanation, and each question points back to the slide it came from. Questions are reviewed against a written quality rubric, and you can report any that look wrong.
 
-## How it works
+You can also import a deck of questions from a file, or write your own.
 
-### 1. Make questions from your material
+### Slides next to your questions
 
-The **Guide** tab has ready-made prompts (standard SBAs, quick recall, pharmacology, anatomy, hard exam-level, and more). Pick one, choose how many questions you want, copy it, and paste it into an AI together with your slides, notes or PDF. The AI replies with a small file of questions.
-
-### 2. Import them into a folder
-
-Tap **+**, choose a folder, pick the file, and optionally attach the slides as PDFs so you can open them while studying. Folders keep decks tidy, for example one folder per subject and one deck per lecture.
+Slides live in your account, organised by deck and folder, as tiles or a list. While you study, the slide a question came from can sit beside the question or appear after you answer, so you learn from the source and not only the answer.
 
 <p align="center">
-  <img src="screenshots/decks.png" alt="A folder open, showing its decks as stacks of cards" width="820">
+  <img src="docs/screenshots/decks.png" alt="A folder open, showing its decks as stacks of cards" width="820">
 </p>
 
-### 3. Study
+### Spaced repetition that follows how you do
 
-Pick an answer and you get instant feedback with an explanation. A wrong answer comes back later in the same session. For a right answer you say how it felt (Hard, Good, Easy), and the next review is scheduled accordingly: the better you know it, the longer until you see it again.
+Pick an answer and get instant feedback with an explanation. Say how it felt (Again, Hard, Good or Easy) and the next review is scheduled to match: the better you know a question, the longer until you see it again. Study what is due, what is new, or only the questions you got wrong, in sessions of 10 to 40. "Hide choices first" lets you answer from memory before the options appear.
 
 <p align="center">
-  <img src="screenshots/study.png" alt="Answering a question and seeing the explanation" width="820">
+  <img src="docs/screenshots/study.png" alt="Answering a question and seeing the explanation" width="820">
 </p>
 
-### 4. See what to focus on
+### See what to focus on
 
-The **Stats** tab shows how much you know, how the last two weeks went, which topics are weakest, which questions you keep missing, and how many reviews are due in the coming days.
+The Stats page shows how much you know, how the last two weeks went, your study days, your weakest topics, the questions you keep missing, and how many reviews are coming up.
 
 <p align="center">
-  <img src="screenshots/stats.png" alt="The Stats page" width="820">
+  <img src="docs/screenshots/stats.png" alt="The Stats page" width="820">
 </p>
 
-## Works on iPad and iPhone
+### Folders and decks
 
-It is a web app you add to the home screen, so it opens full screen like a normal app and works offline. It adapts to the screen: a sidebar on iPad, a tab bar on iPhone.
+Keep things tidy with one folder per subject and one deck per lecture. Folders and decks can be renamed or deleted whenever you like, and folders can have their own colour.
+
+### Works on any device
+
+medidote is a web app you add to your home screen, so it opens full screen like a normal app. It adapts to the screen: a sidebar on iPad and desktop, a tab bar on iPhone. Your account keeps your decks, progress and slides in sync across devices.
 
 <p align="center">
-  <img src="screenshots/phone.png" alt="medidote on an iPhone" width="640">
+  <img src="docs/screenshots/phone.png" alt="medidote on an iPhone" width="640">
 </p>
 
-## Make it yours
+### Make it yours
 
-Eight colour themes, light and dark mode, optional sound effects, and a backup reminder, all in **Settings**.
+Eight colour themes, light and dark mode, adjustable interface size and optional sound effects, all in Settings.
 
 <p align="center">
-  <img src="screenshots/themes.png" alt="The Settings page with colour themes" width="820">
+  <img src="docs/screenshots/themes.png" alt="The Settings page with colour themes" width="820">
 </p>
 
-## Features
+### Accounts and privacy
 
-- Questions generated from your own material, with a prompt library, a question-count setting and an even spread of correct answers
-- Anki-style spaced repetition (SM-2) with Hard, Good and Easy ratings
-- Folders and decks, with a plus button to add either
-- Attach up to 50 slide PDFs to a deck and open the exact slide a question came from, right inside the app
-- Delete decks and folders you no longer need
-- Practice mode to drill everything again without affecting your schedule
-- Stats focused on what to do next: progress, accuracy, weak topics, upcoming reviews
-- Streak counter, sound effects, 8 colour themes, light and dark mode
-- Backup and restore, with a reminder on a schedule you choose (weekly by default)
-- Works offline. No account, no server, no tracking.
+Sign in with Google or an email link. New accounts get a free period to try the AI question writing, and creating, importing and studying decks stays free. You can delete your account and all of its data from Settings. See the [Terms of Use](legal/terms.html) and [Privacy Policy](legal/privacy.html).
 
-## Your data
+medidote is a study aid, not medical advice. AI-written questions can be wrong, so check them against your course material.
 
-Everything lives in the browser storage on the device, so nothing is sent anywhere. That also means it is only on that device: use **Data → Export backup** now and then and save the file to Files or iCloud Drive. Importing a backup restores everything.
+## License
 
-## Install on an iPad or iPhone
-
-1. Open the app link in **Safari**.
-2. Tap **Share → Add to Home Screen**.
-3. Open it from the new icon from then on.
-
-## Running it yourself
-
-It is plain HTML, CSS and JavaScript with no build step. To try it locally, serve the folder with any static server, for example `python -m http.server`, and open `http://localhost:8000`.
-
-To publish it, turn on **GitHub Pages** for this repository (Settings → Pages → Deploy from branch → `main` / root).
-
-## Built with
-
-Plain JavaScript, IndexedDB for storage, a service worker for offline use, and the Web Audio API for the sound effects. No frameworks and no dependencies.
+Copyright (c) 2026 Malak Elsadek. All rights reserved. This is proprietary software: you may not copy, modify, host, redistribute or use it without written permission. See [LICENSE](LICENSE).

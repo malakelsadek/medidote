@@ -1,7 +1,7 @@
-// Run: node assign.test.mjs
+// Run: node tests/assign.test.mjs
 import assert from "node:assert";
 import { createRequire } from "node:module";
-const { assignSlots } = createRequire(import.meta.url)("./assign.js");
+const { assignSlots } = createRequire(import.meta.url)("../js/assign.js");
 
 const angles = ["mechanism", "consequence", "next step", "difference", "interpretation"];
 // 3 core, 4 important, 3 minor, in lecture order

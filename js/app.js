@@ -376,7 +376,7 @@ addEventListener('resize', fitNav);
 function renderNav() {
   const nav = document.getElementById('nav');
   nav.className = min ? 'min' : '';
-  nav.innerHTML = `<div class="brand"><img src="icon-192.png" alt="" width="36" height="36" style="border-radius:9px;display:block;flex:none">${min ? '' : '<span>medidote</span>'}</div>`
+  nav.innerHTML = `<div class="brand"><img src="assets/icons/icon-192.png" alt="" width="36" height="36" style="border-radius:9px;display:block;flex:none">${min ? '' : '<span>medidote</span>'}</div>`
     + [['today', 'Study'], ['stats', 'Stats'], ['folders', 'Folders'], ['decks', 'Decks'], ['slides', 'Slides', 'wo'], ['generate', 'Generate', 'wo'], ['community', 'Community', 'wo'], ['guide', 'Guide', 'wo'], ['subscription', 'MEDIDOTE+', 'wo'], ['settings', 'Settings', 'wo']].map(([v, l, c = '']) => (v === 'subscription' ? accountBtn() : '') +`<button class="nv ${c} ${v === view ? 'on' : ''}" data-v="${v}" title="${l}">${svg(ICONS[v])}<span>${l}</span></button>`).join('')
     + `<button class="nv more ${['more', 'slides', 'generate', 'community', 'subscription', 'guide', 'settings'].includes(view) ? 'on' : ''}" data-v="more" title="More">${svg(ICONS.more)}<span>More</span></button>`
     + `<button class="nv tog" id="tog" title="${min ? 'Expand' : 'Minimize'}">${svg(ICONS.chev)}<span>Minimize</span></button>`;
@@ -401,8 +401,8 @@ const slidesIco = () => svg('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a
 let pdfjsReady;
 const loadPdfjs = () => pdfjsReady ||= new Promise((res, rej) => {
   const el = document.createElement('script');
-  el.src = 'pdf.min.js';
-  el.onload = () => { pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js'; res(); };
+  el.src = 'js/vendor/pdf.min.js';
+  el.onload = () => { pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/vendor/pdf.worker.min.js'; res(); };
   el.onerror = () => { pdfjsReady = null; rej(new Error('viewer')); };
   document.head.appendChild(el);
 });
@@ -1637,7 +1637,7 @@ function walkthrough() {
 }
 function splash() {
   const el = document.createElement('div'); el.className = 'ob';
-  el.innerHTML = '<div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>';
+  el.innerHTML = '<div class="lr"><img class="logo" src="assets/icons/icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>';
   document.body.append(el);
   setTimeout(() => {
     let seen = false; try { seen = localStorage.getItem('onboarded') === '1'; } catch {}
@@ -1652,7 +1652,7 @@ function signIn() {
   document.getElementById('nav').style.display = 'none';
   $.innerHTML = `<div class="auth">
     <div class="apanel">
-      <div class="lr"><img class="logo" src="icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>
+      <div class="lr"><img class="logo" src="assets/icons/icon-192.png" alt=""><div class="tx"><div class="brand">medidote</div><p>the antidote to medical exam stress</p></div></div>
       <h2 class="ahead">Turn your lecture slides into exam-ready questions</h2>
       <ul class="afeat">
         <li><span class="ai">${svg('<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/>', 24)}</span><div><b>Case-study questions from your slides</b><small>Written by AI at exam level, with a link back to the exact slide.</small></div></li>
