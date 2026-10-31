@@ -74,13 +74,15 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [ ] Run `supabase/006_reports.sql` and `supabase/007_trial_30_days.sql` and redeploy `generate`. Accounts made before this keep their 7-day trial: extend them with the restart-trial SQL below
 
 ### Pricing: 1 week trial, founding price for the first 30
-- [ ] Trial back to 7 days for everyone: change the default in the subscriptions SQL (`007_trial_30_days.sql` set 30) with a new migration, and update the "1 month free" wording in the app, legal pages and landing page
+- [x] 2026-10-31: Trial back to 7 days: `supabase/011_trial_7_days.sql` (default for new accounts) and the sign-in wording in `app.js` (legal pages and landing page already generic or say 7 days)
+- [ ] Run `supabase/011_trial_7_days.sql` in the SQL Editor (accounts made before keep their date)
 - [ ] Founding price: add a `price` (EGP 350 or 500) to `subscriptions`, set once at the first paid subscription and never changed, so founding members keep 350 forever
 - [ ] Count the first 30 on the server, not in the app (a database function that assigns 350 while fewer than 30 people hold it), so two people paying at the same moment can't both take spot 30
 - [ ] Show it in the app: Subscription page price per person, "founding member" label, and a "spots left" counter (optional)
 - [ ] Paymob: create a 350 and a 500 plan and charge the stored price; a member who cancels and comes back: decide if they keep 350 (suggest yes within a grace period, no after)
 - [ ] Update `PLAN` in `app.js` (now one price) to read the person's price; admin dashboard: show and edit a person's price
-- [ ] Decide the AI question allowance for the 7-day trial (now 100 a month) and tell users on the landing page
+- [x] 2026-10-31: Free trial allowance set to 250 AI questions (`TRIAL_QUESTIONS` in `generate/index.ts`, `paste-into-dashboard/generate.ts` and `app.js`; landing page trial card says 250)
+- [ ] Redeploy the `generate` function so the 250 limit applies (the limit is enforced there, the app only displays it)
 
 
 
@@ -95,7 +97,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 ### Costs (what I need to pay for)
 - [ ] **Domain**: $16-20 a year. Needed first (Google publishing needs a real home page and legal links on your own domain)
 - [ ] **Supabase Pro**: $25 a month. Free plan pauses after a week idle, has no daily backups and 1 GB of storage
-- [ ] **Claude API credit**: $5 to start testing, then pay as you go. Rough guess $0.012 per question, so a free-period student using all 100 questions costs about $1.20 and a paying student's 400 questions about $5. Check the real figure in the Claude Console, Usage, and set a monthly spend limit (start $100)
+- [ ] **Claude API credit**: $5 to start testing, then pay as you go. Rough guess $0.012 per question, so a free-trial student using all 250 questions costs about $3 and a paying student's 400 questions about $5. Check the real figure in the Claude Console, Usage, and set a monthly spend limit (start $100)
 - [ ] **Supabase custom auth domain** (fixes the odd `...supabase.co` link on the sign-in screen): about $10 a month, check current pricing. Needs Pro and my own domain
 - [ ] **Email sender for sign-in links**: Supabase's built-in sender allows only a few emails an hour, so use a custom one such as Resend or Brevo (free plans cover this size, about $0)
 - [ ] Later, after the domain is bought: set up Brevo (or Resend) as the custom email sender. Verify the domain with them, then in Supabase go to Authentication, Emails, SMTP Settings and paste the SMTP details and a from-address on the domain. Until then, Google sign-in covers it (no emails involved)
@@ -190,7 +192,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [ ] Icon, screenshots, description, privacy labels, in-app subscription; submit and fix review flags
 
 ## SQL files, run in this order in Supabase (SQL Editor)
-`supabase/schema.sql`, `002_storage.sql`, `003_usage_grants.sql`, `004_subscriptions.sql`, `005_usage_questions.sql`, `006_reports.sql` and `007_trial_30_days.sql`
+`supabase/schema.sql`, `002_storage.sql`, `003_usage_grants.sql`, `004_subscriptions.sql`, `005_usage_questions.sql`, `006_reports.sql`, `007_trial_30_days.sql` and `011_trial_7_days.sql` (011 replaces the 30-day default from 007)
 
 ## Managing subscriptions by hand (until payments are automatic)
 
@@ -198,7 +200,7 @@ One row per user in `subscriptions` (Table Editor, or the SQL Editor). Replace `
 
 - `status`: `trial`, `active` or `canceled`. `current_period_end`: paid access lasts until then. `trial_ends_at`: end of the free trial. `provider`: `manual` (later `paymob`)
 - **Plan:** active = `status` is `active` and `current_period_end` is in the future; trial = otherwise, `trial_ends_at` in the future; free = anything else (decks, slides, studying, stats are always free). Changes show after a reload
-- Subscription says "Coming soon" (`COMING_SOON` in app.js). Status changes still decide what Generate allows: 100 questions a month on the free period, 400 when active
+- Subscription says "Coming soon" (`COMING_SOON` in app.js). Status changes still decide what Generate allows: 250 questions during the 7-day trial, 400 a month when active
 
 ```sql
 -- find a user / see everyone

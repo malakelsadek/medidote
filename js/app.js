@@ -518,7 +518,7 @@ function newFolderDialog(done) {
 // features switched off for now: their pages just say "coming soon" (set to false to turn the real page back on)
 const COMING_SOON = { generate: false, subscription: true };
 const soon = title => `<h1 class="pt">${title}</h1><p class="tag">Coming soon</p>`;
-const PLAN = { name: 'medidote Plus', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 100;   // keep TRIAL_QUESTIONS in step with generate/index.ts
+const PLAN = { name: 'medidote Plus', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 250;   // keep TRIAL_QUESTIONS in step with generate/index.ts
 const planOf = s => {
   const now = Date.now();
   if (s?.status === 'active' && s.current_period_end && new Date(s.current_period_end) > now) return { k: 'active', until: new Date(s.current_period_end) };
@@ -1659,7 +1659,7 @@ function signIn() {
         <li><span class="ai">${svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 24)}</span><div><b>Every option explained</b><small>See why the right answer is right and why each wrong one is wrong.</small></div></li>
         <li><span class="ai">${svg('<path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/>', 24)}</span><div><b>Spaced repetition</b><small>Questions you miss come back sooner, the ones you know come back later.</small></div></li>
       </ul>
-      <p class="atrial">1 month of AI questions free · no card needed</p>
+      <p class="atrial">7 days of AI questions free · no card needed</p>
     </div>
     <section class="card acard">
       <h1>Welcome</h1><p class="asub">Sign in or create your account. It takes a few seconds.</p>
