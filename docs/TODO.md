@@ -4,7 +4,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 
 ## Launch plan
 - AI generator only: the copy-a-prompt Guide is gone; **importing a .json deck stays** (Data page, Add a deck)
-- Testing: my own Claude key. Launch: every new user gets **1 month free** on a limited AI allowance, then subscribes (medidote Pro, EGP 500 a month)
+- Testing: my own Claude key. Launch (new plan, 2026-10-31): every new user gets a **1 week free trial**, then subscribes. The **first 30 subscribers** pay **EGP 350 a month forever**; everyone after pays **EGP 500 a month** (medidote Plus)
 - First: streamline the app and get question quality right
 
 ## Done
@@ -16,7 +16,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] Per-user database (`supabase/schema.sql`), sign-in (Google or emailed link), cards, folders, history and settings stored in the account
 - [x] Slides: PDF to private storage, page text saved, cover image; Slides tab (tiles, deck filter, upload to one or more decks, multi-select delete); slides belong to a deck, renaming a deck keeps them, deleting a deck or folder deletes its slides
 - [x] Generate with AI tab (pick deck, files, page range, 10-50 questions); Claude Sonnet 5.5 writes case-study questions with an explanation for every option and the source slides; picture slides (tables, diagrams, charts) are shown to the AI
-- [x] Plan: free period (see below), "medidote Pro" EGP 500 a month, 400 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
+- [x] Plan: free period (see below), "medidote Plus" EGP 500 a month, 400 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
 - [x] Subscription shows "Coming soon" (`COMING_SOON` in app.js); Generate is open to everyone
 - [x] Community tab placeholder ("Coming soon")
 - [x] Privacy policy (`legal/privacy.html`, name and email filled in)
@@ -73,7 +73,24 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] 2026-10-29: Generate with AI is open to everyone. Free period = 1 month for new accounts (`007_trial_30_days.sql`) with 100 AI questions a month (`TRIAL_QUESTIONS` in `generate/index.ts` and app.js, keep them equal); subscribers keep 400. Tighten the free allowance when paid plans start
 - [ ] Run `supabase/006_reports.sql` and `supabase/007_trial_30_days.sql` and redeploy `generate`. Accounts made before this keep their 7-day trial: extend them with the restart-trial SQL below
 
+### Pricing: 1 week trial, founding price for the first 30
+- [ ] Trial back to 7 days for everyone: change the default in the subscriptions SQL (`007_trial_30_days.sql` set 30) with a new migration, and update the "1 month free" wording in the app, legal pages and landing page
+- [ ] Founding price: add a `price` (EGP 350 or 500) to `subscriptions`, set once at the first paid subscription and never changed, so founding members keep 350 forever
+- [ ] Count the first 30 on the server, not in the app (a database function that assigns 350 while fewer than 30 people hold it), so two people paying at the same moment can't both take spot 30
+- [ ] Show it in the app: Subscription page price per person, "founding member" label, and a "spots left" counter (optional)
+- [ ] Paymob: create a 350 and a 500 plan and charge the stored price; a member who cancels and comes back: decide if they keep 350 (suggest yes within a grace period, no after)
+- [ ] Update `PLAN` in `app.js` (now one price) to read the person's price; admin dashboard: show and edit a person's price
+- [ ] Decide the AI question allowance for the 7-day trial (now 100 a month) and tell users on the landing page
 
+
+
+### Landing page (`landing/`, separate site at medidote.app)
+- [x] 2026-10-31: Started the landing page in `landing/` (static HTML/CSS, own Cloudflare project with root directory `landing/`). Video goes in the centre of the hero once I send it
+- [ ] Deploy note: the app's Cloudflare deploy publishes the whole repo root, so once `landing/` exists the app site also serves a copy at `study.medidote.app/landing/`. Harmless but untidy. Fix when deploying: set the app's build output to exclude `landing/`, or move the app into its own folder
+- [x] 2026-10-31: Demo video added to the hero (`landing/assets/demo.mp4`, 1280x720 compressed from the 98 MB original to 5 MB, poster `landing/assets/shots/video-poster.jpg`)
+- [x] 2026-10-31: Landing page: hover pop-up on the floating windows, four more floating screens, light/dark toggle in the nav (remembers the choice, defaults to the device setting)
+- [x] 2026-10-31: Landing page: "one app, every screen" section with a laptop (Windows/Mac), iPad and phone frame
+- [ ] Point the app's terms and privacy links to `medidote.app/legal/...`
 
 ### Costs (what I need to pay for)
 - [ ] **Domain**: $16-20 a year. Needed first (Google publishing needs a real home page and legal links on your own domain)

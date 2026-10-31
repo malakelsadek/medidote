@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>medidote · the antidote to medical exam stress</title>
+<meta name="description" content="medidote turns your lecture slides into exam-style questions with AI, then helps you remember them with spaced repetition. Made for medical students.">
+<meta property="og:title" content="medidote · the antidote to medical exam stress">
+<meta property="og:description" content="AI questions from your own slides, spaced repetition, and your slides right beside every question.">
+<meta property="og:image" content="assets/shots/t-beside.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6f9;--bg2:#ffeaf2;--fg:#2b1f26;--mut:#7a6670;--acc:#d9528c;--acc2:#f07ab0;--line:#f0d9e2;--card:#fff;--shadow:0 18px 50px -18px rgba(217,82,140,.35),0 2px 6px rgba(43,31,38,.06);--font:"Nunito",ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1519;--bg2:#271c22;--fg:#f4e9ee;--mut:#b5a0aa;--acc:#f07ab0;--acc2:#d9528c;--line:#3a2b33;--card:#2a2026;--shadow:0 18px 50px -18px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.3)}}
+:root[data-theme="dark"]{--bg:#1c1519;--bg2:#271c22;--fg:#f4e9ee;--mut:#b5a0aa;--acc:#f07ab0;--acc2:#d9528c;--line:#3a2b33;--card:#2a2026;--shadow:0 18px 50px -18px rgba(0,0,0,.6),0 2px 6px rgba(0,0,0,.3)}
+:root[data-theme="light"]{color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:600 18px/1.55 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.dots{background-image:radial-gradient(var(--line) 1.5px,transparent 1.5px);background-size:26px 26px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:22px;padding:14px 24px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);font-size:16px;font-weight:800}
+nav .brand{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px;color:var(--acc);text-decoration:none;margin-right:auto}
+nav .brand img{width:30px;height:30px;border-radius:8px}
+nav a.l{text-decoration:none;color:var(--mut)}
+nav a.l:hover{color:var(--fg)}
+.theme{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--card);color:var(--fg);font-size:18px;cursor:pointer;display:grid;place-items:center;padding:0}
+.theme:hover{border-color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;background:var(--acc);color:#fff;font:900 17px var(--font);text-decoration:none;border:0;box-shadow:0 5px 0 color-mix(in srgb,var(--acc) 70%,#000);transition:transform .1s,box-shadow .1s;cursor:pointer}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 color-mix(in srgb,var(--acc) 70%,#000)}
+.btn.sm{padding:8px 18px;font-size:15px;box-shadow:0 3px 0 color-mix(in srgb,var(--acc) 70%,#000)}
+.btn.ghost{background:var(--card);color:var(--fg);box-shadow:0 5px 0 var(--line);border:2px solid var(--line)}
+
+/* hero */
+.hero{position:relative;text-align:center;padding:56px 0 90px;overflow:hidden}
+.hero .core{position:relative;z-index:2}
+.hero h1{font-size:clamp(56px,11vw,120px);line-height:1;margin:0;font-weight:900;letter-spacing:-.04em;color:var(--fg)}
+.hero h1 b{color:var(--acc)}
+.hero .tag{font-size:clamp(18px,2.4vw,24px);color:var(--mut);margin:14px auto 26px;max-width:560px}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.small{font-size:14px;color:var(--mut);margin-top:12px;font-weight:700}
+
+/* video */
+.video{position:relative;z-index:2;margin:54px auto 0;max-width:860px;border-radius:22px;overflow:hidden;border:6px solid var(--card);box-shadow:var(--shadow);background:#000;aspect-ratio:16/9}
+.video video,.video img{width:100%;height:100%;object-fit:cover}
+.video .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(43,31,38,.18);border:0;cursor:pointer;font-family:var(--font)}
+.video .play span{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);color:#2b1f26;font-weight:900;font-size:17px;padding:12px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.video video{display:none}
+.video.playing video{display:block}
+.video.playing .play,.video.playing img{display:none}
+.cap{font-size:13px;color:var(--mut);margin-top:10px;font-weight:700}
+
+/* floating windows */
+.win{position:absolute;z-index:1;width:230px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden;rotate:var(--r,0deg);transition:scale .25s,rotate .25s,box-shadow .25s;animation:bob 7s ease-in-out infinite;animation-delay:var(--d,0s)}
+.win:hover{scale:1.07;rotate:0deg;z-index:3;box-shadow:0 28px 60px -16px rgba(217,82,140,.5),0 2px 6px rgba(43,31,38,.08);animation-play-state:paused}
+.win .bar{display:flex;gap:5px;padding:7px 9px;background:var(--bg2)}
+.win .bar i{width:8px;height:8px;border-radius:50%;background:#ff6b8a}
+.win .bar i:nth-child(2){background:#ffc800}.win .bar i:nth-child(3){background:#58cc8b}
+.win img{width:100%}
+.win.ph{width:130px;border-radius:20px;border:5px solid var(--fg)}
+.win small{display:block;text-align:center;font-size:12px;color:var(--mut);padding:5px 0 6px;font-weight:800}
+.stick{position:absolute;z-index:1;font-size:46px;rotate:var(--r,0deg);animation:bob 6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.name{position:absolute;z-index:1;width:170px;background:#fff;color:#2b1f26;border-radius:8px;box-shadow:var(--shadow);transform:rotate(var(--r,-6deg));overflow:hidden;text-align:center;font-weight:900}
+.name div:first-child{background:var(--acc);color:#fff;font-size:14px;letter-spacing:.08em;padding:6px 0}
+.name div:last-child{font-size:30px;padding:10px 6px 14px;font-family:"Segoe Print","Bradley Hand",cursive;color:var(--acc)}
+@keyframes bob{50%{translate:0 -10px}}
+@media (prefers-reduced-motion:reduce){.win,.stick{animation:none}}
+
+/* sections */
+section{padding:84px 0}
+.eyebrow{display:inline-block;font-weight:900;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);background:var(--bg2);padding:6px 14px;border-radius:999px}
+h2{font-size:clamp(34px,5.5vw,56px);line-height:1.05;letter-spacing:-.03em;margin:16px 0 12px;font-weight:900}
+.lead{color:var(--mut);font-size:20px;max-width:560px;margin:0}
+.feat{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;margin-top:90px}
+.feat.rev{grid-template-columns:1.1fr 1fr}.feat.rev .txt{order:2}
+.feat h3{font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.02em;margin:14px 0 10px;font-weight:900}
+.feat p{color:var(--mut);margin:0;font-size:19px}
+.feat .shot{border-radius:20px;border:6px solid var(--card);box-shadow:var(--shadow);overflow:hidden;background:var(--card)}
+.feat .phones{display:flex;gap:16px;justify-content:center}
+.feat .phones img{width:46%;border-radius:26px;border:6px solid var(--fg);box-shadow:var(--shadow)}
+.feat .phones img:nth-child(2){margin-top:34px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+.mini{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:22px}
+.mini b{display:block;font-size:22px;font-weight:900;margin:6px 0 4px}
+.mini span{color:var(--mut);font-size:16.5px}
+.mini i{font-style:normal;font-size:30px}
+
+
+/* devices */
+.devs{display:flex;align-items:flex-end;justify-content:center;gap:30px;padding:0 6px;margin-top:48px}
+.dev{text-align:center;font-size:15px;color:var(--mut);font-weight:800}
+.dev .s{display:block;margin-top:12px}
+.lap{width:min(440px,44vw)}
+.lap .scr{border:9px solid var(--fg);border-bottom-width:12px;border-radius:14px 14px 4px 4px;background:var(--fg);overflow:hidden;aspect-ratio:16/10}
+.lap .scr img{width:100%;height:100%;object-fit:cover}
+.lap .base{height:12px;background:var(--line);border-radius:0 0 14px 14px;width:112%;margin-left:-6%;box-shadow:0 6px 14px -6px rgba(43,31,38,.35)}
+.tab{width:min(270px,27vw)}
+.tab .scr{border:9px solid var(--fg);border-radius:22px;overflow:hidden;aspect-ratio:1180/820;background:var(--fg)}
+.tab .scr img{width:100%;height:100%;object-fit:cover}
+.pho{width:min(110px,13vw)}
+.pho .scr{border:6px solid var(--fg);border-radius:20px;overflow:hidden;aspect-ratio:390/844;background:var(--fg)}
+.pho .scr img{width:100%;height:100%;object-fit:cover}
+@media (max-width:640px){.devs{gap:12px}.dev .s{font-size:12px}}
+
+/* note */
+.note{background:var(--bg2);border-radius:28px;padding:44px;max-width:760px;margin:0 auto;position:relative}
+.note h2{font-size:clamp(30px,4.5vw,44px);margin-top:10px}
+.note p{margin:0 0 14px}
+.note .by{font-weight:900;color:var(--acc);margin:18px 0 0}
+
+/* pricing */
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;text-align:left}
+.pc{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column}
+.pc.pop{border-color:var(--acc);box-shadow:var(--shadow);position:relative}
+.pc .flag{position:absolute;top:-14px;left:24px;background:var(--acc);color:#fff;font-size:13px;font-weight:900;letter-spacing:.06em;padding:4px 12px;border-radius:999px}
+.pc h3{margin:0;font-size:24px;font-weight:900}
+.pc .sub{color:var(--mut);font-size:15.5px;margin:2px 0 14px}
+.pc .n{font-size:54px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.pc .n small{font-size:18px;color:var(--mut);font-weight:800;letter-spacing:0}
+.pc .per{color:var(--mut);font-size:14.5px;margin:6px 0 16px}
+.pc ul{list-style:none;padding:0;margin:0 0 22px;font-size:16.5px}
+.pc li{padding:5px 0 5px 26px;position:relative}
+.pc li:before{content:"✓";position:absolute;left:0;color:var(--acc);font-weight:900}
+.pc .btn{margin-top:auto;justify-content:center}
+.tiny{text-align:center;color:var(--mut);font-size:14.5px;margin-top:22px}
+
+/* faq */
+.faq{max-width:760px;margin:40px auto 0}
+details{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:0 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:900;font-size:19px;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--acc);font-size:26px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:0 0 18px;color:var(--mut);font-size:17.5px}
+
+/* final + footer */
+.final{text-align:center}
+.final h2{font-size:clamp(40px,8vw,84px)}
+footer{border-top:2px solid var(--line);padding:36px 0 50px;font-size:15px;color:var(--mut);font-weight:700}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+footer .brand{display:flex;align-items:center;gap:8px;color:var(--acc);font-weight:900;font-size:18px;margin-right:auto}
+footer .brand img{width:24px;height:24px;border-radius:6px}
+footer a{text-decoration:none}footer a:hover{color:var(--fg)}
+footer .c{flex-basis:100%;font-size:13px}
+
+/* responsive */
+@media (max-width:1100px){.win.far{display:none}}
+@media (max-width:860px){
+  .feat,.feat.rev{grid-template-columns:1fr;gap:28px;margin-top:64px}.feat.rev .txt{order:0}
+  .grid,.price{grid-template-columns:1fr}
+  .win,.stick,.name{display:none}
+  nav a.l{display:none}
+  .note{padding:28px 22px}
+  .hero{padding-top:36px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="#top"><img src="assets/icons/icon-192.png" alt="">medidote</a>
+  <a class="l" href="#features">features</a>
+  <a class="l" href="#pricing">pricing</a>
+  <a class="l" href="#faq">faq</a>
+  <button class="theme" id="theme" aria-label="Switch between light and dark mode" title="Light / dark"></button>
+  <a class="btn sm" href="https://study.medidote.app">start studying</a>
+</nav>
+
+<header class="hero dots" id="top">
+  <!-- floating windows -->
+  <div class="win far" style="left:2%;top:70px;--r:-4deg;--d:.2s"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/t-today.jpg" alt="Today screen" loading="lazy"><small>your day, planned</small></div>
+  <div class="win ph" style="left:15%;top:300px;--r:5deg;--d:1s"><img src="assets/shots/m-study.jpg" alt="A question on a phone" loading="lazy"></div>
+  <div class="win far" style="right:2%;top:60px;--r:4deg;--d:.6s"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/t-stats.jpg" alt="Stats screen" loading="lazy"><small>see what you know</small></div>
+  <div class="win ph" style="right:14%;top:330px;--r:-5deg;--d:1.4s"><img src="assets/shots/m-generate.jpg" alt="Generate questions with AI" loading="lazy"></div>
+  <div class="win far" style="left:3%;top:640px;--r:3deg;--d:.8s"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/t-slides.jpg" alt="Slides screen" loading="lazy"><small>all your lectures</small></div>
+  <div class="win far" style="right:3%;top:650px;--r:-3deg;--d:1.6s"><div class="bar"><i></i><i></i><i></i></div><img src="assets/shots/t-beside.jpg" alt="A question beside its slide" loading="lazy"><small>slide beside the question</small></div>
+  <div class="name" style="left:11%;top:40px;--r:-7deg"><div>HELLO</div><div>medidote</div></div>
+  <div class="stick" style="left:2%;top:330px;--r:-10deg;--d:.7s">🩺</div>
+  <div class="stick" style="right:2%;top:345px;--r:12deg;--d:1.1s">💉</div>
+  <div class="stick" style="left:22%;top:130px;--r:14deg;--d:1.5s;font-size:38px">🧬</div>
+  <div class="stick" style="right:23%;top:120px;--r:-14deg;--d:.5s;font-size:38px">🦴</div>
+  <div class="stick" style="right:17%;top:250px;--r:-18deg;--d:1.9s;font-size:40px">💊</div>
+  <div class="stick" style="left:19%;top:240px;--r:16deg;--d:1.3s;font-size:36px">🩸</div>
+  <div class="stick" style="left:6%;top:440px;--r:-12deg;--d:.4s">💊</div>
+  <div class="stick" style="right:6%;top:470px;--r:10deg;--d:.9s">🫀</div>
+  <div class="stick" style="right:20%;top:30px;--r:8deg;--d:1.2s">🧠</div>
+
+  <div class="core wrap">
+    <h1>medi<b>dote</b></h1>
+    <p class="tag">the antidote to medical exam stress. ai questions from your own slides, and your slides right beside every question.</p>
+    <div class="cta">
+      <a class="btn" href="https://study.medidote.app">start studying free</a>
+      <a class="btn ghost" href="#features">see how it works</a>
+    </div>
+    <p class="small">7 days free. works on phone, tablet and laptop.</p>
+
+    <div class="video" id="vid">
+      <video id="v" controls playsinline preload="none" poster="assets/shots/video-poster.jpg"><source src="assets/demo.mp4" type="video/mp4"></video>
+      <img src="assets/shots/video-poster.jpg" alt="medidote demo video">
+      <button class="play" id="play" aria-label="Play video"><span>▶ play video</span></button>
+    </div>
+    <div class="cap">medidote.mp4</div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <div style="text-align:center"><span class="eyebrow">what it does</span><h2>finally study the way<br>it should feel</h2></div>
+
+    <div class="feat">
+      <div class="txt">
+        <span class="eyebrow">ai questions</span>
+        <h3>turn any lecture into exam-style questions</h3>
+        <p>upload your slides and medidote writes clinical-style questions from them, each with a reason for every option, so a wrong answer still teaches you something.</p>
+      </div>
+      <div class="phones">
+        <img src="assets/shots/m-generate.jpg" alt="Generate with AI on a phone" loading="lazy">
+        <img src="assets/shots/m-answered.jpg" alt="An answered question with explanations" loading="lazy">
+      </div>
+    </div>
+
+    <div class="feat rev">
+      <div class="txt">
+        <span class="eyebrow">slides in action</span>
+        <h3>your slide, right beside the question</h3>
+        <p>no more flipping back to the PDF. every question shows the exact slide it came from, so you can check the source in one tap.</p>
+      </div>
+      <div class="shot"><img src="assets/shots/t-beside.jpg" alt="A question beside its lecture slide on a tablet" loading="lazy"></div>
+    </div>
+
+    <div class="feat">
+      <div class="txt">
+        <span class="eyebrow">spaced repetition</span>
+        <h3>it remembers what you forget</h3>
+        <p>questions you struggle with come back sooner, ones you know come back later. open the app and it tells you exactly what to study today.</p>
+      </div>
+      <div class="shot"><img src="assets/shots/t-stats.jpg" alt="Study stats" loading="lazy"></div>
+    </div>
+
+    <div class="grid">
+      <div class="mini"><i>📚</i><b>decks and folders</b><span>keep every subject and lecture tidy.</span></div>
+      <div class="mini"><i>📱</i><b>any device</b><span>install it like an app on your phone, tablet or laptop.</span></div>
+      <div class="mini"><i>🌙</i><b>themes</b><span>light, dark and a few colours that go easy on tired eyes.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">any device</span>
+    <h2>one app, every screen</h2>
+    <p class="lead" style="margin:0 auto">use it on a Windows or Mac laptop, an iPad or Android tablet, and your phone. your decks and progress follow you.</p>
+    <div class="devs">
+      <div class="dev lap"><div class="scr"><img src="assets/shots/d-today.jpg" alt="medidote on a laptop, a question beside its slide" loading="lazy"></div><div class="base"></div><span class="s">windows and mac</span></div>
+      <div class="dev tab"><div class="scr"><img src="assets/shots/t-slides.jpg" alt="medidote on an iPad" loading="lazy"></div><span class="s">ipad and tablets</span></div>
+      <div class="dev pho"><div class="scr"><img src="assets/shots/m-today.jpg" alt="medidote on a phone" loading="lazy"></div><span class="s">iphone and android</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="note">
+      <span class="eyebrow">why i built it</span>
+      <h2>i built this for my sister</h2>
+      <p>my sister is a medical student. she used a question bank for her exams and wanted the same thing for her own lectures: questions written from the slides she is actually being taught, with the ones she keeps getting wrong coming back until they stick.</p>
+      <p>so i made it. now it is for every medical student who wants the same.</p>
+      <p class="by">malak, founder</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">pricing</span>
+    <h2>try it free, then pick it up</h2>
+    <p class="lead" style="margin:0 auto">start with 7 free days. the first 30 members lock in a lower price for good.</p>
+
+    <div class="price">
+      <div class="pc">
+        <h3>free trial</h3><div class="sub">see what the fuss is about</div>
+        <div class="n">0<small> EGP</small></div><div class="per">for your first 7 days</div>
+        <ul><li>AI questions from your slides</li><li>slides beside every question</li><li>spaced repetition and stats</li></ul>
+        <a class="btn ghost" href="https://study.medidote.app">start free</a>
+      </div>
+      <div class="pc pop">
+        <span class="flag">FIRST 30 ONLY</span>
+        <h3>founding member</h3><div class="sub">your price never goes up</div>
+        <div class="n">350<small> EGP</small></div><div class="per">per month, forever</div>
+        <ul><li>everything in medidote Plus</li><li>400 AI questions a month</li><li>price locked for as long as you stay</li></ul>
+        <a class="btn" href="https://study.medidote.app">claim a spot</a>
+      </div>
+      <div class="pc">
+        <h3>medidote plus</h3><div class="sub">best for everyday use</div>
+        <div class="n">500<small> EGP</small></div><div class="per">per month</div>
+        <ul><li>400 AI questions a month</li><li>unlimited decks, slides and stats</li><li>cancel any time</li></ul>
+        <a class="btn ghost" href="https://study.medidote.app">get plus</a>
+      </div>
+    </div>
+    <p class="tiny">decks, studying and stats stay free. paid plans are not live yet, so the trial is the way in today.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow">faq</span>
+    <h2>frequently asked questions</h2>
+    <div class="faq" style="text-align:left">
+      <details><summary>what is medidote?</summary><p>a study app for medical students. upload lecture slides, let AI write exam-style questions from them, and review with spaced repetition. your slide shows beside each question.</p></details>
+      <details><summary>does the AI make things up?</summary><p>every question comes from your slides and keeps a quote from the source, so you can check it. it can still make mistakes, so use the report button when something looks wrong.</p></details>
+      <details><summary>how does the founding price work?</summary><p>the first 30 people to subscribe pay 350 EGP a month and keep that price for as long as they stay subscribed. everyone after pays 500 EGP.</p></details>
+      <details><summary>what happens after the 7 days?</summary><p>you keep your decks, slides and stats. AI question generation needs a paid plan.</p></details>
+      <details><summary>is my data private?</summary><p>yes. your decks and slides are only yours, and you can delete your account and all its data in settings. read the <a href="legal/privacy.html" style="color:var(--acc)">privacy policy</a>.</p></details>
+      <details><summary>which devices does it work on?</summary><p>any device with a browser. you can install it to your home screen on iPhone, Android, iPad and laptops.</p></details>
+      <details><summary>can i cancel any time?</summary><p>yes. everything is month to month and you keep access until the end of your cycle.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final dots">
+  <div class="wrap">
+    <h2>ready to feel<br>less stressed?</h2>
+    <div class="cta"><a class="btn" href="https://study.medidote.app">start studying free</a></div>
+    <p class="small">7 days free, no card needed.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand"><img src="assets/icons/icon-192.png" alt="">medidote</span>
+    <a href="legal/terms.html">terms</a>
+    <a href="legal/privacy.html">privacy</a>
+    <a href="mailto:emmykades@gmail.com">contact</a>
+    <a href="https://study.medidote.app">open the app</a>
+    <span class="c">© 2026 Malak Elsadek. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+const root = document.documentElement, tb = document.getElementById('theme');
+const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme:dark)').matches;
+const paint = () => tb.textContent = isDark() ? '☀️' : '🌙';
+try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch {}
+tb.onclick = () => { root.dataset.theme = isDark() ? 'light' : 'dark'; try { localStorage.setItem('theme', root.dataset.theme); } catch {} paint(); };
+paint();
+const vid = document.getElementById('vid'), v = document.getElementById('v');
+document.getElementById('play').onclick = () => { vid.classList.add('playing'); v.play().catch(() => {}); };
+</script>
+</body>
+</html>

@@ -518,7 +518,7 @@ function newFolderDialog(done) {
 // features switched off for now: their pages just say "coming soon" (set to false to turn the real page back on)
 const COMING_SOON = { generate: false, subscription: true };
 const soon = title => `<h1 class="pt">${title}</h1><p class="tag">Coming soon</p>`;
-const PLAN = { name: 'medidote Pro', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 100;   // keep TRIAL_QUESTIONS in step with generate/index.ts
+const PLAN = { name: 'medidote Plus', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 100;   // keep TRIAL_QUESTIONS in step with generate/index.ts
 const planOf = s => {
   const now = Date.now();
   if (s?.status === 'active' && s.current_period_end && new Date(s.current_period_end) > now) return { k: 'active', until: new Date(s.current_period_end) };
