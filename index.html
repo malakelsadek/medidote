@@ -613,15 +613,15 @@ body.studying main{padding-top:0}
 .sheet:has(.plist){width:min(640px,100%)}
 /* question screen: unzoomed a little */
 .study{zoom:.85;max-width:900px;min-height:calc(100dvh / .85 - 60px)}
-/* subscription page: a narrow centered column */
-.subpage{max-width:560px;margin-inline:auto}
+/* subscription page: full width, left aligned like the other pages */
+.subpage{max-width:none}
 .subst,.plan,.freecard{margin-bottom:16px}
 .subrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
 .pill{padding:4px 14px;border-radius:999px;border:2px solid var(--line);color:var(--mut);font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
 .pill.on{background:var(--accsoft);border-color:var(--acc);color:var(--acc-d)}
 .subst .meter{margin:0 0 12px}
 .subst p{margin:0}
-.plan{border-color:var(--acc);box-shadow:0 4px 0 var(--acc)}
+.plan.hot{border-color:var(--acc);box-shadow:0 4px 0 var(--acc)}
 .planh{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:6px}
 .planh h2{margin:0 0 4px;font-size:26px}
 .planh p{margin:0}
@@ -631,7 +631,13 @@ body.studying main{padding-top:0}
 .feat{list-style:none;padding:0;margin:16px 0 20px;display:grid;gap:10px}
 .feat li{display:flex;gap:12px;align-items:flex-start;font-weight:700}
 .feat svg{flex:none;margin-top:2px;color:var(--acc)}
-.plan #subscribe{width:100%;min-height:54px;font-size:17px}
+.plans{display:grid;gap:16px;margin-bottom:16px}
+.plan{position:relative;display:flex;flex-direction:column;margin-bottom:0}
+.plan h2{margin:0 0 4px;font-size:24px}.plan .sub{margin:0 0 14px;color:var(--mut);font-weight:700;font-size:15px}
+.plan .price{text-align:left}.plan .price b{font-size:40px}
+.plan .feat{flex:1;align-content:start}.plan .subscribe{width:100%;min-height:54px;font-size:17px}
+.plan.hot .flag{position:absolute;top:-13px;left:20px;background:var(--acc);color:#fff;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+@media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr);align-items:stretch}}
 .freecard h2{margin:0 0 6px;font-size:20px}
 .freecard p{margin:0}
 /* source slide beside the question */

@@ -48,7 +48,7 @@ nav a.l:hover{color:var(--fg)}
 .small{font-size:14px;color:var(--mut);margin-top:12px;font-weight:700}
 
 /* video */
-.video{position:relative;z-index:2;margin:54px auto 0;max-width:860px;border-radius:22px;overflow:hidden;border:6px solid var(--card);box-shadow:var(--shadow);background:#000;aspect-ratio:16/9}
+.video{position:relative;z-index:2;margin:8px auto 0;max-width:860px;border-radius:22px;overflow:hidden;border:6px solid var(--card);box-shadow:var(--shadow);background:#000;aspect-ratio:16/9}
 .video video,.video img{width:100%;height:100%;object-fit:cover}
 .video .play{position:absolute;inset:0;display:grid;place-items:center;background:rgba(43,31,38,.18);border:0;cursor:pointer;font-family:var(--font)}
 .video .play span{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);color:#2b1f26;font-weight:900;font-size:17px;padding:12px 22px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
@@ -194,13 +194,14 @@ footer .c{flex-basis:100%;font-size:13px}
 
   <div class="core wrap">
     <h1>medi<b>dote</b></h1>
-    <p class="tag">the antidote to medical exam stress. ai questions from your own slides, and your slides right beside every question.</p>
+    <p class="tag">the antidote to medical exam stress.</p>
     <div class="cta">
       <a class="btn" href="https://study.medidote.app">start studying free</a>
       <a class="btn ghost" href="#features">see how it works</a>
     </div>
     <p class="small">7 days free. works on phone, tablet and laptop.</p>
 
+    <p class="tag" style="font-size:15px;margin:22px auto 0">ai questions from your own slides, and your slides right beside every question.</p>
     <div class="video" id="vid">
       <video id="v" controls playsinline preload="none" poster="assets/shots/video-poster.jpg"><source src="assets/demo.mp4" type="video/mp4"></video>
       <img src="assets/shots/video-poster.jpg" alt="medidote demo video">
@@ -281,7 +282,7 @@ footer .c{flex-basis:100%;font-size:13px}
   <div class="wrap" style="text-align:center">
     <span class="eyebrow">pricing</span>
     <h2>try it free, then pick it up</h2>
-    <p class="lead" style="margin:0 auto">start with 7 free days. the first 30 members lock in a lower price for good.</p>
+    <p class="lead" style="margin:0 auto;max-width:none">start with 7 free days. the first 30 members lock in a lower price for good.</p>
 
     <div class="price">
       <div class="pc">
@@ -293,14 +294,14 @@ footer .c{flex-basis:100%;font-size:13px}
       <div class="pc pop">
         <span class="flag">FIRST 30 ONLY</span>
         <h3>founding member</h3><div class="sub">your price never goes up</div>
-        <div class="n">350<small> EGP</small></div><div class="per">per month, forever</div>
-        <ul><li>everything in medidote Plus</li><li>400 AI questions a month</li><li>price locked for as long as you stay</li></ul>
+        <div class="n">400<small> EGP</small></div><div class="per">per month, forever</div>
+        <ul><li>everything in medidote Plus</li><li>1000 AI questions a month</li><li>price locked for as long as you stay</li></ul>
         <a class="btn" href="https://study.medidote.app">claim a spot</a>
       </div>
       <div class="pc">
         <h3>medidote plus</h3><div class="sub">best for everyday use</div>
-        <div class="n">500<small> EGP</small></div><div class="per">per month</div>
-        <ul><li>400 AI questions a month</li><li>unlimited decks, slides and stats</li><li>cancel any time</li></ul>
+        <div class="n">600<small> EGP</small></div><div class="per">per month</div>
+        <ul><li>1000 AI questions a month</li><li>unlimited decks, slides and stats</li><li>cancel any time</li></ul>
         <a class="btn ghost" href="https://study.medidote.app">get plus</a>
       </div>
     </div>
@@ -315,7 +316,7 @@ footer .c{flex-basis:100%;font-size:13px}
     <div class="faq" style="text-align:left">
       <details><summary>what is medidote?</summary><p>a study app for medical students. upload lecture slides, let AI write exam-style questions from them, and review with spaced repetition. your slide shows beside each question.</p></details>
       <details><summary>does the AI make things up?</summary><p>every question comes from your slides and keeps a quote from the source, so you can check it. it can still make mistakes, so use the report button when something looks wrong.</p></details>
-      <details><summary>how does the founding price work?</summary><p>the first 30 people to subscribe pay 350 EGP a month and keep that price for as long as they stay subscribed. everyone after pays 500 EGP.</p></details>
+      <details><summary>how does the founding price work?</summary><p>the first 30 people to subscribe pay 400 EGP a month and keep that price for as long as they stay subscribed. everyone after pays 600 EGP.</p></details>
       <details><summary>what happens after the 7 days?</summary><p>you keep your decks, slides and stats. AI question generation needs a paid plan.</p></details>
       <details><summary>is my data private?</summary><p>yes. your decks and slides are only yours, and you can delete your account and all its data in settings. read the <a href="legal/privacy.html" style="color:var(--acc)">privacy policy</a>.</p></details>
       <details><summary>which devices does it work on?</summary><p>any device with a browser. you can install it to your home screen on iPhone, Android, iPad and laptops.</p></details>
@@ -351,6 +352,7 @@ try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } 
 tb.onclick = () => { root.dataset.theme = isDark() ? 'light' : 'dark'; try { localStorage.setItem('theme', root.dataset.theme); } catch {} paint(); };
 paint();
 const vid = document.getElementById('vid'), v = document.getElementById('v');
+v.defaultPlaybackRate = v.playbackRate = 1.25;
 document.getElementById('play').onclick = () => { vid.classList.add('playing'); v.play().catch(() => {}); };
 </script>
 </body>

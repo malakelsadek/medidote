@@ -516,9 +516,9 @@ function newFolderDialog(done) {
 }
 // ---- plans: a free period with a smaller AI allowance, then a paid plan (the server enforces this; the app only displays it) ----
 // features switched off for now: their pages just say "coming soon" (set to false to turn the real page back on)
-const COMING_SOON = { generate: false, subscription: true };
+const COMING_SOON = { generate: false, subscription: false };
 const soon = title => `<h1 class="pt">${title}</h1><p class="tag">Coming soon</p>`;
-const PLAN = { name: 'medidote Plus', price: 'EGP 500', questions: 400 }, TRIAL_QUESTIONS = 250;   // keep TRIAL_QUESTIONS in step with generate/index.ts
+const PLAN = { name: 'medidote Plus', price: 'EGP 600', questions: 1000 }, TRIAL_QUESTIONS = 250, FOUNDING = { price: 'EGP 400', spots: 30 };   // keep TRIAL_QUESTIONS in step with generate/index.ts
 const planOf = s => {
   const now = Date.now();
   if (s?.status === 'active' && s.current_period_end && new Date(s.current_period_end) > now) return { k: 'active', until: new Date(s.current_period_end) };
@@ -1287,7 +1287,7 @@ async function home(msg = '') {
     const status = p.k === 'active' ? `Active until ${p.until.toLocaleDateString()}` : p.k === 'trial' ? `Free trial · ${p.left} day${p.left === 1 ? '' : 's'} left` : 'Free plan';
     const note = p.k === 'active' ? `${used} of ${PLAN.questions} AI questions used this month.`
       : p.k === 'trial' ? `${Math.max(0, TRIAL_QUESTIONS - used)} of ${TRIAL_QUESTIONS} free AI questions left this month.`
-      : 'Your trial has ended. Creating, importing and studying decks is still free. Subscribe to write questions with AI.';
+      : 'Your trial has ended. Importing and studying decks is still free. Subscribe to write questions with AI.';
     const tick = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.500 4.500 4.500L19 7.500"/></svg>';
     const pill = p.k === 'active' ? ['Active', 'on'] : p.k === 'trial' ? ['Free trial', 'on'] : ['Free plan', ''];
     const frac = p.k === 'active' ? used / PLAN.questions : p.k === 'trial' ? used / TRIAL_QUESTIONS : 0;
@@ -1295,11 +1295,14 @@ async function home(msg = '') {
     <section class="card subst"><div class="subrow"><span class="pill ${pill[1]}">${pill[0]}</span><b>${status}</b></div>
       ${p.k === 'free' ? '' : `<div class="meter"><i style="width:${Math.min(100, Math.round(frac * 100))}%;background:var(--acc)"></i></div>`}
       <p>${note}</p></section>
-    <section class="card plan"><div class="planh"><div><h2>${PLAN.name}</h2><p>Questions from your own slides, written by AI.</p></div>
-        <div class="price"><b>${PLAN.price}</b><small>per month</small></div></div>
-      <ul class="feat">${[`Up to ${PLAN.questions} AI questions a month`, 'Hard case-study questions in exam style', 'An explanation for every answer option', 'A link back to the exact slide each question came from'].map(t => `<li>${tick}<span>${t}</span></li>`).join('')}</ul>
-      <button class="p" id="subscribe">${p.k === 'active' ? 'Renew or manage' : 'Subscribe'}</button></section>
-    <section class="card freecard"><h2>Always free</h2><p>Creating and importing decks, attaching slides, studying and stats never need a plan.</p></section></div>`;
+    <div class="plans">${[
+      { n: 'Free trial', sub: 'See what the fuss is about', pr: 'EGP 0', per: 'for your first 7 days', f: [`${TRIAL_QUESTIONS} AI questions`, 'Slides beside every question', 'Spaced repetition and stats'], on: p.k === 'trial' },
+      { n: 'Founding member', sub: `First ${FOUNDING.spots} only, your price never goes up`, pr: FOUNDING.price, per: 'per month, forever', f: [`Everything in ${PLAN.name}`, `${PLAN.questions} AI questions a month`, 'Price locked for as long as you stay'], hot: 1, btn: 'Claim a spot' },
+      { n: PLAN.name, sub: 'Best for everyday use', pr: PLAN.price, per: 'per month', f: [`${PLAN.questions} AI questions a month`, 'Hard case-study questions in exam style', 'An explanation for every answer option', 'Cancel any time'], btn: p.k === 'active' ? 'Renew or manage' : 'Subscribe', on: p.k === 'active' }
+    ].map(x => `<section class="card plan${x.hot ? ' hot' : ''}">${x.hot ? '<span class="flag">First 30 only</span>' : ''}<h2>${x.n}${x.on ? ' <span class="pill on">Your plan</span>' : ''}</h2><p class="sub">${x.sub}</p>
+      <div class="price"><b>${x.pr}</b><small>${x.per}</small></div>
+      <ul class="feat">${x.f.map(t => `<li>${tick}<span>${t}</span></li>`).join('')}</ul>${x.btn ? `<button class="p subscribe">${x.btn}</button>` : ''}</section>`).join('')}</div>
+    <section class="card freecard"><h2>Always free</h2><p>Importing decks, attaching slides, studying and stats never need a plan.</p></section></div>`;
     }
   } else if (view === 'reported') {
     const L = 'ABCDEFGH';
@@ -1437,7 +1440,7 @@ async function home(msg = '') {
     if (!e.target.closest('[data-delfile]')) enlargeSlide({ file_id: b.dataset.open, page: 1 }, b.dataset.oname);
   });
   if (view === 'generate' && !COMING_SOON.generate) bindGenerate();
-  if (q('#subscribe')) q('#subscribe').onclick = () => modal(`<h2>Subscribe to ${PLAN.name}</h2><p>Online payment is coming soon. We will let you know here as soon as it is ready.</p><div class="row end"><button class="p" id="c">OK</button></div>`, (o, close) => o.querySelector('#c').onclick = close);
+  $.querySelectorAll('.subscribe').forEach(b => b.onclick = () => modal(`<h2>Subscribe to ${PLAN.name}</h2><p>Online payment is coming soon. We will let you know here as soon as it is ready.</p><div class="row end"><button class="p" id="c">OK</button></div>`, (o, close) => o.querySelector('#c').onclick = close));
   $.querySelectorAll('[data-delfile]').forEach(b => b.onclick = () => confirmDialog('Remove these slides?', `"${b.dataset.name}" is removed from this deck. If other decks use it, they keep it. Questions already made from it stay.`, 'Remove', async () => {
     await removeSlideFiles([{ id: b.dataset.delfile, path: b.dataset.path }]);   // attached to other decks too? the stored PDF stays
     home('Slides removed.');

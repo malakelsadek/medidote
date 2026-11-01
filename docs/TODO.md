@@ -4,7 +4,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 
 ## Launch plan
 - AI generator only: the copy-a-prompt Guide is gone; **importing a .json deck stays** (Data page, Add a deck)
-- Testing: my own Claude key. Launch (new plan, 2026-10-31): every new user gets a **1 week free trial**, then subscribes. The **first 30 subscribers** pay **EGP 350 a month forever**; everyone after pays **EGP 500 a month** (medidote Plus)
+- Testing: my own Claude key. Launch (new plan, 2026-10-31): every new user gets a **1 week free trial**, then subscribes. The **first 30 subscribers** pay **EGP 400 a month forever**; everyone after pays **EGP 600 a month** (medidote Plus)
 - First: streamline the app and get question quality right
 
 ## Done
@@ -16,7 +16,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] Per-user database (`supabase/schema.sql`), sign-in (Google or emailed link), cards, folders, history and settings stored in the account
 - [x] Slides: PDF to private storage, page text saved, cover image; Slides tab (tiles, deck filter, upload to one or more decks, multi-select delete); slides belong to a deck, renaming a deck keeps them, deleting a deck or folder deletes its slides
 - [x] Generate with AI tab (pick deck, files, page range, 10-50 questions); Claude Sonnet 5.5 writes case-study questions with an explanation for every option and the source slides; picture slides (tables, diagrams, charts) are shown to the AI
-- [x] Plan: free period (see below), "medidote Plus" EGP 500 a month, 400 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
+- [x] Plan: free period (see below), "medidote Plus" EGP 600 a month, 1000 AI questions a month, Subscription page (online payment later with Paymob, no InstaPay)
 - [x] Subscription shows "Coming soon" (`COMING_SOON` in app.js); Generate is open to everyone
 - [x] Community tab placeholder ("Coming soon")
 - [x] Privacy policy (`legal/privacy.html`, name and email filled in)
@@ -60,13 +60,15 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 
 ### Test the AI (needs a few dollars of credit)
 - [ ] Run `supabase functions deploy generate` (guide.json, balance.ts, guide.ts, pdfpages.ts must be deployed with it)
+- [ ] Redeploy `generate` again after the 1000 questions a month change (`MONTHLY_QUESTION_LIMIT`), otherwise the server still stops paid users at 400
 - [ ] Confirm the `ANTHROPIC_API_KEY` secret exists, add $5 credit in the Claude Console
 - [ ] Re-upload slides uploaded before covers existed (they show an icon)
 - [ ] Generate 10 questions from a small PDF; if it fails read Edge Functions, generate, Logs
 - [ ] Read 20+ questions with the new guide: case-study? hard enough? right answer correct? right answer not the longest? If not, send me examples and I add them to `guide.json`
-- [ ] Check real cost per question in the Console Usage page (estimate $0.01-0.015, more now with the blind check), then fix the price and the 400 cap
+- [ ] Measure the real cost: generate a few decks (different sizes, some with picture slides), run `/usage` (or the Console Usage page) before and after, and divide the difference by the questions made. Use that to set the price and the 1000 cap
+- [ ] Check real cost per question in the Console Usage page (estimate $0.01-0.015, more now with the blind check), then fix the price and the 1000 cap
 - [ ] Optional: compare Haiku 5.5 vs Sonnet 5.5 blind on 3 decks; switch the `MODEL` line if Haiku is good enough
-- [ ] Test the trial limits and the 400 cap (set `status` to `active` in `subscriptions` to test paid)
+- [ ] Test the trial limits and the 1000 cap (set `status` to `active` in `subscriptions` to test paid)
 - [ ] Study screen check with real AI questions (slide beside the question, per-option explanations)
 
 ### Change the trial to match the launch plan
@@ -76,10 +78,10 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 ### Pricing: 1 week trial, founding price for the first 30
 - [x] 2026-10-31: Trial back to 7 days: `supabase/011_trial_7_days.sql` (default for new accounts) and the sign-in wording in `app.js` (legal pages and landing page already generic or say 7 days)
 - [ ] Run `supabase/011_trial_7_days.sql` in the SQL Editor (accounts made before keep their date)
-- [ ] Founding price: add a `price` (EGP 350 or 500) to `subscriptions`, set once at the first paid subscription and never changed, so founding members keep 350 forever
-- [ ] Count the first 30 on the server, not in the app (a database function that assigns 350 while fewer than 30 people hold it), so two people paying at the same moment can't both take spot 30
+- [ ] Founding price: add a `price` (EGP 400 or 600) to `subscriptions`, set once at the first paid subscription and never changed, so founding members keep 400 forever
+- [ ] Count the first 30 on the server, not in the app (a database function that assigns 400 while fewer than 30 people hold it), so two people paying at the same moment can't both take spot 30
 - [ ] Show it in the app: Subscription page price per person, "founding member" label, and a "spots left" counter (optional)
-- [ ] Paymob: create a 350 and a 500 plan and charge the stored price; a member who cancels and comes back: decide if they keep 350 (suggest yes within a grace period, no after)
+- [ ] Paymob: create a 400 and a 600 plan and charge the stored price; a member who cancels and comes back: decide if they keep 400 (suggest yes within a grace period, no after)
 - [ ] Update `PLAN` in `app.js` (now one price) to read the person's price; admin dashboard: show and edit a person's price
 - [x] 2026-10-31: Free trial allowance set to 250 AI questions (`TRIAL_QUESTIONS` in `generate/index.ts`, `paste-into-dashboard/generate.ts` and `app.js`; landing page trial card says 250)
 - [ ] Redeploy the `generate` function so the 250 limit applies (the limit is enforced there, the app only displays it)
@@ -97,7 +99,7 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 ### Costs (what I need to pay for)
 - [ ] **Domain**: $16-20 a year. Needed first (Google publishing needs a real home page and legal links on your own domain)
 - [ ] **Supabase Pro**: $25 a month. Free plan pauses after a week idle, has no daily backups and 1 GB of storage
-- [ ] **Claude API credit**: $5 to start testing, then pay as you go. Rough guess $0.012 per question, so a free-trial student using all 250 questions costs about $3 and a paying student's 400 questions about $5. Check the real figure in the Claude Console, Usage, and set a monthly spend limit (start $100)
+- [ ] **Claude API credit**: $5 to start testing, then pay as you go. Rough guess $0.012 per question, so a free-trial student using all 250 questions costs about $3 and a paying student's 1000 questions about $12. Check the real figure in the Claude Console, Usage, and set a monthly spend limit (start $100)
 - [ ] **Supabase custom auth domain** (fixes the odd `...supabase.co` link on the sign-in screen): about $10 a month, check current pricing. Needs Pro and my own domain
 - [ ] **Email sender for sign-in links**: Supabase's built-in sender allows only a few emails an hour, so use a custom one such as Resend or Brevo (free plans cover this size, about $0)
 - [ ] Later, after the domain is bought: set up Brevo (or Resend) as the custom email sender. Verify the domain with them, then in Supabase go to Authentication, Emails, SMTP Settings and paste the SMTP details and a from-address on the domain. Until then, Google sign-in covers it (no emails involved)
@@ -146,6 +148,8 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [x] 2026-10-29: Concept plan fixes: the plan call sees up to 30 picture slides (question writing still 20); the first read's objectives are copied out and passed to every later read so those concepts rank as core; the later reads run in parallel. Needs `supabase functions deploy generate`
 - [x] 2026-10-29: Added `test-decks/test-cardiovascular-respiratory-intro.json` (11 questions from the Introduction to the cardiovascular and respiratory systems lecture; descriptive slides, so 11 good ones). Slides 4 and 12 disagree about whether the two sides of the heart work in parallel or in series, which is worth telling the lecturer
 - [x] 2026-10-29: Added `test-decks/test-proteins.json` (20 questions from the Protein structure and function lecture: 11 direct recall, 9 reasoning). The Proteins slides contradict each other in places (see the note in the chat), so questions avoid those points
+- [x] 2026-11-01: Prompt: the "file" rule in `generate/guide.ts` now has its own line: the AI must NEVER change the name of the slides or material file, it must be exactly the same as the uploaded file. Rebuild with `build-single.mjs` and redeploy to apply it to the AI function
+- [x] 2026-11-01: Pricing changed: first 30 subscribers EGP 400 a month forever, everyone after EGP 600 (was 350 / 500). Updated `PLAN` in `app.js`, `PLAN_EGP` in `admin/index.ts` (redeploy `admin`), the landing page and the notes in this file
 - [x] 2026-10-30: Retook all README screenshots (`docs/screenshots/`) as medidote from demo data; README image paths fixed from `screenshots/` to `app-screenshots/`.
 - [x] 2026-10-30: Reorganised the repo: `js/` (app, assign, theme, `vendor/` pdf.js), `assets/icons/`, `docs/` (TODO, QUALITY-CHECK, `screenshots/`), `tests/` (assign test, `test-decks/`). `index.html`, `manifest.json`, `sw.js` and `legal/` stay at the root for hosting and service worker scope. All paths updated (index, manifest, sw cache list, app.js, legal pages, test imports).
 - [x] 2026-10-30: README rewritten around what the app does; added a proprietary all-rights-reserved `LICENSE`.
@@ -170,6 +174,11 @@ Last updated: 2026-10-29. Nothing below is on the live site yet (commits are loc
 - [ ] Checkout plus a webhook function that sets `status = 'active'` and `current_period_end`
 - [ ] Wire the Subscribe button and a Manage/cancel flow; refund and cancellation policy on the site
 - Until then: switch testers to `active` by hand (below)
+
+### Feedback (later)
+- [ ] A Feedback section in the app: a way to tell me about an issue or a feature someone wants, easy to reach from the menu
+- [ ] Let people attach screenshots (upload to Supabase storage, link it to the message); pick type: issue / feature idea / other
+- [ ] Store each message with the user, the page they were on and the app version; show them in the admin dashboard so I can read and mark them done
 
 ### Ideas
 - [ ] Difficulty check (later): a second AI call that reads only the question stem and asks "does this stem give the answer away, or is it answerable without the slides?". The blind check (`SELF_CHECKS` in `generate/index.ts`, off for now) only tests whether the answer key is right, not whether the question is too easy, so this would catch stems that hand over the answer. Only worth adding if the prompt rules alone do not fix too-easy questions
@@ -200,7 +209,7 @@ One row per user in `subscriptions` (Table Editor, or the SQL Editor). Replace `
 
 - `status`: `trial`, `active` or `canceled`. `current_period_end`: paid access lasts until then. `trial_ends_at`: end of the free trial. `provider`: `manual` (later `paymob`)
 - **Plan:** active = `status` is `active` and `current_period_end` is in the future; trial = otherwise, `trial_ends_at` in the future; free = anything else (decks, slides, studying, stats are always free). Changes show after a reload
-- Subscription says "Coming soon" (`COMING_SOON` in app.js). Status changes still decide what Generate allows: 250 questions during the 7-day trial, 400 a month when active
+- Subscription says "Coming soon" (`COMING_SOON` in app.js). Status changes still decide what Generate allows: 250 questions during the 7-day trial, 1000 a month when active
 
 ```sql
 -- find a user / see everyone
@@ -232,3 +241,11 @@ The Paymob webhook will later set `status = 'active'` and `current_period_end` i
 - Folders are stored as one settings row (`fm`), not in the `folders` table yet
 - The function writes at most 10 questions per call (time limit); the app calls it repeatedly. It reads at most 60 slide pages per call; image-only slides are sent to the AI as pictures (up to 20 per call)
 - Never put the Claude API key, the Supabase `service_role` key or any `#access_token=` address in the repo or in chat
+- [x] 2026-11-01: Landing demo video plays at 1.25x (`landing/index.html`)
+- [x] 2026-11-01: Landing: moved "ai questions from your own slides..." line from under the title to above the demo video (`landing/index.html`)
+- [x] 2026-11-01: Subscription page switched on (`COMING_SOON.subscription` false) with a Pricing card: free trial 7 days / founding EGP 400 (first 30) / Plus EGP 600. Display only: Subscribe still shows 'coming soon', founding price is not charged yet (see Pricing section)
+- [x] 2026-11-01: Paid plans now get 1000 AI questions a month (was 400): `MONTHLY_QUESTION_LIMIT` in `generate/index.ts` and the paste copy (redeploy `generate`), `PLAN.questions` in app.js, landing page. Re-check cost: about $12 per full-use subscriber at $0.012 a question, against EGP 400-600 a month
+- [x] 2026-11-01: Subscription page responsive: wide layout with the three plans side by side on tablet/laptop, single column on phone (`index.html`)
+- [x] 2026-11-01: Subscription page: three plan cards (free trial, founding, Plus) in a horizontal row on desktop (900px+), stacked on phone/tablet; Subscribe button on founding and Plus cards (`js/app.js`, `index.html`)
+
+- [x] 2026-11-01: Removed "creating" decks from the "Always free" card and the trial-ended note (`js/app.js`); added a Feedback (later) section to the to do list

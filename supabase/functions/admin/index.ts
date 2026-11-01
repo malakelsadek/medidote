@@ -3,7 +3,7 @@
 // SUPABASE_URL / ANON_KEY / SERVICE_ROLE_KEY are provided automatically. Needs supabase/008_admin_stats.sql to have been run.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
-const PLAN_EGP = 500;   // keep in step with PLAN.price in app.js
+const PLAN_EGP = 600;   // keep in step with PLAN.price in app.js
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type" };
 const reply = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { ...cors, "Content-Type": "application/json" } });
 

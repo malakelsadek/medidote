@@ -403,7 +403,7 @@ async function pickImagePages(lib: any, bytes: Uint8Array, candidates: number[],
 // ---- index.ts ----
 
 const MODEL = "claude-sonnet-5-5";
-const MONTHLY_QUESTION_LIMIT = 400;   // AI questions per subscriber per month
+const MONTHLY_QUESTION_LIMIT = 1000;   // AI questions per subscriber per month
 const MAX_PAGES = 60;             // slide pages per request
 const MAX_QUESTIONS = 10;         // per request, so one call stays inside the function time limit; the app calls again for more
 const MAX_CONCEPTS = 40;         // concepts listed per window of slides

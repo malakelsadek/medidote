@@ -60,6 +60,7 @@ How to write the file:
 - "explanation" is one string with line breaks (\\n). Line 1 is one or two sentences on why the correct answer is right. Do not repeat the correct letter or its text, and do not write "X is correct". Then one line for each wrong option in this form: the letter, a colon, a short specific reason it is wrong (for example "A: Glucagon is released when glucose falls, not rises."). Cover every wrong option and never the correct one.
 - "slide" is the number of the slide or page that supports the correct answer. If a question genuinely combines slides, give a list, for example [12, 15]. Only the correct answer is linked to slides.
 - If more than one file is attached, also add "file": the exact file name of the slide deck or PDF that slide is in.
+- NEVER change the name of the slides or material file, EVER. Every file name you write must be exactly the same as the name of the file that was uploaded, character for character: no renaming, shortening, retyping, translating or fixing of spelling, spaces, case or extension. Never invent a file name.
 - Final check before you answer: solve every question again from the slides alone, without looking at your key. Delete or rewrite any question where you pick a different option, where two options could be right, where the stem gives the answer away, or where the length of an option points at the answer.
 
 Output ONLY valid JSON, no markdown fences, no commentary, in exactly this shape:
